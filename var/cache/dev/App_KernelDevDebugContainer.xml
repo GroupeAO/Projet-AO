@@ -338,6 +338,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\RoleRepository" class="App\Repository\RoleRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -4412,7 +4416,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.biiuMW0"/>
+      <argument type="service" id=".service_locator.hGsFGnO"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5438,6 +5442,8 @@
     <service id=".abstract.instanceof.App\Repository\AvailabilityRepository" class="App\Repository\AvailabilityRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ClinicRepository" class="App\Repository\ClinicRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ClinicRepository" class="App\Repository\ClinicRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RoleRepository" class="App\Repository\RoleRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\RoleRepository" class="App\Repository\RoleRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SurgeryNotificationRepository" class="App\Repository\SurgeryNotificationRepository" autowire="true" abstract="true"/>
@@ -6028,11 +6034,12 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.biiuMW0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.hGsFGnO" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AvailabilityRepository" type="service_closure" id="App\Repository\AvailabilityRepository"/>
         <argument key="App\Repository\ClinicRepository" type="service_closure" id="App\Repository\ClinicRepository"/>
+        <argument key="App\Repository\ContactRepository" type="service_closure" id="App\Repository\ContactRepository"/>
         <argument key="App\Repository\RoleRepository" type="service_closure" id="App\Repository\RoleRepository"/>
         <argument key="App\Repository\SurgeryNotificationRepository" type="service_closure" id="App\Repository\SurgeryNotificationRepository"/>
         <argument key="App\Repository\SurgicalSpecialtyRepository" type="service_closure" id="App\Repository\SurgicalSpecialtyRepository"/>
