@@ -22,8 +22,8 @@ class UserType extends AbstractType
             ->add('city')
             ->add('phoneNumber')
             ->add('RPPS')
-            ->add('surgicalSpeciality')
-            ->add('fkRole')
+            //->add('surgicalSpeciality')
+            //->add('fkRole')
         ;
     }
 

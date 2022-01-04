@@ -27,11 +27,12 @@ class RegistrationController extends AbstractController
 
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
-
+        $form->handleRequest($request);
         //check submit  and valid from
-        if($request->isMethod('POST')){
+        if($form->isSubmitted() && $form->isValid()){
+
             $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
-            return $this->redirectToRoute('registration');
+            return $this->redirectToRoute('home');
 
         }
 
@@ -49,15 +50,20 @@ public function checkUser(
 ): RedirectResponse
 {
     //check if email exist in bdd
-    if ($this->isEmailExist($user->getEmail(), $userRepository)) {
+    if ($this->isEmailExist($user->getEmail(), $userRepository)===false) {
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
             $unsecurePassword
         );
         $this->addUser($entityManagerInterface, $user, $hashedPassword);
-        return $this->redirectToRoute('registration');
+        return $this->redirectToRoute('home');
+    }else{
+        $userEmail=$user->getEmail();
+                echo "L'email $userEmail existe déja en base de données";
+                return $this->redirectToRoute('registration');
     }
+
 }
 
 public function addUser( EntityManagerInterface $entityManagerInterface,
