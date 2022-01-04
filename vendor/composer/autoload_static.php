@@ -574,7 +574,17 @@ class ComposerStaticInit9f932e888ac7817beb6ef14125b3fb38
     );
 
     public static $classMap = array (
+        'App\\Entity\\Availability' => __DIR__ . '/../..' . '/src/Entity/Availability.php',
+        'App\\Entity\\Clinic' => __DIR__ . '/../..' . '/src/Entity/Clinic.php',
+        'App\\Entity\\Role' => __DIR__ . '/../..' . '/src/Entity/Role.php',
+        'App\\Entity\\SurgeryNotification' => __DIR__ . '/../..' . '/src/Entity/SurgeryNotification.php',
+        'App\\Entity\\SurgicalSpecialty' => __DIR__ . '/../..' . '/src/Entity/SurgicalSpecialty.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
+        'App\\Repository\\AvailabilityRepository' => __DIR__ . '/../..' . '/src/Repository/AvailabilityRepository.php',
+        'App\\Repository\\ClinicRepository' => __DIR__ . '/../..' . '/src/Repository/ClinicRepository.php',
+        'App\\Repository\\RoleRepository' => __DIR__ . '/../..' . '/src/Repository/RoleRepository.php',
+        'App\\Repository\\SurgeryNotificationRepository' => __DIR__ . '/../..' . '/src/Repository/SurgeryNotificationRepository.php',
+        'App\\Repository\\SurgicalSpecialtyRepository' => __DIR__ . '/../..' . '/src/Repository/SurgicalSpecialtyRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
