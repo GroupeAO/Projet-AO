@@ -1,15 +1,24 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => 'v6.0.99',
-        'version' => '6.0.99.0',
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
-        'name' => 'symfony/website-skeleton',
+        'reference' => '111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+        'name' => '__root__',
         'dev' => true,
     ),
     'versions' => array(
+        '__root__' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'project',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+            'dev_requirement' => false,
+        ),
         'composer/package-versions-deprecated' => array(
             'pretty_version' => '1.11.99.4',
             'version' => '1.11.99.4',
@@ -1253,15 +1262,6 @@
             'reference' => '5a964f677884a22c6114bc6cfada199a0e4b5c9e',
             'dev_requirement' => true,
         ),
-        'symfony/website-skeleton' => array(
-            'pretty_version' => 'v6.0.99',
-            'version' => '6.0.99.0',
-            'type' => 'project',
-            'install_path' => __DIR__ . '/../../',
-            'aliases' => array(),
-            'reference' => NULL,
-            'dev_requirement' => false,
-        ),
         'symfony/yaml' => array(
             'pretty_version' => 'v6.0.2',
             'version' => '6.0.2.0',
@@ -1280,6 +1280,15 @@
             'reference' => '34a41e998c2183e22995f158c581e7b5e755ab9e',
             'dev_requirement' => true,
         ),
+        'twbs/bootstrap' => array(
+            'pretty_version' => 'v5.0.2',
+            'version' => '5.0.2.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../twbs/bootstrap',
+            'aliases' => array(),
+            'reference' => '688bce4fa695cc360a0d084e34f029b0c192b223',
+            'dev_requirement' => false,
+        ),
         'twig/extra-bundle' => array(
             'pretty_version' => 'v3.3.4',
             'version' => '3.3.4.0',
@@ -1297,6 +1306,12 @@
             'aliases' => array(),
             'reference' => '65cb6f0b956485e1664f13d023c55298a4bb59ca',
             'dev_requirement' => false,
+        ),
+        'twitter/bootstrap' => array(
+            'dev_requirement' => false,
+            'replaced' => array(
+                0 => 'v5.0.2',
+            ),
         ),
         'webmozart/assert' => array(
             'pretty_version' => '1.10.0',

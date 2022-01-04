@@ -52,23 +52,27 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
         // line 5
         $this->displayBlock('title', $context, $blocks);
         echo "</title>
+        <link rel=\"stylesheet\" href=\"";
+        // line 6
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/bootstrap.min.css"), "html", null, true);
+        echo "\">
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
         ";
-        // line 8
+        // line 9
         echo "        ";
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 11
+        // line 12
         echo "
         ";
-        // line 12
+        // line 13
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 15
+        // line 16
         echo "    </head>
     <body>
         ";
-        // line 17
-        $this->displayBlock('body', $context, $blocks);
         // line 18
+        $this->displayBlock('body', $context, $blocks);
+        // line 19
         echo "    </body>
 </html>
 ";
@@ -99,7 +103,7 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
 
     }
 
-    // line 8
+    // line 9
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -109,7 +113,7 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 9
+        // line 10
         echo "            ";
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('encore_entry_link_tags')->getCallable(), ["app"]), "html", null, true);
         echo "
@@ -122,7 +126,7 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
 
     }
 
-    // line 12
+    // line 13
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -132,7 +136,7 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02 = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 13
+        // line 14
         echo "            ";
         echo twig_escape_filter($this->env, call_user_func_array($this->env->getFunction('encore_entry_script_tags')->getCallable(), ["app"]), "html", null, true);
         echo "
@@ -145,7 +149,7 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
 
     }
 
-    // line 17
+    // line 18
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -168,9 +172,14 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
         return "base.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  149 => 17,  136 => 13,  126 => 12,  113 => 9,  103 => 8,  84 => 5,  72 => 18,  70 => 17,  66 => 15,  64 => 12,  61 => 11,  58 => 8,  53 => 5,  47 => 1,);
+        return array (  153 => 18,  140 => 14,  130 => 13,  117 => 10,  107 => 9,  88 => 5,  76 => 19,  74 => 18,  70 => 16,  68 => 13,  65 => 12,  62 => 9,  57 => 6,  53 => 5,  47 => 1,);
     }
 
     public function getSourceContext()
@@ -180,6 +189,7 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}Welcome!{% endblock %}</title>
+        <link rel=\"stylesheet\" href=\"{{ asset('css/bootstrap.min.css') }}\">
         <link rel=\"icon\" href=\"data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text></svg>\">
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
@@ -194,6 +204,6 @@ class __TwigTemplate_870e38572bde2ce2d997dd3da5197bf3de751d567d12ffed0dd3067568b
         {% block body %}{% endblock %}
     </body>
 </html>
-", "base.html.twig", "C:\\Users\\webforce3\\Documents\\Symfony\\projectAO\\templates\\base.html.twig");
+", "base.html.twig", "C:\\Users\\webforce3\\Documents\\GitHub\\projet\\Projet-AO\\templates\\base.html.twig");
     }
 }
