@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello RegistrationController!{% endblock %}
+
+{% block body %}
+{{form_start(form)}}
+<h1>Formulaire d'inscription</h1>
+{{form_start(form)}}
+    <p><label for="email">Email:</label></p>
+    {{form_widget(form.email, { 'id': 'email' })}}
+    <label for="password">Mot de passe : </label>
+    {{form_widget(form.password, { 'id': 'password' })}}
+    <p><label for="">Nom</label></p>
+    {{form_widget(form.name)}}
+    <p><label for="">Prénom</label></p>
+    {{form_widget(form.firstname)}}
+    <p><label for="">Adresse</label></p>
+    {{form_widget(form.adress)}}
+    <p><label for="">Code Postal</label></p>
+    {{form_widget(form.postaCode)}}
+    <p><label for="">Ville</label></p>
+    {{form_widget(form.city)}}
+    <p><label for="">Numéro de téléphone</label></p>
+    {{form_widget(form.phoneNumber)}}
+    <p><label for="">Numéro RPPS</label></p>
+    {{form_widget(form.RPPS)}}
+
+
+    <button type="submit">S'inscrire</button>
+{{form_end(form)}}
+
+{% endblock %}
