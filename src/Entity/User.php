@@ -47,17 +47,17 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'integer')]
     private $RPPS;
 
-    #[ORM\ManyToOne(targetEntity: surgicalSpecialty::class, inversedBy: 'users')]
+    #[ORM\ManyToOne(targetEntity: SurgicalSpecialty::class, inversedBy: 'users')]
     private $surgicalSpeciality;
 
-    #[ORM\ManyToOne(targetEntity: role::class, inversedBy: 'users')]
+    #[ORM\ManyToOne(targetEntity: Role::class, inversedBy: 'users')]
     #[ORM\JoinColumn(nullable: false)]
     private $fkRole;
 
     #[ORM\ManyToMany(targetEntity: SurgeryNotification::class, inversedBy: 'users')]
     private $surgery;
 
-    #[ORM\ManyToMany(targetEntity: clinic::class, inversedBy: 'users')]
+    #[ORM\ManyToMany(targetEntity: Clinic::class, inversedBy: 'users')]
     private $clinic;
 
     #[ORM\ManyToMany(targetEntity: Availability::class, inversedBy: 'users')]
@@ -224,24 +224,24 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getSurgicalSpeciality(): ?surgicalSpecialty
+    public function getSurgicalSpeciality(): ?SurgicalSpecialty
     {
         return $this->surgicalSpeciality;
     }
 
-    public function setSurgicalSpeciality(?surgicalSpecialty $surgicalSpeciality): self
+    public function setSurgicalSpeciality(?SurgicalSpecialty $surgicalSpeciality): self
     {
         $this->surgicalSpeciality = $surgicalSpeciality;
 
         return $this;
     }
 
-    public function getFkRole(): ?role
+    public function getFkRole(): ?Role
     {
         return $this->fkRole;
     }
 
-    public function setFkRole(?role $fkRole): self
+    public function setFkRole(?Role $fkRole): self
     {
         $this->fkRole = $fkRole;
 
@@ -273,14 +273,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return Collection|clinic[]
+     * @return Collection|Clinic[]
      */
     public function getClinic(): Collection
     {
         return $this->clinic;
     }
 
-    public function addClinic(clinic $clinic): self
+    public function addClinic(Clinic $clinic): self
     {
         if (!$this->clinic->contains($clinic)) {
             $this->clinic[] = $clinic;
@@ -289,7 +289,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function removeClinic(clinic $clinic): self
+    public function removeClinic(Clinic $clinic): self
     {
         $this->clinic->removeElement($clinic);
 
