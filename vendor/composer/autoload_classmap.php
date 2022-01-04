@@ -6,7 +6,17 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Entity\\Availability' => $baseDir . '/src/Entity/Availability.php',
+    'App\\Entity\\Clinic' => $baseDir . '/src/Entity/Clinic.php',
+    'App\\Entity\\Role' => $baseDir . '/src/Entity/Role.php',
+    'App\\Entity\\SurgeryNotification' => $baseDir . '/src/Entity/SurgeryNotification.php',
+    'App\\Entity\\SurgicalSpecialty' => $baseDir . '/src/Entity/SurgicalSpecialty.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
+    'App\\Repository\\AvailabilityRepository' => $baseDir . '/src/Repository/AvailabilityRepository.php',
+    'App\\Repository\\ClinicRepository' => $baseDir . '/src/Repository/ClinicRepository.php',
+    'App\\Repository\\RoleRepository' => $baseDir . '/src/Repository/RoleRepository.php',
+    'App\\Repository\\SurgeryNotificationRepository' => $baseDir . '/src/Repository/SurgeryNotificationRepository.php',
+    'App\\Repository\\SurgicalSpecialtyRepository' => $baseDir . '/src/Repository/SurgicalSpecialtyRepository.php',
     'Collator' => $vendorDir . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'DeepCopy\\DeepCopy' => $vendorDir . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',

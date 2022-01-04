@@ -23,7 +23,7 @@ final class Versions
      * @deprecated please use {@see self::rootPackageName()} instead.
      *             This constant will be removed in version 2.0.0.
      */
-    const ROOT_PACKAGE_NAME = 'symfony/website-skeleton';
+    const ROOT_PACKAGE_NAME = '__root__';
 
     /**
      * Array of all available composer packages.
@@ -123,6 +123,7 @@ final class Versions
   'symfony/var-exporter' => 'v6.0.0@32cf62f12d35d441da1ca4a4c0fc1cd5f2a207af',
   'symfony/web-link' => 'v6.0.1@bc5ac011d2670331b8d5fab89253c774568f6877',
   'symfony/yaml' => 'v6.0.2@ed602f38b8636a2ea21af760d2578f3d2f92fc60',
+  'twbs/bootstrap' => 'v5.0.2@688bce4fa695cc360a0d084e34f029b0c192b223',
   'twig/extra-bundle' => 'v3.3.4@1fe52d84aa22b7891c7717ef904b1551c8d70100',
   'twig/twig' => 'v3.3.4@65cb6f0b956485e1664f13d023c55298a4bb59ca',
   'webmozart/assert' => '1.10.0@6964c76c7804814a842473e0c8fd15bab0f18e25',
@@ -161,13 +162,13 @@ final class Versions
   'symfony/phpunit-bridge' => 'v6.0.0@5d6cc6720085084f504d2482fc4a2f268784006b',
   'symfony/web-profiler-bundle' => 'v6.0.2@5a964f677884a22c6114bc6cfada199a0e4b5c9e',
   'theseer/tokenizer' => '1.2.1@34a41e998c2183e22995f158c581e7b5e755ab9e',
-  'symfony/polyfill-ctype' => '*@',
-  'symfony/polyfill-iconv' => '*@',
-  'symfony/polyfill-php72' => '*@',
-  'symfony/polyfill-php73' => '*@',
-  'symfony/polyfill-php74' => '*@',
-  'symfony/polyfill-php80' => '*@',
-  'symfony/website-skeleton' => 'v6.0.99@',
+  'symfony/polyfill-ctype' => '*@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+  'symfony/polyfill-iconv' => '*@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+  'symfony/polyfill-php72' => '*@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+  'symfony/polyfill-php73' => '*@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+  'symfony/polyfill-php74' => '*@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+  'symfony/polyfill-php80' => '*@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
+  '__root__' => 'dev-main@111a31cb2d8533b707f8ffb69a1a0968dca338a9',
 );
 
     private function __construct()
