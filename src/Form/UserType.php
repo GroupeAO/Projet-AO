@@ -9,6 +9,7 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 
 class UserType extends AbstractType
 {
@@ -16,7 +17,6 @@ class UserType extends AbstractType
     {
         $builder
             ->add('email')
-            //->add('roles')
             ->add('password')
             ->add('name')
             ->add('firstname')
@@ -28,12 +28,7 @@ class UserType extends AbstractType
             ->add('surgicalSpeciality', EntityType::class, [ 
                 'class'=>SurgicalSpecialty::class,
                 'choice_label'=>'name'
-                ])
-            ->add('fkRole',  EntityType::class, [ 
-                'class'=>Role::class,
-                'choice_label'=>'name'
-                ])
-        ;
+                ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

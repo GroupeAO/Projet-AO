@@ -39,7 +39,7 @@ security:
         - { path: ^/admin,   roles: ROLE_ADMIN }
         - { path: ^/profile, roles: ROLE_USER }
         - { path: ^/surgeon, roles: ROLE_SURGEON }
-        - { path: ^/IBODE,   roles: ROLE_IBODE }
+        - { path: ^/nurse,   roles: ROLE_NURSE }
 
 when@test:
     security:

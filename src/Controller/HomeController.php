@@ -16,7 +16,7 @@ class HomeController extends AbstractController
             $error= $authenticationUtils->getLastAuthenticationError();
         
             //  we get the last_username entered by the user 
-          $lastUsername = $authenticationUtils->getLastUsername();
+        $lastUsername = $authenticationUtils->getLastUsername();
         return $this->render('home/index.html.twig', [
             'controller_name' => 'HomeController',
             'last_username' => $lastUsername,
