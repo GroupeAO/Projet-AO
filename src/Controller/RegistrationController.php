@@ -71,7 +71,14 @@ User $user,
 $hashedPassword)
 {
     $user->setPassword($hashedPassword);
-    $user->setRoles(['ROLE_USER']);
+    $userRole=$user->getFkRole();
+    echo $userRole;
+
+    if ($_POST['role'] == 'ROLE_SURGEON'){
+    $user->setRoles(['ROLE_SURGEON']);
+    }else{
+        $user->setRoles(['ROLE_NURSE']);
+    }
 
     
     $entityManagerInterface->persist($user);

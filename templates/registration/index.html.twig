@@ -24,7 +24,10 @@
     {{form_widget(form.phoneNumber)}}
     <p><label for="">Numéro RPPS</label></p>
     {{form_widget(form.RPPS)}}
-
+    <select name="role" id="role">
+        <option value ="ROLE_SURGEON">Chirugien</option>
+        <option value ="ROLE_NURSE">Aide opératoire</option>  
+    </select>
 
     <button type="submit">S'inscrire</button>
 {{form_end(form)}}
