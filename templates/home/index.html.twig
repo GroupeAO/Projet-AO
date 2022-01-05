@@ -7,14 +7,17 @@
             <img src="{{ asset('../assets/img/undraw_doctors_hwty.png') }}" class="img-fluid">
         </div>
     </div>
-    <form class="loginForm" action="{{path('login')}}" method="POST">
-        <label for="username">Email :</label>
-        <input type="text" name="_username" id="username" value="{{last_username}}" required>
-        <label for="password">Mot de passe</label>
-        <input type="text" name="_password" id="password" required>
-        <button type="submit">Me connecter</button>
-    </form>
-    
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-8">
+            <form class="loginForm" action="{{path('login')}}" method="POST">
+                {# <label for="username">Email :</label> #}
+                <input type="text" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
+                {# <label for="password">Mot de passe</label> #}
+                <input type="password" name="_password" id="password" placeholder="Mot de Passe" required>
+                <button type="submit" class="btn btn-primary">Me connecter</button>
+            </form>
+        </div>
+    </div>
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="text-white bg-primary mb-3">
