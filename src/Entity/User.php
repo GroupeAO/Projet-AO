@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -18,6 +19,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    /**
+    *@Assert\Email(
+    *message = "The email '{{ value }}' is not a valid email."
+    * )
+    */
     private $email;
 
     #[ORM\Column(type: 'json')]
@@ -27,21 +33,59 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $password;
 
     #[ORM\Column(type: 'string', length: 45)]
+    /**
+     * @Assert\NotBlank
+     * 
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 45,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
     private $name;
 
     #[ORM\Column(type: 'string', length: 45)]
+    /**
+     * @Assert\NotBlank
+     *  @Assert\Length(
+     *      min = 2)
+     */ 
+    
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 500)]
+    /**
+     * @Assert\NotBlank
+     *  @Assert\Length(
+     *  minMessage = "Your adresse must be at least {{ limit }} characters long",
+     *      min = 5)
+     */ 
     private $adress;
 
     #[ORM\Column(type: 'integer')]
+    /**
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
     private $postaCode;
 
     #[ORM\Column(type: 'string', length: 255)]
     private $city;
 
     #[ORM\Column(type: 'string', length: 20, nullable: true)]
+    /**
+     *  @Assert\Length(
+     *  
+     *      min = 10,
+     *      max = 13,
+     *      minMessage = "Your adresse must be at least {{ limit }} characters long"
+     * )
+     */ 
     private $phoneNumber;
 
     #[ORM\Column(type: 'integer')]
