@@ -1,6 +1,7 @@
 
 .navbar{
     z-index: 11;
+    margin-bottom: 20px;
 }
 .homeBanner{
     position: relative;
@@ -20,8 +21,19 @@
     transform: translate(-50%);
 }
 
-
+.submitButton{
+    text-align: center;
+}
+.card-header{
+    font-weight: bold;
+    text-align: center;
+}
 
 .formSubmit{
     text-align: center;
+}
+
+footer{
+    position: sticky;
+    bottom: 0px;
 }

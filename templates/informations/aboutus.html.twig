@@ -1,47 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello InformationsController!{% endblock %}
-
 {% block body %}
 <div class="container">
     <div class="row">
         <div class="col">
             <h5>PRINCIPE DU SITE : </h5>
-            <p>Ce site à une fonction : mettre en relation les chirurgiens (libéraux, exerçant en clinique) avec les aides opératoires (IBODE et IDE).
+            <p>Notre but : mettre en relation les chirurgiens (libéraux, exerçant en clinique) avec les aides opératoires (IBODE et IDE).
                 Les chirurgiens ayant besoin de peronnel peuvent, en quelques clics, avoir accès aux coordonnées des aides opératoires disponibles et proches de chez eux.<br>
+                Les IBODE et IDE peuvent, eux, 
                 Notre site ne fait "que" centraliser les coordonnées, disponibilités des usagers.<br> 
                 Il ne gère ni les communications entre usagers, ni le règlement de toute contrepartie financière.<br> 
                 A vous de vous entendre comme les hommes et femmes civilisé(e)s que vous êtes ^^.</p>
-            <h5>FONCTIONNEMENT :</h5>
-            <h6>Vous êtes chirurgien? </h6>
-            <ul>
-                <li>créez votre compte</li>
-                <li>utilisez le formulaire de recherche pour rechercher les aides opératoires disponibles près de chez vous</li>
-            </ul>
-            <h6>Vous êtes IBODE / IDE?</h6>
-            <ul>
-                <li>créez votre compte</li>
-                <li>indiquez vos disponibilités et coordonnées</li>
-                <li>votre profil est désormais consultable par les chirurgiens. Ils vous contacteront directement dès que vous apparaîtrez dans leur résultat de recherche</li>
-            </ul>
-            <h5>PROBLEME LORS DE VOTRE ENREGISTREMENT?</h5>
-            <p>Si vous venez d'obtenir (moins d'un mois) votre CPS/CPF et que vous n'arrivez pas à vous enregister, nous vous inviteons à re-essayer ultérieurement. 
-                La base de données et mise à jour mensuellement, mais nous travaillons pour automatiser ce processus.</p>
+            
             <h5>PARTAGE DES DONNEES :</h5>
-            <p>Nous NE COMMUNIQUERONS JAMAIS VOS DONNEES à des tiers.
-                Lors de votre enregistrement, nous vérifions juste que vous êtes bien porteur de votre CPS/CPF. Ceci est tout simplement afin de décourager les créations de compte frauduleux ou intempestifs. Nous comparons vos informations avec des extractions publiques fournies par annuaire.sante.fr. 
+            <p>Nous NE COMMUNIQUERONS JAMAIS VOS DONNEES à des tiers.</p>
+            <p>Lors de votre enregistrement, nous vérifions juste que vous êtes bien porteur de votre CPS/CPF. Ceci est tout simplement afin de décourager les créations de compte frauduleux ou intempestifs. Nous comparons vos informations avec des extractions publiques fournies par annuaire.sante.fr. 
                 Nous n'avons pas accès à votre mot de passe, celui-ci est encrypté dès votre enregistrement.</p>
             <h5>ET L'ARGENT DANS TOUT CA?</h5>
             <p>Ce site est entièrerement gratuit et bénévole.</p>
             <p> Il n'est pas et ne sera jamais monétisé au moyen d'annonces publicitaires.</p> 
-                Ce site a été créé comme projet de fin d'études par deux étudiants développeurs web (lien crédits) dont le seul but est de valider leur diplôme. 
+                Ce site a été créé comme projet de fin d'études par deux étudiants développeurs web dont le seul but est de valider leur diplôme. 
                 Si, en plus, ce site peut rendre service à certains, on en sera d'autant plus ravis.
-                D'autant plus que facturer l'utilisation de ce site freinerait grandement son adoption, et ça ça nous plait pas.<br>
-                ... Et puis franchement les Lamborghini c'est pas trop notre truc ...
-            </p>
-            <p>Ceci dit, si vous tenez à nous remercier et nous encourager, n'hésitez pas à contribuer aux frais d'hébergement en nous faisant un don!!! Toute aide sera grandement appréciée.</p>
+                D'autant plus que facturer l'utilisation de ce site freinerait grandement son adoption, et ça ça nous plait pas.
+                Néanmoins, si vous tenez à nous remercier et nous encourager, n'hésitez pas à contribuer aux frais d'hébergement en nous faisant un don!!! Toute aide sera grandement appréciée...</p>
+            <div class="submitButton">
+                <a href="{{ path('donate') }}"><button class="btn btn-primary mb-3">Faire un don</button></a>
+            </div>
             <h5>J'AI TOUT LU MAIS JE ME POSE ENCORE DES QUESTIONS / J'AI UNE REMARQUE OU UNE SUGGESTION A FAIRE / J'AI UN BUG A SIGNALER :</h5>
-            <p>N'hésitez pas à nous contacter! (lien)</p>
+            <p>N'hésitez pas à <a href="{{ path('contact_us')}}">nous contacter!</a></p>
 
 
 

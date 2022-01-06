@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Accueil</a>
+                        <a class="nav-link active" href="{{path('home')}}">Accueil</a>
                         <span class="visually-hidden">(current)</span>
                     </li>
                     <li class="nav-item">
@@ -18,11 +18,11 @@
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Qui sommes-nous?</a>
-                            <a class="dropdown-item" href="#">Infos Pratiques</a>
-                            <a class="dropdown-item" href="#">Crédits</a>
+                            <a class="dropdown-item" href="{{path('about_us')}}">Qui sommes-nous?</a>
+                            <a class="dropdown-item" href="{{path('informations')}}">Infos Pratiques</a>
+                            <a class="dropdown-item" href="{{path('credits')}}">Crédits</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Contactez-nous</a>
+                            <a class="dropdown-item" href="{{path('contact_us')}}">Contactez-nous</a>
                         </div>
                     </li>
                 </ul>
