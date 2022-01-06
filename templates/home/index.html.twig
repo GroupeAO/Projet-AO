@@ -13,13 +13,11 @@
         
     </div>
     <form class="loginForm" action="{{path('login')}}" method="POST"></form>
-        <div class="row justify-content-center mb-3">
+        <div class="row justify-content-center mb-5">
             <div class="col-md-3">
-                {# <label for="username">Email :</label> #}
                 <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
             </div>    
             <div class="col-md-3">       
-                {# <label for="password">Mot de passe</label> #}
                 <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de Passe" required>
             </div>
             <div class="col-md-auto formSubmit">         
@@ -32,8 +30,8 @@
             <div class="text-white bg-primary mb-3">
                 <div class="card-header">Aides Opératoires</div>
                 <div class="card-body">
-                    <h4 class="card-title">Inscrivez-vous</h4>
-                  <p class="card-text">Indiquez vos coordonnées, vos disponibilités et un chirurgien entrera directement en contact avec vous.</p>
+                    <p class="card-text">Indiquez vos coordonnées, vos disponibilités et un chirurgien entrera directement en contact avec vous.</p>
+                    <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
                 </div>
             </div>
         </div>
@@ -41,8 +39,8 @@
             <div class="text-white bg-secondary mb-3">
                 <div class="card-header">Chirurgiens</div>
                 <div class="card-body">
-                  <h4 class="card-title">Inscrivez-vous</h4>
-                  <p class="card-text">Créez votre compte et recherchez un(e) aide opératoire en quelques clics.</p>
+                    <p class="card-text">Créez votre compte et recherchez un(e) IBODE ou IDE en quelques clics.</p>
+                    <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
                 </div>
             </div>
         </div>
