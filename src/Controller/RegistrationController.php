@@ -35,7 +35,7 @@ class RegistrationController extends AbstractController
         //check submit  and valid from
         if($form->isSubmitted() && $form->isValid()){
 
-            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository,);
+            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository,$cpsCardOwner,$cpsCardOwnerRepository);
             return $this->redirectToRoute('home');
 
         }
