@@ -7,20 +7,25 @@ A vous de vous entendre comme les hommes et femmes civilisé(e)s que vous êtes 
 
 FONCTIONNEMENT :
 
-Vous êtes chirurgien? 
- - créez votre compte
- - utilisez le formulaire de recherche pour rechercher des ides opératoires près de chez vous.
+    Vous êtes chirurgien? 
+    - créez votre compte
+    - utilisez le formulaire de recherche pour rechercher des ides opératoires près de chez vous.
 
- Vous êtes IBODE / IDE?
- - créez votre compte
- - indiquez vos disponibilités et autres infos
- - votre profil est public, un chirurgien vous contactera directement dès que vous apparaîtrez dans une recherche.
+    Vous êtes IBODE / IDE?
+    - créez votre compte
+    - indiquez vos disponibilités et autres infos
+    - votre profil est public, un chirurgien vous contactera directement dès que vous apparaîtrez dans une recherche.
 
 PARTAGE DES DONNEES :
 
 Nous NE COMMUNIQUERONS JAMAIS VOS DONNEES à des tiers.
-Lors de votre enregistrement, nous vérifions juste que vous êtes bien porteur de votre CPS/CPF. Ceci est tout simplement afin de décourager les créations de compte frauduleux ou intempestifs. Nous mettons à jour régulièrement cette base de données à partir des extractions publiques fournies par annuaire.sante.fr. Si vous venez d'obtenir votre CPS/CPF et que vous n'arrivez pas à vous enregister, nous vous inviteons à re-essayer ultérieurement (la base de données et mise à jour mensuellement, nous travaillons pour automatiser ce processus).
-Nous ne connaissons pas votre mot de passe, celui-ci est encrypté dès votre enregistrement.
+Lors de votre enregistrement, nous vérifions juste que vous êtes bien porteur de votre CPS/CPF. Ceci est tout simplement afin de décourager les créations de compte frauduleux ou intempestifs. Nous comparons vos informations avec des extractions publiques fournies par annuaire.sante.fr. 
+Nous n'avons pas accès à votre mot de passe, celui-ci est encrypté dès votre enregistrement.
+
+PROBLEME LORS DE VOTRE ENREGISTREMENT?
+
+Si vous venez d'obtenir (moins d'un mois) votre CPS/CPF et que vous n'arrivez pas à vous enregister, nous vous inviteons à re-essayer ultérieurement. 
+La base de données et mise à jour mensuellement, mais nous travaillons pour automatiser ce processus.
 
 CA COUTE COMBIEN ?
 
@@ -34,7 +39,6 @@ D'autant plus que facturer l'utilisation de ce site freinerait grandement son ad
 
 Ceci dit, si vous tenez à nous remercier et nous encourager, n'hésitez pas à contribuer aux frais d'hébergement en nous faisant un don!!! Toute aide sera grandement appréciée.
 
-
-J'AI TOUT LU MAIS JE ME POSE ENCORE DES QUESTIONS / J'AI UNE REMARQUE OU UNE SUGGESTION A FAIRE :
+J'AI TOUT LU MAIS JE ME POSE ENCORE DES QUESTIONS / J'AI UNE REMARQUE OU UNE SUGGESTION A FAIRE / J'AI UN BUG A SIGNALER :
 
 N'hésitez pas à nous contacter! (lien)

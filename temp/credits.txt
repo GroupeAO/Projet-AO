@@ -9,5 +9,4 @@ Ce site a été conçu et développé par :
 	Etienne GUIGNARD, développeur web en formation chez WebForce3 Marseille
 		- majorité du back-end, un peu du front-end, gestion BDD
 
-	Gérard KASSAPIAN, formateur chez WebForce3
-		- chaperonnage bienveillant, conseils tecnhique
+	sous le chaperonnage bienveillant de Gérard KASSAPIAN, formateur chez WebForce3
