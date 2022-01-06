@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\CpsCardOwner;
 use App\Entity\User;
 use App\Form\UserType;
+use App\Repository\CpsCardOwnerRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +22,9 @@ class RegistrationController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
-        UserRepository $userRepository
+        UserRepository $userRepository,
+        CpsCardOwner $cpsCardOwner,
+        CpsCardOwnerRepository $cpsCardOwnerRepository,
     ): Response
     {
         // User from creation
@@ -31,7 +35,7 @@ class RegistrationController extends AbstractController
         //check submit  and valid from
         if($form->isSubmitted() && $form->isValid()){
 
-            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
+            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository,$cpsCardOwner,$cpsCardOwnerRepository);
             return $this->redirectToRoute('home');
 
         }
@@ -47,10 +51,12 @@ public function checkUser(
     UserPasswordHasherInterface $userPasswordHasherInterface,
     User $user,
     UserRepository $userRepository,
+    CpsCardOwner $cpsCardOwner,
+    CpsCardOwnerRepository $cpsCardOwnerRepository,
 ): RedirectResponse
 {
     //check if email exist in bdd
-    if ($this->isEmailExist($user->getEmail(), $userRepository)===false) {
+    if ($this->isEmailExist($user->getEmail(), $userRepository)===false && $this->isCpsCardNumberExist($cpsCardOwner->getNumeroCarte(), $cpsCardOwnerRepository))  {
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
@@ -83,6 +89,15 @@ $hashedPassword)
     
     $entityManagerInterface->persist($user);
     $entityManagerInterface->flush();
+}
+
+public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository )
+{
+    $CpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numero_carte' => $numeroCarte]);
+    if (!empty($CpsCardNumberInDB)) {
+        return true;
+    }
+    return false;
 }
 
 public function isEmailExist(string $emailUser,
