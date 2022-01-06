@@ -3,8 +3,12 @@
 {% block title %}Hello RegistrationController!{% endblock %}
 
 {% block body %}
-{{form_start(form)}}
+
 <h1>Formulaire d'inscription</h1>
+{{form_start(formCps)}}
+{{form_widget(formCps.numeroCarte)}}
+<button type="submit">Verifier numéro CPS</button>
+{{form_end(formCps)}}
 {{form_start(form)}}
     <p><label for="email">Email:</label></p>
     {{form_widget(form.email, { 'id': 'email' })}}
