@@ -3,27 +3,36 @@
 {% block body %}
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-8" class="homeBoxGreen">
-            <img src="{{ asset('../assets/img/undraw_doctors_hwty.png') }}" class="img-fluid">
+        <div class="col-8">
+            <img src="{{ asset('../assets/img/undraw_doctors_hwty.png') }}" class="img-fluid homeBanner">
+            <div class="homeIntro">
+                <h4>AdopteUnAO.com</h4>
+                <p>Mise en relation des Chirurgiens et Aides Opératoires (IBODE et IDE)</p>
+            </div>
         </div>
+        
     </div>
-    <div class="row justify-content-center mb-3">
-        <div class="col-md-8">
-            <form class="loginForm" action="{{path('login')}}" method="POST">
+    <form class="loginForm" action="{{path('login')}}" method="POST"></form>
+        <div class="row justify-content-center mb-3">
+            <div class="col-md-3">
                 {# <label for="username">Email :</label> #}
-                <input type="text" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
+                <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
+            </div>    
+            <div class="col-md-3">       
                 {# <label for="password">Mot de passe</label> #}
-                <input type="password" name="_password" id="password" placeholder="Mot de Passe" required>
+                <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de Passe" required>
+            </div>
+            <div class="col-md-auto formSubmit">         
                 <button type="submit" class="btn btn-primary">Me connecter</button>
-            </form>
+            </div>            
         </div>
-    </div>
+    </form>
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="text-white bg-primary mb-3">
                 <div class="card-header">Aides Opératoires</div>
                 <div class="card-body">
-                  <h4 class="card-title">Inscrivez-vous</h4>
+                    <h4 class="card-title">Inscrivez-vous</h4>
                   <p class="card-text">Indiquez vos coordonnées, vos disponibilités et un chirurgien entrera directement en contact avec vous.</p>
                 </div>
             </div>
@@ -38,4 +47,5 @@
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
