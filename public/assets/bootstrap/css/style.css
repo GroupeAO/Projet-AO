@@ -1,3 +1,13 @@
+.container{
+    min-height: 70vh;
+}
+
+.pageTitle{
+    color: #4fc19e;
+    text-align: center;
+    font-size:xx-large;
+    margin-bottom: 20px;
+}
 
 .navbar{
     z-index: 11;
@@ -34,6 +44,7 @@
 }
 
 footer{
-    position: sticky;
+    background-color: #FFF;
+    /* position: sticky; */
     bottom: 0px;
 }
