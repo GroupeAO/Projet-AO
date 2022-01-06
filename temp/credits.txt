@@ -1,0 +1,13 @@
+Ce site a été conçu et développé par :
+
+	Dr. Benjamin COQUET, chirurgien viscéral au CH de Salon-de-Provence.
+		- concept du site, conseils techniques
+
+	Benoit BAUDRIN, développeur web en formation chez WebForce3 Marseille
+		- majorité du front-end, un peu du back-end, gestion BDD
+
+	Etienne GUIGNARD, développeur web en formation chez WebForce3 Marseille
+		- majorité du back-end, un peu du front-end, gestion BDD
+
+	Gérard KASSAPIAN, formateur chez WebForce3
+		- chaperonnage bienveillant, conseils tecnhique
