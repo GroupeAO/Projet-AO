@@ -28,13 +28,13 @@ class RegistrationController extends AbstractController
     ): Response
     {
         // User from creation
-
+        echo'coucou';
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
         //check submit  and valid from
         if($form->isSubmitted() && $form->isValid()){
-
+            var_dump($cpsCardOwner);
             $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository,$cpsCardOwner,$cpsCardOwnerRepository);
             return $this->redirectToRoute('home');
 
@@ -52,9 +52,11 @@ public function checkUser(
     User $user,
     UserRepository $userRepository,
     CpsCardOwner $cpsCardOwner,
-    CpsCardOwnerRepository $cpsCardOwnerRepository,
+    CpsCardOwnerRepository $cpsCardOwnerRepository
 ): RedirectResponse
 {
+    echo 'in check user';
+
     //check if email exist in bdd
     if ($this->isEmailExist($user->getEmail(), $userRepository)===false && $this->isCpsCardNumberExist($cpsCardOwner->getNumeroCarte(), $cpsCardOwnerRepository))  {
         $unsecurePassword= $user->getPassword();
@@ -77,9 +79,7 @@ User $user,
 $hashedPassword)
 {
     $user->setPassword($hashedPassword);
-    $userRole=$user->getFkRole();
-    echo $userRole;
-
+    
     if ($_POST['role'] == 'ROLE_SURGEON'){
     $user->setRoles(['ROLE_SURGEON']);
     }else{
@@ -93,8 +93,9 @@ $hashedPassword)
 
 public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository )
 {
-    $CpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numero_carte' => $numeroCarte]);
-    if (!empty($CpsCardNumberInDB)) {
+    echo 'dans la fonction';
+    $cpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numero_carte' => $numeroCarte]);
+    if (!empty($cpsCardNumberInDB)) {
         return true;
     }
     return false;
