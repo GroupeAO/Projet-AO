@@ -28,12 +28,12 @@
                 </ul>
                 
                 <div class="d-flex"></div>
+                
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     
                     <a href="{{ path('account_surgeon') }}">{<button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
                     {% endif %}
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
-
                 </div>
             </div>
         </div>
