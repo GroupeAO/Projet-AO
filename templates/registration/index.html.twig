@@ -1,39 +1,49 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello RegistrationController!{% endblock %}
+{% form_theme form 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 pageTitle">
+                Formulaire d'inscription
+        </div>
+    </div>
+    <div class="row justify-content-center"> 
+        <div class="col-md-5">
+                {{form_start(formCps)}}
+                {{form_widget(formCps.numeroCarte, {'attr': {'placeholder' : "Votre n° de carte CPS/CPF"} }) }}
+        </div>
+        <div class="col-md-auto">
+                    <button type="submit" class="btn btn-primary">Verifier numéro CPS</button>
+                </div>
+                {{form_end(formCps)}}
+                {{form_start(form)}}
+                    <label for="email">Email:</label>
+        
+                    {{form_widget(form.email, {'attr': { 'type':'email'} }) }}
+                    <label for="password">Mot de passe : </label>
+                    {{form_widget(form.password, {'attr': {'type':'password'} }) }}
+                    <label for="">Nom</label>
+                    {{form_widget(form.name)}}
+                    <label for="">Prénom</label>
+                    {{form_widget(form.firstname)}}
+                    <label for="">Adresse</label>
+                    {{form_widget(form.adress)}}
+                    <label for="">Code Postal</label>
+                    {{form_widget(form.postaCode)}}
+                    <label for="">Ville</label>
+                    {{form_widget(form.city)}}
+                    <label for="">Numéro de téléphone</label>
+                    {{form_widget(form.phoneNumber)}}
+                    <label for="">Numéro RPPS</label>
+                    {{form_widget(form.RPPS)}}
+                    <select name="role" id="role" class="form-select">
+                        <option value ="ROLE_SURGEON">Chirugien</option>
+                        <option value ="ROLE_NURSE">Aide opératoire</option>  
+                    </select>
 
-<h1>Formulaire d'inscription</h1>
-{{form_start(formCps)}}
-{{form_widget(formCps.numeroCarte)}}
-<button type="submit">Verifier numéro CPS</button>
-{{form_end(formCps)}}
-{{form_start(form)}}
-    <p><label for="email">Email:</label></p>
-    {{form_widget(form.email, { 'id': 'email' })}}
-    <label for="password">Mot de passe : </label>
-    {{form_widget(form.password, { 'id': 'password' })}}
-    <p><label for="">Nom</label></p>
-    {{form_widget(form.name)}}
-    <p><label for="">Prénom</label></p>
-    {{form_widget(form.firstname)}}
-    <p><label for="">Adresse</label></p>
-    {{form_widget(form.adress)}}
-    <p><label for="">Code Postal</label></p>
-    {{form_widget(form.postaCode)}}
-    <p><label for="">Ville</label></p>
-    {{form_widget(form.city)}}
-    <p><label for="">Numéro de téléphone</label></p>
-    {{form_widget(form.phoneNumber)}}
-    <p><label for="">Numéro RPPS</label></p>
-    {{form_widget(form.RPPS)}}
-    <select name="role" id="role">
-        <option value ="ROLE_SURGEON">Chirugien</option>
-        <option value ="ROLE_NURSE">Aide opératoire</option>  
-    </select>
-
-    <button type="submit">S'inscrire</button>
+                    <button type="submit" class="btn btn-secondary">S'inscrire</button>
 {{form_end(form)}}
 
 {% endblock %}
