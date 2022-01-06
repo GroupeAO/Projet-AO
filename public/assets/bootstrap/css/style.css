@@ -1,6 +1,17 @@
+.container{
+    min-height: 70vh;
+}
+
+.pageTitle{
+    color: #4fc19e;
+    text-align: center;
+    font-size:xx-large;
+    margin-bottom: 20px;
+}
 
 .navbar{
     z-index: 11;
+    margin-bottom: 20px;
 }
 .homeBanner{
     position: relative;
@@ -20,8 +31,20 @@
     transform: translate(-50%);
 }
 
-
+.submitButton{
+    text-align: center;
+}
+.card-header{
+    font-weight: bold;
+    text-align: center;
+}
 
 .formSubmit{
     text-align: center;
+}
+
+footer{
+    background-color: #FFF;
+    /* position: sticky; */
+    bottom: 0px;
 }

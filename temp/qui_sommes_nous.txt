@@ -8,13 +8,13 @@ A vous de vous entendre comme les hommes et femmes civilisé(e)s que vous êtes 
 FONCTIONNEMENT :
 
     Vous êtes chirurgien? 
-    - créez votre compte
-    - utilisez le formulaire de recherche pour rechercher des ides opératoires près de chez vous.
+    - créez votre compte,
+    - utilisez le formulaire de recherche pour rechercher les aides opératoires disponibles près de chez vous.
 
     Vous êtes IBODE / IDE?
-    - créez votre compte
-    - indiquez vos disponibilités et autres infos
-    - votre profil est public, un chirurgien vous contactera directement dès que vous apparaîtrez dans une recherche.
+    - créez votre compte,
+    - indiquez vos disponibilités et coordonnées,
+    - votre profil est désormais consultable par les chirurgiens. Ils peuvent vous contacter 
 
 PARTAGE DES DONNEES :
 

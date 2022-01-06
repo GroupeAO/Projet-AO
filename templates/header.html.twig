@@ -8,7 +8,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">Accueil</a>
+                        <a class="nav-link active" href="{{path('home')}}">Accueil</a>
                         <span class="visually-hidden">(current)</span>
                     </li>
                     <li class="nav-item">
@@ -18,22 +18,21 @@
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Qui sommes-nous?</a>
-                            <a class="dropdown-item" href="#">Infos Pratiques</a>
-                            <a class="dropdown-item" href="#">Crédits</a>
+                            <a class="dropdown-item" href="{{path('about_us')}}">Qui sommes-nous?</a>
+                            <a class="dropdown-item" href="{{path('informations')}}">Infos Pratiques</a>
+                            <a class="dropdown-item" href="{{path('credits')}}">Crédits</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Contactez-nous</a>
+                            <a class="dropdown-item" href="{{path('contact_us')}}">Contactez-nous</a>
                         </div>
                     </li>
                 </ul>
-                
                 <div class="d-flex"></div>
-                
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    
                     <a href="{{ path('account_surgeon') }}">{<button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
-                    {% endif %}
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
+                    {% else %}
+                    <a href="{{ path('login') }}">{<button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
+                    {% endif %}
                 </div>
 
             </div>
