@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\Routing\Annotation\Route;
 
+
 class AccountController extends AbstractController
 {
     #[Route('/account', name: 'account')]
@@ -35,4 +36,12 @@ class AccountController extends AbstractController
         return $this->render('account/account_nurse.html.twig', ['controller_name' => 'AccountController',
     ]);
     }
+
+    #[Route('/account/surgeon', name: "account_surgeon")]
+    public function renderAccountSurgeon(): Response
+    {
+        return $this->render('account/account_surgeon.html.twig', ['controller_name' => 'AccountController',
+    ]);
+    }
+
 }

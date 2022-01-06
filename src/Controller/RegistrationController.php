@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\CpsCardOwner;
 use App\Entity\User;
+use App\Form\CpsType;
 use App\Form\UserType;
 use App\Repository\CpsCardOwnerRepository;
 use App\Repository\UserRepository;
@@ -23,26 +24,36 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         UserRepository $userRepository,
-        CpsCardOwner $cpsCardOwner,
-        CpsCardOwnerRepository $cpsCardOwnerRepository,
-    ): Response
+        CpsCardOwnerRepository $cpsCardOwnerRepository
+    ): Response    
     {
-        // User from creation
-
+ // User from creation
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+
+        $cardNumber = new CpsCardOwner;
+        $formCps= $this->createForm(CpsType::class, $cardNumber);
+        $formCps->handleRequest($request);
+
         //check submit  and valid from
-        if($form->isSubmitted() && $form->isValid()){
-
-            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository,$cpsCardOwner,$cpsCardOwnerRepository);
-            return $this->redirectToRoute('home');
-
+        if($formCps->isSubmitted() && $formCps->isValid()){
+            if($this->isCpsCardNumberExist($cardNumber->getNumeroCarte(), $cpsCardOwnerRepository)===true){
+                
+                        echo 'card number valid';
+                        
+                    }else{
+                        echo 'card number invalid';
+                        
+                    }
         }
-
-
+        if($form->isSubmitted() && $form->isValid()){
+            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
+            return $this->redirectToRoute('home');
+        }
         return $this->render('registration/index.html.twig', [
             'form' => $form->createView(),
+            'formCps' => $formCps->createView(),
         ]);
     }
 
@@ -51,12 +62,10 @@ public function checkUser(
     UserPasswordHasherInterface $userPasswordHasherInterface,
     User $user,
     UserRepository $userRepository,
-    CpsCardOwner $cpsCardOwner,
-    CpsCardOwnerRepository $cpsCardOwnerRepository,
 ): RedirectResponse
 {
     //check if email exist in bdd
-    if ($this->isEmailExist($user->getEmail(), $userRepository)===false && $this->isCpsCardNumberExist($cpsCardOwner->getNumeroCarte(), $cpsCardOwnerRepository))  {
+    if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
@@ -77,8 +86,6 @@ User $user,
 $hashedPassword)
 {
     $user->setPassword($hashedPassword);
-    $userRole=$user->getFkRole();
-    echo $userRole;
 
     if ($_POST['role'] == 'ROLE_SURGEON'){
     $user->setRoles(['ROLE_SURGEON']);
@@ -93,8 +100,8 @@ $hashedPassword)
 
 public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository )
 {
-    $CpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numero_carte' => $numeroCarte]);
-    if (!empty($CpsCardNumberInDB)) {
+    $cpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numeroCarte' => $numeroCarte]);
+    if (!empty($cpsCardNumberInDB)) {
         return true;
     }
     return false;
