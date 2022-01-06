@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">AdopteUnAO.com</a>
+            <a class="navbar-brand">AdopteUnAO.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -32,6 +32,7 @@
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}
                     <a href="{{ path('login') }}">{<button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
+                    <a href="{{ path('registration') }}">{<button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
                     {% endif %}
                 </div>
             </div>
