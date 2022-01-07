@@ -40,10 +40,10 @@ class RegistrationController extends AbstractController
         if($formCps->isSubmitted() && $formCps->isValid()){
             if($this->isCpsCardNumberExist($cardNumber->getNumeroCarte(), $cpsCardOwnerRepository)===true){
                 
-                        echo 'card number valid';
+                        echo 'Carte CPS/CPF validée. Merci!';
                         
                     }else{
-                        echo 'card number invalid';
+                        echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
                         
                     }
         }

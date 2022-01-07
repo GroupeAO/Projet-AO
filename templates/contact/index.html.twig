@@ -1,0 +1,35 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="pageTitle">
+                Contactez-nous
+            </div>
+
+            <div class="bg-white p-5 contact-form">
+                <div class="form-group">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.subject) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.message) }}
+                </div>
+                <div class="form-group formSubmit">
+                    <input type="submit" value="Envoyer" class="btn btn-secondary py-3 px-5">
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
