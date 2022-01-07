@@ -28,12 +28,6 @@ class InformationsController extends AbstractController
         return $this->render('informations/credits.html.twig', [
         ]);
     }
-    #[Route('/contact_us', name: 'contact_us')]
-    public function contactUs(): Response
-    {
-        return $this->render('informations/contactus.html.twig', [
-        ]);
-    }
     #[Route('/donate', name: 'donate')]
     public function donate(): Response
     {
