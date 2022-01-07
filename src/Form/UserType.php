@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 
 class UserType extends AbstractType
 {
@@ -22,10 +23,10 @@ class UserType extends AbstractType
             ->add('name')
             ->add('firstname')
             ->add('adress')
-            ->add('postaCode')
+            ->add('postaCode', NumberType::class)
             ->add('city')
-            ->add('phoneNumber')
-            ->add('RPPS')
+            ->add('phoneNumber', NumberType::class)
+            //->add('RPPS')
             ->add('surgicalSpeciality', EntityType::class, [ 
                 'class'=>SurgicalSpecialty::class,
                 'choice_label'=>'name'

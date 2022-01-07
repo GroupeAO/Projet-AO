@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<div class="container">
+
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="pageTitle">
@@ -10,10 +10,10 @@
             <h5>PRINCIPE DU SITE : </h5>
             <p>Notre but : mettre en relation les chirurgiens (libéraux, exerçant en clinique) avec les aides opératoires (IBODE et IDE).
                 Les chirurgiens ayant besoin de peronnel peuvent, en quelques clics, avoir accès aux coordonnées des aides opératoires disponibles et proches de chez eux.<br>
-                Les IBODE et IDE peuvent, eux, 
+                Les IBODE et IDE peuvent, eux, indiquer leurs coordonnées et leurs disponibilités et ainsi rendre leur profil consultables par les chirurgiens.</p>
                 Notre site ne fait "que" centraliser les coordonnées, disponibilités des usagers.<br> 
-                Il ne gère ni les communications entre usagers, ni le règlement de toute contrepartie financière.<br> 
-                A vous de vous entendre comme les hommes et femmes civilisé(e)s que vous êtes ^^.</p>
+                Il ne gère ni les communications entre usagers, ni le règlement de toute contrepartie financière.</p> 
+            
             
             <h5>PARTAGE DES DONNEES :</h5>
             <p>Nous NE COMMUNIQUERONS JAMAIS VOS DONNEES à des tiers.</p>
@@ -22,32 +22,16 @@
             <h5>ET L'ARGENT DANS TOUT CA?</h5>
             <p>Ce site est entièrerement gratuit et bénévole.</p>
             <p> Il n'est pas et ne sera jamais monétisé au moyen d'annonces publicitaires.</p> 
-                Ce site a été créé comme projet de fin d'études par deux étudiants développeurs web dont le seul but est de valider leur diplôme. 
+                Ce site a été créé comme projet de fin d'études par deux étudiants développeurs web <a href="{{ path('credits') }}">(voir crédits)</a> dont le seul but est de valider leur diplôme. 
                 Si, en plus, ce site peut rendre service à certains, on en sera d'autant plus ravis.
                 D'autant plus que facturer l'utilisation de ce site freinerait grandement son adoption, et ça ça nous plait pas.
                 Néanmoins, si vous tenez à nous remercier et nous encourager, n'hésitez pas à contribuer aux frais d'hébergement en nous faisant un don!!! Toute aide sera grandement appréciée...</p>
-            <div class="submitButton">
+            <div class="formSubmit">
                 <a href="{{ path('donate') }}"><button class="btn btn-primary mb-3">Faire un don</button></a>
             </div>
             <h5>J'AI TOUT LU MAIS JE ME POSE ENCORE DES QUESTIONS / J'AI UNE REMARQUE OU UNE SUGGESTION A FAIRE / J'AI UN BUG A SIGNALER :</h5>
             <p>N'hésitez pas à <a href="{{ path('contact')}}">nous contacter!</a></p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     </div>
-</div>
+
 {% endblock %}

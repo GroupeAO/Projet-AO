@@ -2,33 +2,35 @@
 
 {% block body %}
 
-<div class="container">
+
     <div class="row justify-content-center">
         <div class="col-auto">
             <div class="pageTitle">
                 Crédits
             </div>
-
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="card-header">Développement du site</div>
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFQVKAKi9iT0w/profile-displayphoto-shrink_200_200/0/1636966688040?e=1646870400&v=beta&t=W8WpKhGSh63cSuZ7cs8JLRtMiM0pXIxZAb738au4VFY" class="img-fluid rounded-start" alt="Profile Pic Benoit">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">Benoit Baudrin</h5>
-                            <p class="card-text">Développeur Web en formation chez WebForce3 Marseille</p>
-                            <div class="card-socialLogos">
-                                <a href="https://www.linkedin.com/in/benoit-baudrin-vg">
-                                    <img src="{{ asset('../assets/img/linkedin_logo_small.png') }}" alt="">
-                                </a>
-                            </div>
+        </div>
+    </div>
+    
+        <div class="card mb-3 border-primary" style="max-width: 520px;">
+            <div class="card-header text-white bg-primary">Développement du site</div>
+            <div class="row g-0">
+                <div class="col-4">
+                    <img src="https://media-exp1.licdn.com/dms/image/C4E03AQFQVKAKi9iT0w/profile-displayphoto-shrink_200_200/0/1636966688040?e=1646870400&v=beta&t=W8WpKhGSh63cSuZ7cs8JLRtMiM0pXIxZAb738au4VFY" class="img-fluid rounded-start" alt="Profile Pic Benoit">
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title">Benoit Baudrin</h5>
+                        <p class="card-text">Développeur Web en formation chez WebForce3 Marseille</p>
+                        <div class="card-socialLogos">
+                            <a href="https://www.linkedin.com/in/benoit-baudrin-vg">
+                                <img src="{{ asset('../assets/img/linkedin_logo_small.png') }}" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
             </div>
-
+        </div>
+ 
             <div class="card border-primary mb-3" style="max-width: 30rem;">
                 <div class="card-header">Concept du site</div>
                 <div class="card-body">
@@ -54,5 +56,5 @@
           
         </div>
     </div>
-</div>
+
 {% endblock %}
