@@ -3,7 +3,8 @@
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
-<div class="container">
+{% set cpsAlert = "" %}
+
     <div class="row justify-content-center">
         <div class="col-md-8 pageTitle">
                 Formulaire d'inscription
@@ -11,23 +12,45 @@
     </div>
     <div class="row justify-content-center"> 
         <div class="col-md-5">
-                {{form_start(formCps)}}
-                {{form_widget(formCps.numeroCarte, {'attr': {'placeholder' : "Votre n° de carte CPS/CPF"} }) }}
+            {{form_start(formCps)}}
+            {{form_widget(formCps.numeroCarte, {'attr': {'placeholder' : "Votre n° de carte CPS/CPF"} }) }}
+            {{form_errors(formCps.numeroCarte)}}
         </div>
-        <div class="col-md-auto">
-                    <button type="submit" class="btn btn-primary">Verifier numéro CPS</button>
-                </div>
-                {{form_end(formCps)}}
-                {{form_start(form)}}
+        <div class="col-md-auto formSubmit">
+            <button type="submit" class="btn btn-secondary">Verifier numéro CPS</button>
+        </div>
+    </div>
+    <div class="row my-5">
+        <div class="col">
+            {% for message in app.flashes('cpsSuccess') %}
+            {% set cpsAlert = "cpsSuccess" %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% for message in app.flashes('cpsError') %}
+            {% set cpsAlert = "cpsFail" %}
+            <div class="alert alert-warning">
+            {{ message }}
+            </div>
+            {% endfor %}
+        {{form_end(formCps)}}
+        </div>
+    </div>
+        {% if cpsAlert == "cpsSuccess" %}
+            {{form_start(form)}}
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
                     <label for="email">Email:</label>
-        
-                    {{form_widget(form.email, {'attr': { 'type':'email'} }) }}
+                    {{form_widget(form.email) }}
                     <label for="password">Mot de passe : </label>
-                    {{form_widget(form.password, {'attr': {'type':'password'} }) }}
+                    {{form_widget(form.password) }}
                     <label for="">Nom</label>
                     {{form_widget(form.name)}}
                     <label for="">Prénom</label>
                     {{form_widget(form.firstname)}}
+                    </div>
+                    <div class="col-md-5">
                     <label for="">Adresse</label>
                     {{form_widget(form.adress)}}
                     <label for="">Code Postal</label>
@@ -36,14 +59,22 @@
                     {{form_widget(form.city)}}
                     <label for="">Numéro de téléphone</label>
                     {{form_widget(form.phoneNumber)}}
-                    <label for="">Numéro RPPS</label>
-                    {{form_widget(form.RPPS)}}
                     <select name="role" id="role" class="form-select">
                         <option value ="ROLE_SURGEON">Chirugien</option>
                         <option value ="ROLE_NURSE">Aide opératoire</option>  
                     </select>
+                    {{form_widget(form.surgicalSpeciality)}}
 
-                    <button type="submit" class="btn btn-secondary">S'inscrire</button>
-{{form_end(form)}}
+                    
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-auto">
+                        <button type="submit" class="btn btn-secondary">S'inscrire</button>
+                    </div>
+                </div>
+
+                    {{form_end(form)}}
+                    {% endif %}
 
 {% endblock %}

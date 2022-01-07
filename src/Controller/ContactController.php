@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 use App\Form\ContactType;
+use SebastianBergmann\Timer\Timer;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Mailer\MailerInterface;
@@ -22,12 +23,15 @@ class ContactController extends AbstractController
                 ->from($contactFormData['email'])
                 ->to('aideop.com@gmail.com')
                 ->subject($contactFormData['subject'])
-                ->text( 'Email envoyé via aideop.com/contact<br>
-                         Expéditeur : '.$contactFormData['name'].\PHP_EOL.' @ : '.$contactFormData['email'].'<br> 
+                ->text( 'Email envoyé via aideop.com/contact
+                         Expéditeur : '.$contactFormData['name'].' 
+                         Email de l\'expéditeur : '.$contactFormData['email'].'
                          Message : '. $contactFormData['message'],'text/plain');
             $mailer->send($message);
-            $this->addFlash('success', 'Vore message a été envoyé');
-            return $this->redirectToRoute('home');
+            $this->addFlash('contactSuccess', "Vore message a été envoyé. Merci! Cliquez ici pour revenir vers l'accueil.");
+            return $this->redirectToRoute('contact');
+            // sleep(3);
+            // return $this->redirectToRoute('home');
         }
         return $this->render('contact/index.html.twig', [
             'form' => $form->createView()

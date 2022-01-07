@@ -7,5 +7,5 @@
       <li class="nav-item"><a href="{{path('contact')}}" class="nav-link px-2 text-muted">Contactez-nous</a></li>
       <li class="nav-item"><a href="{{path('credits')}}" class="nav-link px-2 text-muted">Credits</a></li>
     </ul>
-    <p class="text-center text-muted">&copy; 2022 adopteunAO.com</p>
+    <p class="text-center text-muted">&copy; 2022 aideop.com</p>
   </footer>

@@ -20,6 +20,7 @@
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{path('about_us')}}">Qui sommes-nous?</a>
                             <a class="dropdown-item" href="{{path('informations')}}">Infos Pratiques</a>
+                            <a class="dropdown-item" href="{{path('donate')}}">Faire un don</a>
                             <a class="dropdown-item" href="{{path('credits')}}">Crédits</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{path('contact')}}">Contactez-nous</a>
@@ -28,11 +29,11 @@
                 </ul>
                 <div class="d-flex"></div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <a href="{{ path('account_surgeon') }}">{<button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
+                    <a href="{{ path('account_surgeon') }}"><button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}
-                    <a href="{{ path('login') }}">{<button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
-                    <a href="{{ path('registration') }}">{<button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
+                    <a href="{{ path('login') }}"><button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
+                    <a href="{{ path('registration') }}"><button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
                     {% endif %}
                 </div>
 
