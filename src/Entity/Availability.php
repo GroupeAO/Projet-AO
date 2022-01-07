@@ -15,16 +15,16 @@ class Availability
     #[ORM\Column(type: 'integer')]
     private $id;
 
-    #[ORM\Column(type: 'date_immutable')]
+    #[ORM\Column(type: 'datetime_immutable')]
     private $startDate;
 
-    #[ORM\Column(type: 'date_immutable', nullable: true)]
+    #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     private $endDate;
 
     #[ORM\Column(type: 'integer', nullable: true)]
     private $commuteDistance;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'fkavailability')]
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'fkavailability', cascade:['persist'])]
     private $users;
 
     public function __construct()
