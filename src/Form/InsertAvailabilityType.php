@@ -18,10 +18,12 @@ class InsertAvailabilityType extends AbstractType
             ->add('startDate', DateTimeType::class, [
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
+                
+
             ])
             ->add('endDate',DateTimeType::class, [
                 'widget' => 'single_text',
-                'input'  => 'datetime_immutable',
+                'input'  => 'datetime_immutable'
                 ])
             ->add('commuteDistance')
         ;
