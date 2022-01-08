@@ -22,6 +22,12 @@
             <button type="submit">rechercher un utilisateur</button>
         </form>
     {% endif %}
+    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <form action="{{path('search_availability')}}" method="post">
+            <input type="date" name="date" id="date">
+            <button type="submit">rechercher une Aide operatoire disponible</button>
+        </form>
+    {% endif %}
 
     <form class="loginForm" action="{{path('login')}}" method="POST">
         <div class="row justify-content-center mb-5">
