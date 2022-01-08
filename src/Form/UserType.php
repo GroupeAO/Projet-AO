@@ -12,21 +12,26 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email', EmailType::class)
-            ->add('password', PasswordType::class)
-            ->add('name')
-            ->add('firstname')
+            ->add('email', EmailType::class,                    ['label' => 'Email'])
+            ->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
+            ->add('name', TextType::class,                      ['label' => 'Nom'])
+            ->add('firstname', TextType::class,                 ['label' => 'Prénom'])
             ->add('adress')
-            ->add('postaCode', NumberType::class)
+            ->add('postaCode', NumberType::class, [
+                'label' => 'Code Postal',
+            ],
+            ['html5' => true,]
+            )
             ->add('city')
             ->add('phoneNumber', NumberType::class)
-            //->add('RPPS')
             ->add('surgicalSpeciality', EntityType::class, [ 
                 'class'=>SurgicalSpecialty::class,
                 'choice_label'=>'name'

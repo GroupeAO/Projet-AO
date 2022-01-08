@@ -13,7 +13,7 @@
     <div class="row justify-content-center"> 
         <div class="col-md-5">
             {{form_start(formCps)}}
-            {{form_widget(formCps.numeroCarte, {'attr': {'placeholder' : "Votre n° de carte CPS/CPF"} }) }}
+            {{form_widget(formCps.numeroCarte, {'attr': {'placeholder' : "Votre n° de carte CPS/CPF (10 chiffres)"} }) }}
             {{form_errors(formCps.numeroCarte)}}
         </div>
         <div class="col-md-auto formSubmit">
@@ -38,34 +38,28 @@
         </div>
     </div>
         {% if cpsAlert == "cpsSuccess" %}
-            {{form_start(form)}}
+            
                 <div class="row justify-content-center">
                     <div class="col-md-5">
-                    <label for="email">Email:</label>
-                    {{form_widget(form.email) }}
-                    <label for="password">Mot de passe : </label>
-                    {{form_widget(form.password) }}
-                    <label for="">Nom</label>
-                    {{form_widget(form.name)}}
-                    <label for="">Prénom</label>
-                    {{form_widget(form.firstname)}}
+                        
+                        {{form_start(form)}}
+                        {{form_row(form.postaCode)}}
+                        {{form_row(form.email) }}
+                        {{form_row(form.password) }}
+                        {{form_row(form.name)}}
+                        {{form_row(form.firstname)}}
                     </div>
                     <div class="col-md-5">
-                    <label for="">Adresse</label>
-                    {{form_widget(form.adress)}}
-                    <label for="">Code Postal</label>
-                    {{form_widget(form.postaCode)}}
-                    <label for="">Ville</label>
-                    {{form_widget(form.city)}}
-                    <label for="">Numéro de téléphone</label>
-                    {{form_widget(form.phoneNumber)}}
-                    <select name="role" id="role" class="form-select">
-                        <option value ="ROLE_SURGEON">Chirugien</option>
-                        <option value ="ROLE_NURSE">Aide opératoire</option>  
-                    </select>
-                    {{form_widget(form.surgicalSpeciality)}}
-
-                    
+                        {{form_row(form.adress)}}
+                        
+                        {{form_row(form.city)}}
+                        {{form_row(form.phoneNumber)}}
+                        <select name="role" id="role" class="form-select">
+                            <option value ="ROLE_SURGEON">Chirugien</option>
+                            <option value ="ROLE_NURSE">Aide opératoire</option>  
+                        </select>
+                        {{form_row(form.surgicalSpeciality)}}
+                        
                     </div>
                 </div>
                 <div class="row justify-content-center">
@@ -73,8 +67,8 @@
                         <button type="submit" class="btn btn-secondary">S'inscrire</button>
                     </div>
                 </div>
-
                     {{form_end(form)}}
-                    {% endif %}
+            
+        {% endif %}
 
 {% endblock %}

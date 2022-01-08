@@ -48,6 +48,9 @@
 .card-socialLogos{
     text-align: right;
 }
+.card-socialLogos img{
+    max-width: 50px;
+}
 
 .formSubmit{
     text-align: center;
