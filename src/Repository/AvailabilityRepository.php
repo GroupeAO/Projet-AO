@@ -18,6 +18,15 @@ class AvailabilityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Availability::class);
     }
+    public function searchAvailabilityQuery($date) : array
+    {
+        $qb = $this->createQueryBuilder('u')
+        ->where('u.startDate <= :date AND u.endDate >= :date')
+        ->setParameter('date', $date)
+        ->orderBy('u.startDate', 'ASC');
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
 
     // /**
     //  * @return Availability[] Returns an array of Availability objects
