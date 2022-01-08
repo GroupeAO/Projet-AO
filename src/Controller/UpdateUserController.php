@@ -15,16 +15,19 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class UpdateUserController extends AbstractController
 {
-    #[Route('/update_user', name: 'update_user')]
+    #[Route('/update_user/{id}', name: 'update_user')]
     public function index(
         Request $request,
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
-        UserRepository $userRepository,
+        UserRepository $userRepository, int $id
     ): Response    
     {
     // User from creation
         $user = new User;
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $id=$user->getId();
         $form = $this->createForm(UpdateUserType::class, $user);
         $form->handleRequest($request);
 
@@ -33,10 +36,12 @@ class UpdateUserController extends AbstractController
             
         if($form->isSubmitted() && $form->isValid()){
             $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
-            return $this->redirectToRoute('home');
+            echo 'cool';
+           // return $this->redirectToRoute('account');
         }
         return $this->render('update_user/index.html.twig', [
             'form' => $form->createView(),
+            'id'=>$id
         ]);
     }
 
@@ -44,11 +49,8 @@ class UpdateUserController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         User $user,
-        UserRepository $userRepository,
     ): RedirectResponse
     {
-    //check if email exist in bdd
-    if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
@@ -56,11 +58,6 @@ class UpdateUserController extends AbstractController
         );
         $this->addUser($entityManagerInterface, $user, $hashedPassword);
         return $this->redirectToRoute('home');
-    }else{
-        $userEmail=$user->getEmail();
-                echo "L'email $userEmail existe déja en base de données";
-                return $this->redirectToRoute('registration');
-        }
     }
 
     public function addUser( EntityManagerInterface $entityManagerInterface,
@@ -69,26 +66,12 @@ class UpdateUserController extends AbstractController
         {
             $user->setPassword($hashedPassword);
 
-            if ($_POST['role'] == 'ROLE_SURGEON'){
-            $user->setRoles(['ROLE_SURGEON']);
-            }else{
-                $user->setRoles(['ROLE_NURSE']);
-            }
-
-            
-            $entityManagerInterface->persist($user);
+            // if ($_POST['role'] == 'ROLE_SURGEON'){
+            // $user->setRoles(['ROLE_SURGEON']);
+            // }else{
+            //     $user->setRoles(['ROLE_NURSE']);
+            // }
             $entityManagerInterface->flush();
         }
-
-        public function isEmailExist(string $emailUser,
-        UserRepository $userRepository): bool
-        {
-            // search for an existing email in db
-            $emailInDB= $userRepository->findOneBy(['email' => $emailUser]);
-
-            if (!empty($emailInDB)) {
-                return true;
-            }
-            return false;
-    }
+    
 }

@@ -16,7 +16,7 @@ class UpdateUserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email' , EmailType::class)
+            ->add('email', EmailType::class)
             ->add('password', PasswordType::class )
             ->add('name')
             ->add('firstname')
