@@ -20,6 +20,7 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('cpsCardOwner', CpsType::class)
             ->add('email', EmailType::class,                    ['label' => 'Email'])
             ->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
             ->add('name', TextType::class,                      ['label' => 'Nom'])
@@ -31,7 +32,7 @@ class UserType extends AbstractType
             ['html5' => true,]
             )
             ->add('city')
-            ->add('phoneNumber', NumberType::class)
+            ->add('phoneNumber')
             ->add('surgicalSpeciality', EntityType::class, [ 
                 'class'=>SurgicalSpecialty::class,
                 'choice_label'=>'name'

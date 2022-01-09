@@ -87,6 +87,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * )
      */ 
     private $phoneNumber;
+    /**
+     * @Assert\Type(type="App\Entity\CpsCardOwner")
+     * @Assert\Valid
+     */
+    protected $cpsCardOwner;
 
     #[ORM\Column(type: 'integer')]
     private $RPPS;
@@ -266,6 +271,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->RPPS = $RPPS;
 
         return $this;
+    }
+    public function getCpsCardOwner(): ?CpsCardOwner
+    {
+        return $this->cpsCardOwner;
+    }
+
+    public function setCpsCardOwner(?CpsCardOwner $cpsCardOwner)
+    {
+        $this->cpsCardOwner = $cpsCardOwner;
     }
 
     public function getSurgicalSpeciality(): ?SurgicalSpecialty

@@ -32,33 +32,40 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
-        $cardNumber = new CpsCardOwner;
-        $formCps= $this->createForm(CpsType::class, $cardNumber);
-        $formCps->handleRequest($request);
+        // $cardNumber = new CpsCardOwner;
+        // $formCps= $this->createForm(CpsType::class, $cardNumber);
+        // $formCps->handleRequest($request);
 
-        //check submit  and valid from
-        if($formCps->isSubmitted() && $formCps->isValid()){
-            if($this->isCpsCardNumberExist($cardNumber->getNumeroCarte(), $cpsCardOwnerRepository)===true){
+        // //check submit  and valid from
+        // if($formCps->isSubmitted() && $formCps->isValid()){
+            // if($this->isCpsCardNumberExist($cardNumber->getNumeroCarte(), $cpsCardOwnerRepository)===true){
                 
-                        //echo 'Carte CPS/CPF validée. Merci!';
-                        $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
-                       
-                        
-                    }else{
-                        
-                        // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
-                        $this->addFlash('cpsError', 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer.');
-                      
-                    }
-        }
+            //             //echo 'Carte CPS/CPF validée. Merci!';
+            //             $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
+            //         }else{
+            //             // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
+            //             $this->addFlash('cpsError', 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer.');
+            //         }
+        //         }
+        
         if($form->isSubmitted() && $form->isValid()){
-            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
-            return $this->redirectToRoute('home');
+
+            if($this->isCpsCardNumberExist($user->getCpsCardOwner()->getNumeroCarte(), $cpsCardOwnerRepository)===true){
+                
+                //echo 'Carte CPS/CPF validée. Merci!';
+                $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
+                $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
+            }else{
+                // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
+                $this->addFlash('cpsError', 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer.');
+            }
+            // return $this->redirectToRoute('home');
         }
         return $this->render('registration/index.html.twig', [
             'form' => $form->createView(),
-            'formCps' => $formCps->createView(),
+            // 'formCps' => $formCps->createView(),
         ]);
+        
     }
 
 public function checkUser(
@@ -76,7 +83,7 @@ public function checkUser(
             $unsecurePassword
         );
         $this->addUser($entityManagerInterface, $user, $hashedPassword);
-        return $this->redirectToRoute('home');
+        return $this->redirectToRoute('registration');
     }else{
         $userEmail=$user->getEmail();
                 echo "L'email $userEmail existe déja en base de données";

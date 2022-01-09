@@ -5,7 +5,7 @@
 {% block body %}
 {% set cpsAlert = "" %}
 
-    <div class="row justify-content-center">
+    {# <div class="row justify-content-center">
         <div class="col-md-8 pageTitle">
                 Formulaire d'inscription
         </div>
@@ -36,13 +36,14 @@
             {% endfor %}
         {{form_end(formCps)}}
         </div>
-    </div>
-        {% if cpsAlert == "cpsSuccess" %}
+    </div> #}
+        {# {% if cpsAlert == "cpsSuccess" %} #}
             
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         
                         {{form_start(form)}}
+                        {{form_row(form.cpsCardOwner.numeroCarte)}}
                         {{form_row(form.postaCode)}}
                         {{form_row(form.email) }}
                         {{form_row(form.password) }}
@@ -69,6 +70,6 @@
                 </div>
                     {{form_end(form)}}
             
-        {% endif %}
+        {# {% endif %} #}
 
 {% endblock %}
