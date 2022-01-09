@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AdminController!{% endblock %}
+
+{% block body %}
+    <table>
+        <thead>
+            <th>id</th>
+            <th>Spécialité chirugical id</th>
+            <th>email</th>
+            <th>roles</th>
+            <th>mot de passe</th>
+            <th>nom</th>
+            <th>Adresse</th>
+            <th>Code Postal</th>
+            <th>Ville</th>
+            <th>Numéro de téléphone</th>
+            <th>editer</th>
+            <th>supprimer</th>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+                <td>{{user.id}}</td>
+                <td>{{user.surgicalSpeciality.id}}</td>
+                <td>{{user.email}}</td>
+                <td>{{user.roles | join(', ')}}</td>
+                <td>{{user.name}}</td>
+                <td>{{user.firstname}}</td>
+                <td>{{user.adress}}</td>
+                <td>{{user.postaCode}}</td>
+                <td>{{user.city}}</td>
+                <td>{{user.phoneNumber}}</td>
+                <td><a href="{{path('admin_edit_user',  { 'id': user.id })}}">editer</a></td>
+                <td><a href="{{path('admin_delete_user',  { 'id': user.id })}}">supprimer</a></td>
+                
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <th>id</th>
+            <th>date de début</th>
+            <th>date de fin</th>
+            <th>distance maximum a parcourir</th>
+            <th>id de l'utilisateur</th>
+            <th>nom de l'utilisateur</th>
+            <th>prenom de l'utilisateur</th>
+            <th>email de l'utilisateur</th>
+        </thead>
+        <tbody>
+        {% for availability in availabilities %}
+        
+                <tr>
+                    <td>{{availability.id}}</td>
+                    <td>{{availability.startDate | date('d-m-Y')}}</td>
+                    <td>{{availability.endDate | date('d-m-Y')}}</td>
+                    <td>{{availability.commuteDistance}}</td>
+                    <td>{% for availabilityUser in availability.users  %}
+                    {{availabilityUser.id}}, 
+                    {% endfor %}</td>
+                    <td>{% for availabilityUser in availability.users  %}
+                    {{availabilityUser.name}}, 
+                    {% endfor %}</td>
+                    <td>{% for availabilityUser in availability.users  %}
+                    {{availabilityUser.firstname}}, 
+                    {% endfor %}</td>
+                    <td>{% for availabilityUser in availability.users  %}
+                    {{availabilityUser.email}}, 
+                    {% endfor %}</td>
+                    <td><a href="{{path('admin_delete_availability',  { 'id': availability.id })}}">supprimer</a></td>
+                </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
