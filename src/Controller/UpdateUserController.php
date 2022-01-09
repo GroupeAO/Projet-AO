@@ -3,7 +3,8 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UpdateUserType;
+
+use App\Form\UserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -20,7 +21,7 @@ class UpdateUserController extends AbstractController
         Request $request,
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
-        UserRepository $userRepository, int $id
+        UserRepository $userRepository,
     ): Response    
     {
     // User from creation
@@ -28,14 +29,16 @@ class UpdateUserController extends AbstractController
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $id=$user->getId();
-        $form = $this->createForm(UpdateUserType::class, $user);
+        $email=$user->getEmail();
+        
+        $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
 
 
         //check submit  and valid from
             
         if($form->isSubmitted() && $form->isValid()){
-            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
+            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository, $email);
             echo 'cool';
            // return $this->redirectToRoute('account');
         }
@@ -49,29 +52,55 @@ class UpdateUserController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         User $user,
+        UserRepository $userRepository,
+        string $email
     ): RedirectResponse
     {
+        $newEmail=$user->getEmail();
+        
+        if ($this->isEmailExist($newEmail, $userRepository)===false || $newEmail == $email )  {
+
+            var_dump($newEmail);
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
             $unsecurePassword
+            
         );
-        $this->addUser($entityManagerInterface, $user, $hashedPassword);
+        $this->updateUser($entityManagerInterface, $user, $hashedPassword);
         return $this->redirectToRoute('home');
+        }else{
+            var_dump($newEmail);
+            $userEmail=$user->getEmail();
+                    echo "L'email $userEmail existe déja en base de données";
+                    return $this->redirectToRoute('account');
+        }
     }
 
-    public function addUser( EntityManagerInterface $entityManagerInterface,
+    public function updateUser( EntityManagerInterface $entityManagerInterface,
         User $user,
         $hashedPassword)
         {
             $user->setPassword($hashedPassword);
 
-            // if ($_POST['role'] == 'ROLE_SURGEON'){
-            // $user->setRoles(['ROLE_SURGEON']);
-            // }else{
-            //     $user->setRoles(['ROLE_NURSE']);
-            // }
+            if ($_POST['role'] == 'ROLE_SURGEON'){
+            $user->setRoles(['ROLE_SURGEON']);
+            }else{
+                $user->setRoles(['ROLE_NURSE']);
+            }
             $entityManagerInterface->flush();
+        }
+
+    public function isEmailExist(string $emailUser,
+        UserRepository $userRepository): bool
+        {
+            // search for an existing email in db
+            $emailInDB= $userRepository->findOneBy(['email' => $emailUser]);
+    
+            if (!empty($emailInDB)) {
+                return true;
+            }
+            return false;
         }
     
 }

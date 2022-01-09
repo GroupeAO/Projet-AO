@@ -4,6 +4,10 @@
 
 {% block body %}
 {{form_start(form)}}
+ <select name="role" id="role" class="form-select">
+                            <option value ="ROLE_SURGEON">Chirugien</option>
+                            <option value ="ROLE_NURSE">Aide opératoire</option>  
+                        </select>
 <button type="submit">trop cool</button>
 {{form_end(form)}}
 {% endblock %}
