@@ -31,22 +31,6 @@ class RegistrationController extends AbstractController
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-
-        // $cardNumber = new CpsCardOwner;
-        // $formCps= $this->createForm(CpsType::class, $cardNumber);
-        // $formCps->handleRequest($request);
-
-        // //check submit  and valid from
-        // if($formCps->isSubmitted() && $formCps->isValid()){
-            // if($this->isCpsCardNumberExist($cardNumber->getNumeroCarte(), $cpsCardOwnerRepository)===true){
-                
-            //             //echo 'Carte CPS/CPF validée. Merci!';
-            //             $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
-            //         }else{
-            //             // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
-            //             $this->addFlash('cpsError', 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer.');
-            //         }
-        //         }
         
         if($form->isSubmitted() && $form->isValid()){
 
@@ -83,7 +67,7 @@ public function checkUser(
             $unsecurePassword
         );
         $this->addUser($entityManagerInterface, $user, $hashedPassword);
-        return $this->redirectToRoute('registration');
+        return $this->redirectToRoute('home');
     }else{
         $userEmail=$user->getEmail();
                 echo "L'email $userEmail existe déja en base de données";
