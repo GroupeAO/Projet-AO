@@ -19,17 +19,23 @@ class AvailabilityRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Availability::class);
     }
-    public function searchAvailabilityQuery($date) : array
+    public function searchAvailabilityQuery($date,$zipCode,EntityManagerInterface $entityManagerInterface) 
     {
-        $qb = $this->createQueryBuilder('u')
-        ->where('u.startDate <= :date AND u.endDate >= :date')
-        ->setParameter('date', $date)
-        ->orderBy('u.startDate', 'ASC');
-        $query = $qb->getQuery();
-        return $query->execute();
+        $conn=$entityManagerInterface->getConnection();
+        $rawSql = "SELECT * FROM availability 
+        LEFT JOIN user_availability
+        ON availability.id=user_availability.availability_id
+        LEFT JOIN user 
+        ON    user_availability.user_id =user.id
+        WHERE start_date <= :date AND end_date >= :date AND user.posta_code LIKE :zipCode";
+        $query=$conn->prepare($rawSql);
+        $result= $query->executeQuery(['date'=>$date,
+                                        'zipCode'=> $zipCode        
+                                        ]);
+        return $result->fetchAllAssociative();
     }
 
-    public function displayUserAvailabilityQuery($id,  EntityManagerInterface $entityManagerInterface) 
+    public function displayUserAvailabilityQuery($id,  EntityManagerInterface $entityManagerInterface)
     {
         $conn=$entityManagerInterface->getConnection();
         $rawSql = "SELECT * FROM availability 

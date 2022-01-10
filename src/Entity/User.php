@@ -83,9 +83,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Valid
      */
     protected $cpsCardOwner;
-
-    #[ORM\Column(type: 'integer')]
-    private $RPPS;
+    
 
     #[ORM\ManyToOne(targetEntity: SurgicalSpecialty::class, inversedBy: 'users')]
     private $surgicalSpeciality;
@@ -105,6 +103,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'fkIdUser', targetEntity: SurgeryNotification::class, orphanRemoval: true)]
     private $surgeryNotifications;
+
+
+    #[ORM\Column(type: 'integer', nullable: true)]
+    private $CPSNumber;
 
     public function __construct()
     {
@@ -256,17 +258,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getRPPS(): ?int
-    {
-        return $this->RPPS;
-    }
-
-    public function setRPPS(int $RPPS): self
-    {
-        $this->RPPS = $RPPS;
-
-        return $this;
-    }
     public function getCpsCardOwner(): ?CpsCardOwner
     {
         return $this->cpsCardOwner;
@@ -399,6 +390,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
                 $surgeryNotification->setFkIdUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getCPSNumber(): ?int
+    {
+        return $this->CPSNumber;
+    }
+
+    public function setCPSNumber(?int $CPSNumber): self
+    {
+        $this->CPSNumber = $CPSNumber;
 
         return $this;
     }

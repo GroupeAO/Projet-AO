@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SearchController!{% endblock %}
+{% block title %}Hello SurgeryNotificationController!{% endblock %}
 
 {% block body %}
 <style>
@@ -9,10 +9,8 @@
 </style>
 
 <div class="example-wrapper">
-    {% for result in results %}
-        {{result.start_date | date('d-m-Y')}} <br>
-        {{result.end_date| date('d-m-Y')}} <br>
-        {{result.posta_code}} <br>
-    {% endfor %}
+    {{form_start(form)}}
+    <button type="submit">Ajouter une notification</button>
+    {{form_end(form)}}
 </div>
 {% endblock %}

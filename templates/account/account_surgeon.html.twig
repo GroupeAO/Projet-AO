@@ -8,4 +8,6 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 <a href="{{path('update_user',  { 'id': app.user.id })}}">mettre a jour mes infos</a>
+<a href="{{path('surgery_notification')}}">Ajouter une annonce de chirurgie</a>
+<a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Afficher mes disponibilités</a>
 {% endblock %}
