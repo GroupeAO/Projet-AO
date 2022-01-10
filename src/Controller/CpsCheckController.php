@@ -41,6 +41,7 @@ class CpsCheckController extends AbstractController
                 $prenomDexercice = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $cpsOwner->getNumeroCarte()]);
                 $prenomDexercice = $prenomDexercice->getPrenomDexercice();
 
+
                 $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
                 
                 //return $this->render('registration/index.html.twig', [
@@ -48,8 +49,10 @@ class CpsCheckController extends AbstractController
                 //     'cpsCardNumber' => $cpsOwner->getNumeroCarte()
                 // ]);
                 
+                $session->set('numeroCarte', $cpsOwner->getNumeroCarte());
                 $session->set('nomDexercice',$cpsOwner->getNomDexercice());
                 $session->set('prenomDexercice', $prenomDexercice);
+                
                //$session->set('codeProfession',$cpsCardOwnerRepository->getCodeProfession());
               
                 return $this->redirectToRoute('registration');

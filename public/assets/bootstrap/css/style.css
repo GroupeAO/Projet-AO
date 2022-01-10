@@ -64,6 +64,5 @@ footer{
 
 .formDisabled{
         pointer-events:none;
-        background:grey;
-        color: red;
+        background-color:#dadada;
 }
