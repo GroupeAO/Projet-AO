@@ -100,6 +100,7 @@ class AccountController extends AbstractController
     public function deleteUserAvailability(
     EntityManagerInterface $entityManagerInterface,
     AvailabilityRepository $availabilityRepository,
+    Request $request,
     int $id
     ): RedirectResponse    
         {
@@ -107,6 +108,7 @@ class AccountController extends AbstractController
             $availabitlity=$availabilityRepository->find($id);
             $entityManagerInterface->remove($availabitlity);
             $entityManagerInterface->flush();
-            return $this->redirectToRoute('account');
+            // return $this->redirectToRoute('display_availability');
+            return $this->redirect('account/display_availability.html.twig',302);
         }
     }
