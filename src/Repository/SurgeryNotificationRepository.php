@@ -19,6 +19,19 @@ class SurgeryNotificationRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, SurgeryNotification::class);
     }
+    public function searchSurgeryQuery($zipCode,EntityManagerInterface $entityManagerInterface) 
+    {
+        $conn=$entityManagerInterface->getConnection();
+        $rawSql = "SELECT * FROM surgery_notification 
+        LEFT JOIN user
+        ON fk_id_user_id=user.id
+        WHERE user.posta_code LIKE :zipCode
+        ORDER BY start_date ASC";
+        $query=$conn->prepare($rawSql);
+        $result= $query->executeQuery(['zipCode'=> $zipCode        
+                                        ]);
+        return $result->fetchAllAssociative();
+    }
 
     public function displayUserSurgeryNotificationQuery($id,  EntityManagerInterface $entityManagerInterface)
     {
