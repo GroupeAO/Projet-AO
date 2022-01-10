@@ -25,32 +25,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $roles = [];
 
     #[ORM\Column(type: 'string')]
+    /**
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 40,
+     *      minMessage = "Le mot de passe doit comporter au moins {{ limit }} chiffres et/ou lettres",
+     *      maxMessage = "Le mot de passe doit comporter {{ limit }} chiffres et/ou lettres maximum"
+     * )
+     */
     private $password;
 
     #[ORM\Column(type: 'string', length: 45)]
-    /**
-     * @Assert\NotBlank
-     * 
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 45,
-     *      minMessage = "Your name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your name cannot be longer than {{ limit }} characters"
-     * )
-     */
     private $name;
 
     #[ORM\Column(type: 'string', length: 45)]
-    /**
-     * @Assert\NotBlank
-     * 
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 45,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
-     * )
-     */
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 500)]
@@ -67,10 +56,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\NotBlank
      * 
      * @Assert\Length(
-     *      min = 4,
-     *      max = 6,
-     *      minMessage = "Your zip code must be at least {{ limit }} characters long",
-     *      maxMessage = "Your zip code cannot be longer than {{ limit }} characters"
+     *      min = 5,
+     *      max = 5,
+     *      exactMessage = "Le Code Postal doit comporter {{ limit }} chiffres",
      * )
      */
     private $postaCode;
@@ -83,10 +71,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\NotBlank
      * 
      * @Assert\Length(
-     *      min = 9,
-     *      max = 11,
-     *      minMessage = "Your phone number must be at least {{ limit }} characters long",
-     *      maxMessage = "Your phone number code cannot be longer than {{ limit }} characters"
+     *      min = 10,
+     *      max = 14,
+     *      minMessage = "Le numéro de téléphone doit comporter au moins {{ limit }} chiffres",
+     *      maxMessage = "Le numéro de téléphone doit comporter au plus {{ limit }} chiffres"
      * )
      */
     private $phoneNumber;

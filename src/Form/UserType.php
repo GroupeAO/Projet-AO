@@ -30,11 +30,11 @@ class UserType extends AbstractType
             //->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
             ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
-                'invalid_message' => 'The password fields must match.',
+                'invalid_message' => 'Les mots de passe ne sont pas identiques.',
                 'options' => ['attr' => ['class' => 'password-field']],
                 'required' => true,
-                'first_options'  => ['label' => 'Password'],
-                'second_options' => ['label' => 'Repeat Password'],
+                'first_options'  => ['label' => 'Mot de passe'],
+                'second_options' => ['label' => 'Répetez votre mot de passe'],
             ])
             ->add('adress', TextType::class,                    ['label' => 'Adresse'])
             ->add('postaCode', IntegerType::class,              ['label' => 'Code Postal'])

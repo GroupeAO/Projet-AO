@@ -5,6 +5,9 @@
 
             
                 <div class="row justify-content-center">
+                    <div class="pageTitle">
+                        Enregistrement (2/2)
+                    </div>
                     <div class="col-md-5">
                         {% for message in app.flashes('cpsSuccess') %}
                             <div class="alert alert-success">
@@ -14,26 +17,54 @@
                     </div>
                 </div>
                 <div class="row justify-content-center">
+                    <div class="col-md-auto text-center">
+                        <h5 class="my-3">Données fournis par votre CPS/CPF (non modifiables) :</h5>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
                     <div class="col-md-5">
                         {{form_start(form)}}
                         
-                        <label for="numeroCarte">CPS/CPF Numéro :</label>
-                        <input type="text" name="numeroCarte" id="numeroCarte" class="form-select formDisabled" value="{{numeroCarte}}"> 
-                        <select name="role" id="role" class="form-select formDisabled">
+                        <label for="numeroCarte" class="form-label">Numéro CPS/CPF</label>
+                        <input type="text" name="numeroCarte" id="numeroCarte" class="form-control formDisabled mb-3" value="{{numeroCarte}}"> 
+                        <label for="role" class="form-label">Profession</label>
+                        <select name="role" id="role" class="form-select formDisabled mb-3">
                             <option value ="ROLE_SURGEON" >Chirugien</option>
                             <option value ="ROLE_NURSE" >Aide opératoire</option>  
                         </select>
-                        {{form_row(form.name, {'attr': {'value' : nomDexercice, 'class' : 'formDisabled'} }) }}
-                        {{form_row(form.firstname, {'attr': {'value' : prenomDexercice, 'class' : 'formDisabled'}} ) }}
-                        {{form_row(form.email) }}
-                        {{form_row(form.password) }}
-
                     </div>
                     <div class="col-md-5">
+                        {{form_row(form.name, {'attr': {'value' : nomDexercice, 'class' : 'formDisabled'} }) }}
+                        {{form_row(form.firstname, {'attr': {'value' : prenomDexercice, 'class' : 'formDisabled'}} ) }}
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-auto text-center">
+                        <h5 class="my-3">Identifiants :</h5>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        {{form_row(form.email) }}
+                    </div>
+                    <div class="col-md-5">
+                        {{form_row(form.password) }}
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5 text-center">
+                        <h5 class="my-3">Coordonnées :</h5>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-5">
+                        {{form_row(form.phoneNumber)}}
                         {{form_row(form.adress)}}
+                    </div>
+                    <div class="col-md-5">
                         {{form_row(form.postaCode)}}
                         {{form_row(form.city)}}
-                        {{form_row(form.phoneNumber)}}
+                    </div>   
                         
                         
                         {# {{form_row(form.surgicalSpeciality)}} #}
