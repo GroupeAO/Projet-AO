@@ -10,8 +10,9 @@
 
 <div class="example-wrapper">
     {% for result in results %}
-        {{result.startDate | date('d-m-Y')}} <br>
-        {{result.endDate| date('d-m-Y')}} <br>
+        {{result.start_date | date('d-m-Y')}} <br>
+        {{result.end_date| date('d-m-Y')}} <br>
+        {{result.posta_code}} <br>
     {% endfor %}
 </div>
 {% endblock %}
