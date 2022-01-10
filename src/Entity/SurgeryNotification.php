@@ -36,6 +36,16 @@ class SurgeryNotification
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'surgery')]
     private $users;
 
+    #[ORM\Column(type: 'string', length: 255)]
+    private $clinicName;
+
+    #[ORM\Column(type: 'integer')]
+    private $clinicZipCode;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'surgeryNotifications')]
+    #[ORM\JoinColumn(nullable: false)]
+    private $fkIdUser;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
@@ -141,6 +151,42 @@ class SurgeryNotification
         if ($this->users->removeElement($user)) {
             $user->removeSurgery($this);
         }
+
+        return $this;
+    }
+
+    public function getClinicName(): ?string
+    {
+        return $this->clinicName;
+    }
+
+    public function setClinicName(string $clinicName): self
+    {
+        $this->clinicName = $clinicName;
+
+        return $this;
+    }
+
+    public function getClinicZipCode(): ?int
+    {
+        return $this->clinicZipCode;
+    }
+
+    public function setClinicZipCode(int $clinicZipCode): self
+    {
+        $this->clinicZipCode = $clinicZipCode;
+
+        return $this;
+    }
+
+    public function getFkIdUser(): ?User
+    {
+        return $this->fkIdUser;
+    }
+
+    public function setFkIdUser(?User $fkIdUser): self
+    {
+        $this->fkIdUser = $fkIdUser;
 
         return $this;
     }

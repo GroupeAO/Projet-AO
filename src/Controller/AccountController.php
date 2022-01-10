@@ -99,4 +99,19 @@ class AccountController extends AbstractController
         ]);
     }
 
+    #[Route('/account/delete_user_availability/{id}', name: 'user_delete_availability')]
+    public function deleteUserAvailability(
+    EntityManagerInterface $entityManagerInterface,
+    AvailabilityRepository $availabilityRepository,
+    int $id
+    ): RedirectResponse    
+        {
+
+            $availabitlity=$availabilityRepository->find($id);
+            $entityManagerInterface->remove($availabitlity);
+            $entityManagerInterface->flush();
+            return $this->redirectToRoute('display_availability');
+        }
+
+
 }

@@ -112,11 +112,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\ManyToMany(targetEntity: Availability::class, inversedBy: 'users')]
     private $fkavailability;
 
+    #[ORM\OneToMany(mappedBy: 'fkIdUser', targetEntity: SurgeryNotification::class, orphanRemoval: true)]
+    private $surgeryNotifications;
+
     public function __construct()
     {
         $this->surgery = new ArrayCollection();
         $this->clinic = new ArrayCollection();
         $this->fkavailability = new ArrayCollection();
+        $this->surgeryNotifications = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -374,6 +378,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeFkavailability(Availability $fkavailability): self
     {
         $this->fkavailability->removeElement($fkavailability);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SurgeryNotification[]
+     */
+    public function getSurgeryNotifications(): Collection
+    {
+        return $this->surgeryNotifications;
+    }
+
+    public function addSurgeryNotification(SurgeryNotification $surgeryNotification): self
+    {
+        if (!$this->surgeryNotifications->contains($surgeryNotification)) {
+            $this->surgeryNotifications[] = $surgeryNotification;
+            $surgeryNotification->setFkIdUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSurgeryNotification(SurgeryNotification $surgeryNotification): self
+    {
+        if ($this->surgeryNotifications->removeElement($surgeryNotification)) {
+            // set the owning side to null (unless already changed)
+            if ($surgeryNotification->getFkIdUser() === $this) {
+                $surgeryNotification->setFkIdUser(null);
+            }
+        }
 
         return $this;
     }
