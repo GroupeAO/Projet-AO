@@ -22,7 +22,7 @@ class UserType extends AbstractType
     {
         $builder
 
-            ->add('numeroCarte', CpsType::class,                ['label' => 'Numéro CPS'])
+       //     ->add('numeroCarte', CpsType::class,                ['label' => 'Numéro CPS'])
             ->add('name', TextType::class,                      ['label' => 'Nom'])
             ->add('firstname', TextType::class,                 ['label' => 'Prénom'])
             ->add('email', EmailType::class,                    ['label' => 'Email'])
