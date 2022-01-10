@@ -43,5 +43,5 @@ class AvailabilityController extends AbstractController
 
         ]);
     }
-    
+
 }

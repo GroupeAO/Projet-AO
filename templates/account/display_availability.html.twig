@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Vos disponibilités{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+{# bloqué les dates passé peu-être fait en js/jQuery #}
+
+    {% for availability in availabilities %}
+        <p>{{availability.start_date | date('d-m-Y') }}</p>
+        <p>{{availability.end_date | date('d-m-Y') }}</p>
+        <p>{{availability.commute_distance}}</p>
+        <a href="{{path('user_edit_availability',  { 'id': availability.id })}}">modifier</a>
+        <a href="">supprimer</a>
+    {% endfor %}
+{% endblock %}

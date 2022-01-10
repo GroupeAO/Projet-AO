@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Availability;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -27,6 +28,19 @@ class AvailabilityRepository extends ServiceEntityRepository
         $query = $qb->getQuery();
         return $query->execute();
     }
+
+    public function displayUserAvailabilityQuery($id,  EntityManagerInterface $entityManagerInterface) 
+    {
+        $conn=$entityManagerInterface->getConnection();
+        $rawSql = "SELECT * FROM availability 
+        LEFT JOIN user_availability
+        ON availability.id=user_availability.availability_id
+        WHERE user_availability.user_id = :id";
+        $query=$conn->prepare($rawSql);
+        $result= $query->executeQuery(['id'=>$id]);
+        return $result->fetchAllAssociative();
+    }
+
 
     // /**
     //  * @return Availability[] Returns an array of Availability objects

@@ -2,9 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\Availability;
 use App\Entity\User;
+use App\Form\InsertAvailabilityType;
+use App\Repository\AvailabilityRepository;
+use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\Routing\Annotation\Route;
@@ -42,6 +48,55 @@ class AccountController extends AbstractController
     {
         return $this->render('account/account_surgeon.html.twig', ['controller_name' => 'AccountController',
     ]);
+    }
+    #[Route('/account/display_availability/{id}', name: 'display_availability')]
+    public function displayAvailability(
+    EntityManagerInterface $entityManagerInterface,
+    AvailabilityRepository $availabilityRepository,
+    int $id,
+    UserRepository $userRepository
+    ): Response
+    {
+        $availability= new Availability;
+
+        /** @var \App\Entity\User $user */
+        
+        $user = $this->getUser();
+        $id=$user->getId();
+        $users= $userRepository->find($id);
+        $availabilities=$availabilityRepository->displayUserAvailabilityQuery($id, $entityManagerInterface);
+    
+        return $this->render('account/display_availability.html.twig', [
+            'users'=> $users,
+            'availabilities' => $availabilities
+        ]);
+    }
+
+    #[Route('/account/user_edit_availability/{id}', name: 'user_edit_availability')]
+    public function editAvailability(Availability $availability,
+    Request $request,
+    EntityManagerInterface $entityManagerInterface,
+    AvailabilityRepository $availabilityRepository,
+    int $id,
+    ): Response
+    {
+         /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+        $availability= new Availability;
+
+        $availability=$availabilityRepository->find($id);
+
+        $form = $this->createForm(InsertAvailabilityType::class, $availability);
+        $form->handleRequest($request);
+        
+        if($form->isSubmitted() && $form->isValid()){
+            $entityManagerInterface->flush();
+        }
+    
+        return $this->render('account/edit_availability.html.twig', [
+            'form' => $form->createView()
+
+        ]);
     }
 
 }
