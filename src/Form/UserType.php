@@ -11,6 +11,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
@@ -26,7 +27,15 @@ class UserType extends AbstractType
             ->add('name', TextType::class,                      ['label' => 'Nom'])
             ->add('firstname', TextType::class,                 ['label' => 'Prénom'])
             ->add('email', EmailType::class,                    ['label' => 'Email'])
-            ->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
+            //->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'The password fields must match.',
+                'options' => ['attr' => ['class' => 'password-field']],
+                'required' => true,
+                'first_options'  => ['label' => 'Password'],
+                'second_options' => ['label' => 'Repeat Password'],
+            ])
             ->add('adress', TextType::class,                    ['label' => 'Adresse'])
             ->add('postaCode', IntegerType::class,              ['label' => 'Code Postal'])
             ->add('city', TextType::class,                      ['label' => 'Ville'])

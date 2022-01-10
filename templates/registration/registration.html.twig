@@ -16,6 +16,9 @@
                 <div class="row justify-content-center">
                     <div class="col-md-5">
                         {{form_start(form)}}
+                        
+                        <label for="numeroCarte">CPS/CPF Numéro :</label>
+                        <input type="text" name="numeroCarte" id="numeroCarte" class="form-select formDisabled" value="{{numeroCarte}}"> 
                         <select name="role" id="role" class="form-select formDisabled">
                             <option value ="ROLE_SURGEON" >Chirugien</option>
                             <option value ="ROLE_NURSE" >Aide opératoire</option>  
