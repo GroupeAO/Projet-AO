@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CpsCardOwnerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CpsCardOwnerRepository::class)]
 class CpsCardOwner
@@ -29,6 +30,16 @@ class CpsCardOwner
     private $codeCategorieProfessionnelle;
 
     #[ORM\Column(type: 'string', length: 10)]
+        /**
+     * @Assert\NotBlank
+     * 
+     * @Assert\Length(
+     *      min = 10,
+     *      max = 10,
+     *      minMessage = "Votre numéro de carte doit comporter {{ limit }} chiffres",
+     *      maxMessage = "Votre numéro de carte doit comporter {{ limit }} chiffres"
+     * )
+     */
     private $numeroCarte;
 
     #[ORM\Column(type: 'date')]

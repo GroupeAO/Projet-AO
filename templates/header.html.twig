@@ -12,7 +12,7 @@
                         <span class="visually-hidden">(current)</span>
                     </li> #}
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{ path('registration') }}">Enregistrement</a>
+                        <a class="nav-link active" href="{{ path('cps_check') }}">Enregistrement</a>
                         <span class="visually-hidden">(current)</span>
                     </li>
                     <li class="nav-item dropdown">
@@ -33,7 +33,7 @@
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}
                     <a href="{{ path('login') }}"><button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
-                    <a href="{{ path('registration') }}"><button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
+                    <a href="{{ path('cps_check') }}"><button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
                     {% endif %}
                 </div>
 

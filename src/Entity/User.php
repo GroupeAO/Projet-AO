@@ -19,11 +19,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
-    /**
-    *@Assert\Email(
-    *message = "The email '{{ value }}' is not a valid email."
-    * )
-    */
     private $email;
 
     #[ORM\Column(type: 'json')]
@@ -39,8 +34,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Length(
      *      min = 2,
      *      max = 45,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      minMessage = "Your name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your name cannot be longer than {{ limit }} characters"
      * )
      */
     private $name;
@@ -48,10 +43,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 45)]
     /**
      * @Assert\NotBlank
-     *  @Assert\Length(
-     *      min = 2)
-     */ 
-    
+     * 
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 45,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
+     */
     private $firstname;
 
     #[ORM\Column(type: 'string', length: 500)]
@@ -65,11 +64,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'integer')]
     /**
+     * @Assert\NotBlank
+     * 
      * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     *      min = 4,
+     *      max = 6,
+     *      minMessage = "Your zip code must be at least {{ limit }} characters long",
+     *      maxMessage = "Your zip code cannot be longer than {{ limit }} characters"
      * )
      */
     private $postaCode;
@@ -79,13 +80,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: 'string', length: 20, nullable: true)]
     /**
-     *  @Assert\Length(
-     *  
-     *      min = 10,
-     *      max = 13,
-     *      minMessage = "Your adresse must be at least {{ limit }} characters long"
+     * @Assert\NotBlank
+     * 
+     * @Assert\Length(
+     *      min = 9,
+     *      max = 11,
+     *      minMessage = "Your phone number must be at least {{ limit }} characters long",
+     *      maxMessage = "Your phone number code cannot be longer than {{ limit }} characters"
      * )
-     */ 
+     */
     private $phoneNumber;
     /**
      * @Assert\Type(type="App\Entity\CpsCardOwner")
