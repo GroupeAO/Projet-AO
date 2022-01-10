@@ -54,20 +54,15 @@ class AccountController extends AbstractController
     EntityManagerInterface $entityManagerInterface,
     AvailabilityRepository $availabilityRepository,
     int $id,
-    UserRepository $userRepository
     ): Response
     {
-        $availability= new Availability;
-
         /** @var \App\Entity\User $user */
         
         $user = $this->getUser();
         $id=$user->getId();
-        $users= $userRepository->find($id);
         $availabilities=$availabilityRepository->displayUserAvailabilityQuery($id, $entityManagerInterface);
     
         return $this->render('account/display_availability.html.twig', [
-            'users'=> $users,
             'availabilities' => $availabilities
         ]);
     }
@@ -82,6 +77,8 @@ class AccountController extends AbstractController
     {
          /** @var \App\Entity\User $user */
         $user = $this->getUser();
+        $user->getId();
+        $availability=$availabilityRepository->find($id);
         $availability= new Availability;
 
         $availability=$availabilityRepository->find($id);
@@ -110,8 +107,6 @@ class AccountController extends AbstractController
             $availabitlity=$availabilityRepository->find($id);
             $entityManagerInterface->remove($availabitlity);
             $entityManagerInterface->flush();
-            return $this->redirectToRoute('display_availability');
+            return $this->redirectToRoute('account');
         }
-
-
-}
+    }
