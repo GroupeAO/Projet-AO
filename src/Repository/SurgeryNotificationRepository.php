@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\SurgeryNotification;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -17,6 +18,16 @@ class SurgeryNotificationRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, SurgeryNotification::class);
+    }
+
+    public function displayUserSurgeryNotificationQuery($id,  EntityManagerInterface $entityManagerInterface)
+    {
+        $conn=$entityManagerInterface->getConnection();
+        $rawSql = "SELECT * FROM surgery_notification 
+        WHERE fk_id_user_id = :id";
+        $query=$conn->prepare($rawSql);
+        $result= $query->executeQuery(['id'=>$id]);
+        return $result->fetchAllAssociative();
     }
 
     // /**

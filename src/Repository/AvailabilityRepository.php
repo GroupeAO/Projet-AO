@@ -29,7 +29,7 @@ class AvailabilityRepository extends ServiceEntityRepository
         return $query->execute();
     }
 
-    public function displayUserAvailabilityQuery($id,  EntityManagerInterface $entityManagerInterface) 
+    public function displayUserAvailabilityQuery($id,  EntityManagerInterface $entityManagerInterface)
     {
         $conn=$entityManagerInterface->getConnection();
         $rawSql = "SELECT * FROM availability 

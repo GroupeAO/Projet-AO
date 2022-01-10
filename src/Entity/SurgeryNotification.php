@@ -33,9 +33,6 @@ class SurgeryNotification
     #[ORM\Column(type: 'integer')]
     private $numberAoSpotLeft;
 
-    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'surgery')]
-    private $users;
-
     #[ORM\Column(type: 'string', length: 255)]
     private $clinicName;
 
@@ -124,33 +121,6 @@ class SurgeryNotification
     public function setNumberAoSpotLeft(int $numberAoSpotLeft): self
     {
         $this->numberAoSpotLeft = $numberAoSpotLeft;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|User[]
-     */
-    public function getUsers(): Collection
-    {
-        return $this->users;
-    }
-
-    public function addUser(User $user): self
-    {
-        if (!$this->users->contains($user)) {
-            $this->users[] = $user;
-            $user->addSurgery($this);
-        }
-
-        return $this;
-    }
-
-    public function removeUser(User $user): self
-    {
-        if ($this->users->removeElement($user)) {
-            $user->removeSurgery($this);
-        }
 
         return $this;
     }

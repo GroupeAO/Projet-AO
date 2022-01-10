@@ -17,10 +17,8 @@ class SurgeryNotificationType extends AbstractType
             ->add('speciality')
             ->add('description')
             ->add('numberAoNeeded')
-            ->add('numberAoSpotLeft')
             ->add('clinicName')
             ->add('clinicZipCode')
-            ->add('users')
         ;
     }
 
