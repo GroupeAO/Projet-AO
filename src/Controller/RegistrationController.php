@@ -43,8 +43,6 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-
-           
                 
                 //echo 'Carte CPS/CPF validée. Merci!';
                 
@@ -52,8 +50,6 @@ class RegistrationController extends AbstractController
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
                 return $this->redirectToRoute('account');
                 // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
-               
-                
             }
             
             // return $this->redirectToRoute('home');
