@@ -13,6 +13,7 @@ use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 
 
 class UserType extends AbstractType
@@ -20,23 +21,20 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('cpsCardOwner', CpsType::class)
-            ->add('email', EmailType::class,                    ['label' => 'Email'])
-            ->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
+
+       //     ->add('numeroCarte', CpsType::class,                ['label' => 'Numéro CPS'])
             ->add('name', TextType::class,                      ['label' => 'Nom'])
             ->add('firstname', TextType::class,                 ['label' => 'Prénom'])
-            ->add('adress')
-            ->add('postaCode', NumberType::class, [
-                'label' => 'Code Postal',
-            ],
-            ['html5' => true,]
-            )
-            ->add('city')
-            ->add('phoneNumber')
-            ->add('surgicalSpeciality', EntityType::class, [ 
-                'class'=>SurgicalSpecialty::class,
-                'choice_label'=>'name'
-                ]);
+            ->add('email', EmailType::class,                    ['label' => 'Email'])
+            ->add('password', PasswordType::class,              ['label' => 'Mot de passe'])
+            ->add('adress', TextType::class,                    ['label' => 'Adresse'])
+            ->add('postaCode', IntegerType::class,              ['label' => 'Code Postal'])
+            ->add('city', TextType::class,                      ['label' => 'Ville'])
+            ->add('phoneNumber', IntegerType::class,            ['label' => 'Numéro de téléphone'])
+            //->add('surgicalSpeciality', EntityType::class, [ 
+            //    'class'=>SurgicalSpecialty::class,
+            //    'choice_label'=>'name'])
+                ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

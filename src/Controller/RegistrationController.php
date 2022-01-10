@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\CpsCardOwner;
+
 use App\Entity\User;
 use App\Form\CpsType;
 use App\Form\UserType;
@@ -12,12 +12,20 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class RegistrationController extends AbstractController
 {
+    private $requestStack;
+
+    public function __construct(RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+    }
+
     #[Route('/registration', name: 'registration')]
     public function index(
         Request $request,
@@ -28,25 +36,35 @@ class RegistrationController extends AbstractController
     ): Response    
     {
  // User from creation
+        $session = $this->requestStack->getSession();
+        
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
-        
+
         if($form->isSubmitted() && $form->isValid()){
 
-            if($this->isCpsCardNumberExist($user->getCpsCardOwner()->getNumeroCarte(), $cpsCardOwnerRepository)===true){
+           
                 
                 //echo 'Carte CPS/CPF validée. Merci!';
-                $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
+                
                 $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
-            }else{
+                $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
+                return $this->redirectToRoute('account');
                 // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
-                $this->addFlash('cpsError', 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer.');
+               
+                
             }
+            
             // return $this->redirectToRoute('home');
-        }
-        return $this->render('registration/index.html.twig', [
+        
+
+        return $this->render('registration/registration.html.twig', [
             'form' => $form->createView(),
+            'numeroCarte' => $session->get('numeroCarte'),
+            'nomDexercice' => $session->get('nomDexercice'),
+            'prenomDexercice' => $session->get('prenomDexercice'),
+            'codeProfession' => $session->get('codeProfession')
             // 'formCps' => $formCps->createView(),
         ]);
         

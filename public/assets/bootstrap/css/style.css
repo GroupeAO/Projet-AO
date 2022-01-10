@@ -61,3 +61,8 @@ footer{
     /* position: sticky; */
     bottom: 0px;
 }
+
+.formDisabled{
+        pointer-events:none;
+        background-color:#dadada;
+}
