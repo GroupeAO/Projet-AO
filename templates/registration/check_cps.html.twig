@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+
+
+{% block body %}
+{% for message in app.flashes('cpsError') %}
+            
+<div class="alert alert-warning">
+ {{ message }}
+</div>
+{% endfor %}
+            {{form_start(form)}}
+            {{form_row(form.numeroCarte, {'attr': {'placeholder' : "Votre n° de carte CPS/CPF (10 chiffres)"} }) }}
+            {{form_row(form.nomDexercice)}}
+            <button type="submit" class="btn btn-primary">Check</button>
+            {{form_end(form)}}
+
+            {% endblock %}
