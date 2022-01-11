@@ -8,7 +8,7 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 {# bloqué les dates passé peu-être fait en js/jQuery #}
-{{form_start(form)}}
+{{form_start(form, {attr: {novalidate: 'novalidate'}})}}
 <button type="submit">données mes disponibilités</button>
 {{form_end(form)}}
 
