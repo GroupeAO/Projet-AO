@@ -21,7 +21,7 @@ class UpdateUserType extends AbstractType
             ->add('name')
             ->add('firstname')
             ->add('adress')
-            ->add('postaCode')
+            ->add('zipCode')
             ->add('city')
             ->add('phoneNumber')
             ->add('surgicalSpeciality', EntityType::class, [ 

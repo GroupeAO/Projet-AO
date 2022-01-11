@@ -19,6 +19,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private $id;
 
     #[ORM\Column(type: 'string', length: 180, unique: true)]
+    /**
+     * @Assert\NotBlank
+     * @Assert\Email(
+     *     message = "L'adresse '{{ value }}' n'est pas une adresse email valide"
+     * )
+     */
     private $email;
 
     #[ORM\Column(type: 'json')]
@@ -30,8 +36,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @Assert\Length(
      *      min = 8,
      *      max = 40,
-     *      minMessage = "Le mot de passe doit comporter au moins {{ limit }} chiffres et/ou lettres",
-     *      maxMessage = "Le mot de passe doit comporter {{ limit }} chiffres et/ou lettres maximum"
+     *      minMessage = "Le mot de passe doit comporter au moins {{ limit }} caractères",
+     *      maxMessage = "Le mot de passe doit comporter {{ limit }} caractères maximum"
      * )
      */
     private $password;
@@ -45,31 +51,40 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'string', length: 500)]
     /**
      * @Assert\NotBlank
-     *  @Assert\Length(
-     *  minMessage = "Your adresse must be at least {{ limit }} characters long",
-     *      min = 5)
+     * @Assert\Length(
+     *      min = 5,
+     *      minMessage = "Adresse trop courte"
+     * )    
      */ 
     private $adress;
 
-    #[ORM\Column(type: 'integer')]
+    #[ORM\Column(type: 'string')]
     /**
      * @Assert\NotBlank
-     * 
      * @Assert\Length(
-     *      min = 5,
+     *      min = 4,
      *      max = 5,
-     *      exactMessage = "Le Code Postal doit comporter {{ limit }} chiffres",
+     *      minMessage = "Le Code Postal doit comporter 5 chiffres",
+     *      maxMessage = "Le Code Postal doit comporter {{ limit }} chiffres"
      * )
      */
-    private $postaCode;
+    private $zipCode;
 
     #[ORM\Column(type: 'string', length: 255)]
-    private $city;
-
-    #[ORM\Column(type: 'string', length: 20, nullable: true)]
     /**
      * @Assert\NotBlank
-     * 
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 100,
+     *      minMessage = "Le nom de la ville doit comporter au moins {{ limit }} lettres",
+     *      maxMessage = "Le nom de la ville doit comporter {{ limit }} lettres max"
+     * )
+     */
+    private $city;
+
+    #[ORM\Column(type: 'string', length: 10)]
+    /**
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = 10,
      *      max = 14,
@@ -78,6 +93,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * )
      */
     private $phoneNumber;
+
+    #[ORM\Column(type: 'string', length: 10)]
+    private $CPSNumber;
     /**
      * @Assert\Type(type="App\Entity\CpsCardOwner")
      * @Assert\Valid
@@ -103,9 +121,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'fkIdUser', targetEntity: SurgeryNotification::class, orphanRemoval: true)]
     private $surgeryNotifications;
-
-    #[ORM\Column(type: 'integer', nullable: true)]
-    private $CPSNumber;
 
     public function __construct()
     {
@@ -221,14 +236,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPostaCode(): ?int
+    public function getZipCode(): ?string
     {
-        return $this->postaCode;
+        return $this->zipCode;
     }
 
-    public function setPostaCode(int $postaCode): self
+    public function setZipCode(int $zipCode): self
     {
-        $this->postaCode = $postaCode;
+        $this->zipCode = $zipCode;
 
         return $this;
     }
