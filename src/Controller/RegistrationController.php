@@ -75,7 +75,8 @@ public function addUser( EntityManagerInterface $entityManagerInterface,
 User $user,
 UserPasswordHasherInterface $userPasswordHasherInterface)
 {
-    if ($_POST['role'] == 'ROLE_SURGEON'){
+    $session=$this->requestStack->getSession();
+    if ($session->get('codeProfession') == 10){
         $user->setRoles(['ROLE_SURGEON']);
         } else {
             $user->setRoles(['ROLE_NURSE']);

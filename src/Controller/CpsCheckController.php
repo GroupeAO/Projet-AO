@@ -40,8 +40,8 @@ class CpsCheckController extends AbstractController
 
                 $prenomDexercice = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $cpsOwner->getNumeroCarte()]);
                 $prenomDexercice = $prenomDexercice->getPrenomDexercice();
-                $role = $cpsCardOwnerRepository->findOneBy(['role' => $cpsOwner->getCodeProfession()]);
-                $role = $role->getCodeProfession();
+                $codeProfession = $cpsCardOwnerRepository->findOneBy(['codeProfession' => $cpsOwner->getCodeProfession()]);
+                $codeProfession = $codeProfession->getCodeProfession();
 
 
 
@@ -55,7 +55,7 @@ class CpsCheckController extends AbstractController
                 $session->set('numeroCarte', $cpsOwner->getNumeroCarte());
                 $session->set('nomDexercice',$cpsOwner->getNomDexercice());
                 $session->set('prenomDexercice', $prenomDexercice);
-                $session->set('role', $role);
+                $session->set('codeProfession', $codeProfession);
                 
                //$session->set('codeProfession',$cpsCardOwnerRepository->getCodeProfession());
               
