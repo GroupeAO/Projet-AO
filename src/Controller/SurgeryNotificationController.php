@@ -64,10 +64,9 @@ class SurgeryNotificationController extends AbstractController
     int $id,
     ): Response
     {
-        /** @var \App\Entity\User $user */
-        
-        $user = $this->getUser();
-        $id=$user->getId();
+             /** @var \App\Entity\User $user */
+            $user = $this->getUser();
+            $id=$user->getId();
         $surgeries=$surgeryNotificationRepository->displayUserSurgeryNotificationQuery($id, $entityManagerInterface);
     
         return $this->render('surgery_notification/display_surgery.html.twig', [
@@ -81,7 +80,10 @@ class SurgeryNotificationController extends AbstractController
     int $id
     ): RedirectResponse    
         {
-
+             /** @var \App\Entity\User $user */
+            $user = $this->getUser();
+            $idUser=$user->getId();
+            
             $surgery=$surgeryNotificationRepository->find($id);
             $entityManagerInterface->remove($surgery);
             $entityManagerInterface->flush();

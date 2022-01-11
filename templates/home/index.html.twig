@@ -21,31 +21,39 @@
         <p class="error"> {{error.messageKey | trans(error.messageData, 'security') }}</p>
     {% endif %}
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <form action="{{path('search')}}" method="post">
-            <input type="search" name="search" id="search">
-            <button type="submit">rechercher un utilisateur</button>
-        </form>
-        {% if is_granted('ROLE_SURGEON') %}
-        
-        <form action="{{path('search_availability')}}" method="post">
-            <input type="date" name="date" id="date">
-            <input type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-            <button type="submit">rechercher une Aide operatoire disponible</button>
-        </form>
-        {% else %}
-        <form action="{{path('search_surgery')}}" method="post">
-            <input type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-            <button type="submit">rechercher une chirurgie dans votre departement</button>
-        </form>
+        <section class="row">
+            <div class="col">
+                <form action="{{path('search')}}" method="post">
+                    <input type="search" name="search" id="search">
+                    <button type="submit">rechercher un utilisateur</button>
+                </form>
+            </div>
+            {% if is_granted('ROLE_SURGEON') %}
+            
+            <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
+                <input class="mb-2 form-control" type="date" name="date" id="date">
+                <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
+                <button class="btn btn-primary" type="submit">rechercher une Aide operatoire disponible</button>
+            </form>
+            {% else %}
+            <form class="row justify-content-center mb-5 form-group" action="{{path('search_surgery')}}" method="post">
+                <div class="col-md-3">
+                    <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
+                </div>
+                <div class="row justify-content-center mb-5 formSubmit">
+                    <button class="btn btn-primary col-md-auto" type="submit">rechercher une chirurgie</button>
+                </div>
+            </form>
+        </section>
         {% endif %}
     {% else %}
     <form class="loginForm" action="{{path('login')}}" method="POST">
         <div class="row justify-content-center mb-5">
             <div class="col-md-3">
-                <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
+                <input type="text" class="mb-2 form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
             </div>    
             <div class="col-md-3">       
-                <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de Passe" required>
+                <input type="password" class="mb-2 form-control" name="_password" id="password" placeholder="Mot de Passe" required>
             </div>
             <div class="col-md-auto formSubmit">         
                 <button type="submit" class="btn btn-primary">Me connecter</button>
