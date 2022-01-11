@@ -40,6 +40,9 @@ class CpsCheckController extends AbstractController
 
                 $prenomDexercice = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $cpsOwner->getNumeroCarte()]);
                 $prenomDexercice = $prenomDexercice->getPrenomDexercice();
+                $codeProfession = $cpsCardOwnerRepository->findOneBy(['codeProfession' => $cpsOwner->getCodeProfession()]);
+                $codeProfession = $codeProfession->getCodeProfession();
+
 
 
                 $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
@@ -52,6 +55,7 @@ class CpsCheckController extends AbstractController
                 $session->set('numeroCarte', $cpsOwner->getNumeroCarte());
                 $session->set('nomDexercice',$cpsOwner->getNomDexercice());
                 $session->set('prenomDexercice', $prenomDexercice);
+                $session->set('codeProfession', $codeProfession);
                 
                //$session->set('codeProfession',$cpsCardOwnerRepository->getCodeProfession());
               
