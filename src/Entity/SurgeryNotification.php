@@ -43,15 +43,6 @@ class SurgeryNotification
     #[ORM\JoinColumn(nullable: false)]
     private $fkIdUser;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $clinicName;
-
-    #[ORM\Column(type: 'integer')]
-    private $clinicZipCode;
-
-    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'surgeryNotifications')]
-    #[ORM\JoinColumn(nullable: false)]
-    private $fkIdUser;
 
     public function __construct()
     {
@@ -131,42 +122,6 @@ class SurgeryNotification
     public function setNumberAoSpotLeft(int $numberAoSpotLeft): self
     {
         $this->numberAoSpotLeft = $numberAoSpotLeft;
-
-        return $this;
-    }
-
-    public function getClinicName(): ?string
-    {
-        return $this->clinicName;
-    }
-
-    public function setClinicName(string $clinicName): self
-    {
-        $this->clinicName = $clinicName;
-
-        return $this;
-    }
-
-    public function getClinicZipCode(): ?int
-    {
-        return $this->clinicZipCode;
-    }
-
-    public function setClinicZipCode(int $clinicZipCode): self
-    {
-        $this->clinicZipCode = $clinicZipCode;
-
-        return $this;
-    }
-
-    public function getFkIdUser(): ?User
-    {
-        return $this->fkIdUser;
-    }
-
-    public function setFkIdUser(?User $fkIdUser): self
-    {
-        $this->fkIdUser = $fkIdUser;
 
         return $this;
     }
