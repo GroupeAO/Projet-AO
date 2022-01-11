@@ -43,23 +43,15 @@ class RegistrationController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid()){
 
-            if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
-
-                $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
+                $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-                return $this->redirectToRoute('home');
-                
-                    //  $userEmail=$user->getEmail();
-                    //    echo "L'email $userEmail existe déja en base de données";
-            } else {
-                $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
-                return $this->redirectToRoute('registration');
-            }
-                
                 
                 // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
             }
+            
             // return $this->redirectToRoute('home');
+        
+
         return $this->render('registration/registration.html.twig', [
             'form' => $form->createView(),
             'numeroCarte' => $session->get('numeroCarte'),
@@ -71,9 +63,28 @@ class RegistrationController extends AbstractController
         
     }
 
+public function checkUser(
+    EntityManagerInterface $entityManagerInterface,
+    UserPasswordHasherInterface $userPasswordHasherInterface,
+    User $user,
+    UserRepository $userRepository,
+): RedirectResponse
+{
+    //check if email exist in bdd
+    if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
+
+        $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
+        return $this->redirectToRoute('home');
+            //  $userEmail=$user->getEmail();
+            //    echo "L'email $userEmail existe déja en base de données";
+    } else {
+        $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
+        return $this->redirectToRoute('registration');
+    }
+}
 public function addUser( EntityManagerInterface $entityManagerInterface,
 User $user,
-UserPasswordHasherInterface $userPasswordHasherInterface)
+UserPasswordHasherInterface $userPasswordHasherInterface):
 {
     if ($_POST['role'] == 'ROLE_SURGEON'){
         $user->setRoles(['ROLE_SURGEON']);
