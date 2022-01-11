@@ -50,5 +50,3 @@ class AccountController extends AbstractController
     ]);
     }
 }
-
-
