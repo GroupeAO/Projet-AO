@@ -107,6 +107,7 @@ class AccountController extends AbstractController
             $availabitlity=$availabilityRepository->find($id);
             $entityManagerInterface->remove($availabitlity);
             $entityManagerInterface->flush();
-            return $this->redirectToRoute('account');
+
+            return $this->redirectToRoute('display_availability');
         }
-    }
+}
