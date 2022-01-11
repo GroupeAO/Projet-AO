@@ -35,6 +35,7 @@ class ComposerStaticInit9f932e888ac7817beb6ef14125b3fb38
         'T' => 
         array (
             'Twig\\Extra\\TwigExtraBundle\\' => 27,
+            'Twig\\Extra\\Intl\\' => 16,
             'Twig\\' => 5,
         ),
         'S' => 
@@ -172,6 +173,10 @@ class ComposerStaticInit9f932e888ac7817beb6ef14125b3fb38
         'Twig\\Extra\\TwigExtraBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/twig/extra-bundle',
+        ),
+        'Twig\\Extra\\Intl\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/twig/intl-extra',
         ),
         'Twig\\' => 
         array (
@@ -574,17 +579,42 @@ class ComposerStaticInit9f932e888ac7817beb6ef14125b3fb38
     );
 
     public static $classMap = array (
+        'App\\Controller\\AccountController' => __DIR__ . '/../..' . '/src/Controller/AccountController.php',
+        'App\\Controller\\AdminController' => __DIR__ . '/../..' . '/src/Controller/AdminController.php',
+        'App\\Controller\\AvailabilityController' => __DIR__ . '/../..' . '/src/Controller/AvailabilityController.php',
+        'App\\Controller\\ContactController' => __DIR__ . '/../..' . '/src/Controller/ContactController.php',
+        'App\\Controller\\CpsCheckController' => __DIR__ . '/../..' . '/src/Controller/CpsCheckController.php',
+        'App\\Controller\\HomeController' => __DIR__ . '/../..' . '/src/Controller/HomeController.php',
+        'App\\Controller\\InformationsController' => __DIR__ . '/../..' . '/src/Controller/InformationsController.php',
+        'App\\Controller\\LoginController' => __DIR__ . '/../..' . '/src/Controller/LoginController.php',
+        'App\\Controller\\RegistrationController' => __DIR__ . '/../..' . '/src/Controller/RegistrationController.php',
+        'App\\Controller\\SearchController' => __DIR__ . '/../..' . '/src/Controller/SearchController.php',
+        'App\\Controller\\SurgeryNotificationController' => __DIR__ . '/../..' . '/src/Controller/SurgeryNotificationController.php',
+        'App\\Controller\\UpdateUserController' => __DIR__ . '/../..' . '/src/Controller/UpdateUserController.php',
         'App\\Entity\\Availability' => __DIR__ . '/../..' . '/src/Entity/Availability.php',
         'App\\Entity\\Clinic' => __DIR__ . '/../..' . '/src/Entity/Clinic.php',
+        'App\\Entity\\Contact' => __DIR__ . '/../..' . '/src/Entity/Contact.php',
+        'App\\Entity\\CpsCardOwner' => __DIR__ . '/../..' . '/src/Entity/CpsCardOwner.php',
         'App\\Entity\\Role' => __DIR__ . '/../..' . '/src/Entity/Role.php',
         'App\\Entity\\SurgeryNotification' => __DIR__ . '/../..' . '/src/Entity/SurgeryNotification.php',
         'App\\Entity\\SurgicalSpecialty' => __DIR__ . '/../..' . '/src/Entity/SurgicalSpecialty.php',
+        'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
+        'App\\Form\\ContactType' => __DIR__ . '/../..' . '/src/Form/ContactType.php',
+        'App\\Form\\CpsType' => __DIR__ . '/../..' . '/src/Form/CpsType.php',
+        'App\\Form\\InsertAvailabilityType' => __DIR__ . '/../..' . '/src/Form/InsertAvailabilityType.php',
+        'App\\Form\\LoginType' => __DIR__ . '/../..' . '/src/Form/LoginType.php',
+        'App\\Form\\SurgeryNotificationType' => __DIR__ . '/../..' . '/src/Form/SurgeryNotificationType.php',
+        'App\\Form\\UpdateUserType' => __DIR__ . '/../..' . '/src/Form/UpdateUserType.php',
+        'App\\Form\\UserType' => __DIR__ . '/../..' . '/src/Form/UserType.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\Repository\\AvailabilityRepository' => __DIR__ . '/../..' . '/src/Repository/AvailabilityRepository.php',
         'App\\Repository\\ClinicRepository' => __DIR__ . '/../..' . '/src/Repository/ClinicRepository.php',
+        'App\\Repository\\ContactRepository' => __DIR__ . '/../..' . '/src/Repository/ContactRepository.php',
+        'App\\Repository\\CpsCardOwnerRepository' => __DIR__ . '/../..' . '/src/Repository/CpsCardOwnerRepository.php',
         'App\\Repository\\RoleRepository' => __DIR__ . '/../..' . '/src/Repository/RoleRepository.php',
         'App\\Repository\\SurgeryNotificationRepository' => __DIR__ . '/../..' . '/src/Repository/SurgeryNotificationRepository.php',
         'App\\Repository\\SurgicalSpecialtyRepository' => __DIR__ . '/../..' . '/src/Repository/SurgicalSpecialtyRepository.php',
+        'App\\Repository\\UserRepository' => __DIR__ . '/../..' . '/src/Repository/UserRepository.php',
         'Collator' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/Resources/stubs/Collator.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
@@ -5947,6 +5977,7 @@ class ComposerStaticInit9f932e888ac7817beb6ef14125b3fb38
         'Twig\\Extension\\SandboxExtension' => __DIR__ . '/..' . '/twig/twig/src/Extension/SandboxExtension.php',
         'Twig\\Extension\\StagingExtension' => __DIR__ . '/..' . '/twig/twig/src/Extension/StagingExtension.php',
         'Twig\\Extension\\StringLoaderExtension' => __DIR__ . '/..' . '/twig/twig/src/Extension/StringLoaderExtension.php',
+        'Twig\\Extra\\Intl\\IntlExtension' => __DIR__ . '/..' . '/twig/intl-extra/IntlExtension.php',
         'Twig\\Extra\\TwigExtraBundle\\DependencyInjection\\Compiler\\MissingExtensionSuggestorPass' => __DIR__ . '/..' . '/twig/extra-bundle/DependencyInjection/Compiler/MissingExtensionSuggestorPass.php',
         'Twig\\Extra\\TwigExtraBundle\\DependencyInjection\\Configuration' => __DIR__ . '/..' . '/twig/extra-bundle/DependencyInjection/Configuration.php',
         'Twig\\Extra\\TwigExtraBundle\\DependencyInjection\\TwigExtraExtension' => __DIR__ . '/..' . '/twig/extra-bundle/DependencyInjection/TwigExtraExtension.php',

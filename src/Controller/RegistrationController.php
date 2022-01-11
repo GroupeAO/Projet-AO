@@ -32,7 +32,6 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         UserRepository $userRepository,
-        CpsCardOwnerRepository $cpsCardOwnerRepository
     ): Response    
     {
  // User from creation
@@ -43,12 +42,10 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-                
-                //echo 'Carte CPS/CPF validée. Merci!';
-                
+
                 $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-                return $this->redirectToRoute('account');
+                return $this->redirectToRoute('home');
                 // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
             }
             
@@ -76,42 +73,40 @@ public function checkUser(
 {
     //check if email exist in bdd
     if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
-        
+
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
             $unsecurePassword
         );
-        
-        $this->addUser($entityManagerInterface, $user, $hashedPassword);
-        $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-                return $this->redirectToRoute('account');
-    }
+        $user->setPassword($hashedPassword);
+
+            $entityManagerInterface->persist($user);
+            $entityManagerInterface->flush();
+   
       //  $userEmail=$user->getEmail();
             //    echo "L'email $userEmail existe déja en base de données";
-    $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
-    return $this->redirectToRoute('registration');
-
     
+    } else {
+        $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
+        return $this->redirectToRoute('registration');
+    }
 }
 public function addUser( EntityManagerInterface $entityManagerInterface,
 User $user,
 $hashedPassword)
 {
-    $user->setPassword($hashedPassword);
-
     if ($_POST['role'] == 'ROLE_SURGEON'){
-    $user->setRoles(['ROLE_SURGEON']);
-    }else{
-        $user->setRoles(['ROLE_NURSE']);
-    }
+        $user->setRoles(['ROLE_SURGEON']);
+        } else {
+            $user->setRoles(['ROLE_NURSE']);
+        }
+    $this->addUser($entityManagerInterface, $user, $hashedPassword);
 
-    
-    $entityManagerInterface->persist($user);
-    $entityManagerInterface->flush();
+
 }
 
-public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository )
+public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository ):bool
 {
     $cpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numeroCarte' => $numeroCarte]);
     if (!empty($cpsCardNumberInDB)) {
@@ -121,7 +116,7 @@ public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository
 }
 
 public function isEmailExist(string $emailUser,
-UserRepository $userRepository): bool
+UserRepository $userRepository) :bool
 {
     // search for an existing email in db
     $emailInDB= $userRepository->findOneBy(['email' => $emailUser]);
