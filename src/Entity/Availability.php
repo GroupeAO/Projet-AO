@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\AvailabilityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
@@ -22,6 +23,9 @@ class Availability
     private $endDate;
 
     #[ORM\Column(type: 'integer', nullable: true)]
+    /**
+     * @Assert\NotBlank(message="Benoit qu'est-ce que tu fous bordel de merde")
+     */
     private $commuteDistance;
 
     #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'fkavailability', cascade:['persist'])]

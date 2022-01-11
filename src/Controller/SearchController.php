@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\SurgeryNotification;
 use App\Repository\AvailabilityRepository;
+use App\Repository\SurgeryNotificationRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +33,17 @@ class SearchController extends AbstractController
         $results=$availabilityRepository->searchAvailabilityQuery($date, $zipCode,  $entityManagerInterface);
 
         return $this->render('search/searchAvailability.html.twig', [
-            'name'=>$date,
+            'date'=>$date,
+            'results'=> $results
+        ]);
+    }
+    #[Route('/search/surgery', name: 'search_surgery')]
+    public function searchSurgery(SurgeryNotificationRepository $surgeryNotificationRepository, EntityManagerInterface $entityManagerInterface): Response
+    {
+        $zipCode=$_POST['zipCode'] . '%';   
+        $results=$surgeryNotificationRepository->searchSurgeryQuery($zipCode,$entityManagerInterface);
+
+        return $this->render('search/search_surgery.html.twig', [
             'results'=> $results
         ]);
     }
