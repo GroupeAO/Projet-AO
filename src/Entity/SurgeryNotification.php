@@ -26,10 +26,7 @@ class SurgeryNotification
 
     #[ORM\Column(type: 'string', length: 2000)]
     private $description;
-
-    #[ORM\Column(type: 'integer')]
-    private $numberAoNeeded;
-
+    
     #[ORM\Column(type: 'integer')]
     private $numberAoSpotLeft;
 
@@ -102,17 +99,6 @@ class SurgeryNotification
         return $this;
     }
 
-    public function getNumberAoNeeded(): ?int
-    {
-        return $this->numberAoNeeded;
-    }
-
-    public function setNumberAoNeeded(int $numberAoNeeded): self
-    {
-        $this->numberAoNeeded = $numberAoNeeded;
-
-        return $this;
-    }
 
     public function getNumberAoSpotLeft(): ?int
     {

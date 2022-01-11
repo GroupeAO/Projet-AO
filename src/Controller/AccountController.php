@@ -2,15 +2,8 @@
 
 namespace App\Controller;
 
-use App\Entity\Availability;
-use App\Entity\User;
-use App\Form\InsertAvailabilityType;
-use App\Repository\AvailabilityRepository;
-use App\Repository\UserRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
 use Symfony\Component\Routing\Annotation\Route;
