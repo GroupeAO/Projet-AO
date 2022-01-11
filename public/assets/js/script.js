@@ -13,4 +13,9 @@ var deleteLink = document.querySelector('.deleteLink')
         });
     });
 
+    $(".registrationSuccess").fadeTo(3000, 500).slideUp(500, function(){
+        $(".registrationSuccess").slideUp(500);
+    });
+
+
 })( jQuery );
