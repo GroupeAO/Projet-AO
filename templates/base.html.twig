@@ -8,7 +8,7 @@
         {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
         {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/benoitswatch.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet"> 
@@ -31,6 +31,8 @@
         {% endblock %}
         {% block script %}
             <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
+            <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
         {% endblock %}
     </body>
 </html>

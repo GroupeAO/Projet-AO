@@ -24,7 +24,7 @@ class Availability
 
     #[ORM\Column(type: 'integer', nullable: true)]
     /**
-     * @Assert\NotBlank(message="Benoit qu'est-ce que tu fous bordel de merde")
+     * @Assert\NotBlank(message="Veuillez remplir le champ si dessus")
      */
     private $commuteDistance;
 

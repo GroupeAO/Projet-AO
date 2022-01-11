@@ -25,19 +25,20 @@
             <input type="search" name="search" id="search">
             <button type="submit">rechercher un utilisateur</button>
         </form>
-    
+        {% if is_granted('ROLE_SURGEON') %}
+        
         <form action="{{path('search_availability')}}" method="post">
             <input type="date" name="date" id="date">
             <input type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
             <button type="submit">rechercher une Aide operatoire disponible</button>
         </form>
-        
+        {% else %}
         <form action="{{path('search_surgery')}}" method="post">
             <input type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
             <button type="submit">rechercher une chirurgie dans votre departement</button>
         </form>
-    {% endif %}
-
+        {% endif %}
+    {% else %}
     <form class="loginForm" action="{{path('login')}}" method="POST">
         <div class="row justify-content-center mb-5">
             <div class="col-md-3">
@@ -75,5 +76,5 @@
             </div>
         </div>
     </div>
-
+    {% endif %}
 {% endblock %}

@@ -11,10 +11,13 @@
                         <a class="nav-link active" >Accueil</a>
                         <span class="visually-hidden">(current)</span>
                     </li> #}
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                    {% else %}
                     <li class="nav-item">
                         <a class="nav-link active" href="{{ path('cps_check') }}">Enregistrement</a>
                         <span class="visually-hidden">(current)</span>
                     </li>
+                    {% endif %}
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                         <div class="dropdown-menu">

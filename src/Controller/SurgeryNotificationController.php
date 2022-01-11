@@ -85,6 +85,6 @@ class SurgeryNotificationController extends AbstractController
             $surgery=$surgeryNotificationRepository->find($id);
             $entityManagerInterface->remove($surgery);
             $entityManagerInterface->flush();
-            return $this->redirectToRoute('account');
+            return $this->redirectToRoute('account', $user=['id' => $idUser ]);
         } 
 }

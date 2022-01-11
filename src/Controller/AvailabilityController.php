@@ -95,16 +95,21 @@ class AvailabilityController extends AbstractController
     public function deleteUserAvailability(
     EntityManagerInterface $entityManagerInterface,
     AvailabilityRepository $availabilityRepository,
-    Request $request,
     int $id
     ): RedirectResponse    
         {
+            /** @var \App\Entity\User $user */
+            $user = $this->getUser();
+            $idUser=$user->getId();
 
             $availabitlity=$availabilityRepository->find($id);
             $entityManagerInterface->remove($availabitlity);
             $entityManagerInterface->flush();
-            // return $this->redirectToRoute('display_availability');
-            return $this->redirect('availability/display_availability.html.twig',302);
+            
+            usleep(2000000);
+
+            return $this->redirectToRoute('display_availability' ,$user=['id' => $idUser ]);
+            
         }
 
 }

@@ -69,7 +69,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     private $zipCode;
 
-    #[ORM\Column(type: 'string', length: 255)]
+    #[ORM\Column(type: 'string', length: 5)]
     /**
      * @Assert\NotBlank
      * @Assert\Length(
