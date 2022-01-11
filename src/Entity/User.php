@@ -62,10 +62,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @Assert\NotBlank
      * @Assert\Length(
-     *      min = 4,
+     *      min = 5,
      *      max = 5,
-     *      minMessage = "Le Code Postal doit comporter 5 chiffres",
-     *      maxMessage = "Le Code Postal doit comporter {{ limit }} chiffres"
+     *      exactMessage = "Le Code Postal doit comporter 5 chiffres"
      * )
      */
     private $zipCode;
@@ -241,7 +240,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->zipCode;
     }
 
-    public function setZipCode(int $zipCode): self
+    public function setZipCode(string $zipCode): self
     {
         $this->zipCode = $zipCode;
 

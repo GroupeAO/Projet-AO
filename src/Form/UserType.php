@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Form;
-
-
+use Twig\Extra\Intl\IntlExtension;
 use App\Entity\SurgicalSpecialty;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -36,7 +35,7 @@ class UserType extends AbstractType
                         'second_options' => ['label' => 'Répetez votre mot de passe'],
             ])
             ->add(  'adress', TextType::class,      ['label' => 'Adresse'])
-            ->add(  'zipCode', TextType::class,      ['label' => 'Code Postal'])
+            ->add(  'zipCode', TextType::class,     ['label' => 'Code Postal'])
             ->add(  'city', TextType::class,        ['label' => 'Ville'])
             ->add(  'phoneNumber', TelType::class,  ['label' => 'Numéro de téléphone'])
             //->add('surgicalSpeciality', EntityType::class, [ 
