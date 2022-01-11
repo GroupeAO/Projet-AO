@@ -43,6 +43,7 @@ class SurgeryNotification
     #[ORM\JoinColumn(nullable: false)]
     private $fkIdUser;
 
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
