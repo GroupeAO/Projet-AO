@@ -76,21 +76,24 @@ public function checkUser(
 {
     //check if email exist in bdd
     if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
+        
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
             $unsecurePassword
         );
+        
         $this->addUser($entityManagerInterface, $user, $hashedPassword);
-        return $this->redirectToRoute('home');
-    }else{
-        $userEmail=$user->getEmail();
-                echo "L'email $userEmail existe déja en base de données";
-                return $this->redirectToRoute('registration');
+        $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
+                return $this->redirectToRoute('account');
     }
+      //  $userEmail=$user->getEmail();
+            //    echo "L'email $userEmail existe déja en base de données";
+    $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
+    return $this->redirectToRoute('registration');
 
+    
 }
-
 public function addUser( EntityManagerInterface $entityManagerInterface,
 User $user,
 $hashedPassword)
