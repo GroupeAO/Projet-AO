@@ -25,7 +25,7 @@ class SurgeryNotificationRepository extends ServiceEntityRepository
         $rawSql = "SELECT * FROM surgery_notification 
         LEFT JOIN user
         ON fk_id_user_id=user.id
-        WHERE user.posta_code LIKE :zipCode
+        WHERE user.zip_code LIKE :zipCode
         ORDER BY start_date ASC";
         $query=$conn->prepare($rawSql);
         $result= $query->executeQuery(['zipCode'=> $zipCode        

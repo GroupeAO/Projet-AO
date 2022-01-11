@@ -27,7 +27,7 @@ class AvailabilityRepository extends ServiceEntityRepository
         ON availability.id=user_availability.availability_id
         LEFT JOIN user 
         ON    user_availability.user_id =user.id
-        WHERE start_date <= :date AND end_date >= :date AND user.posta_code LIKE :zipCode";
+        WHERE start_date <= :date AND end_date >= :date AND user.zip_code LIKE :zipCode";
         $query=$conn->prepare($rawSql);
         $result= $query->executeQuery(['date'=>$date,
                                         'zipCode'=> $zipCode        

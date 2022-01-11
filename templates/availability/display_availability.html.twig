@@ -8,12 +8,14 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 {# bloqué les dates passé peu-être fait en js/jQuery #}
-
+    <div class="alert alert-primary hidden" role="alert">
+        This is a primary alert with Give it a click if you like.
+    </div>
     {% for availability in availabilities %}
         <p>{{availability.start_date | date('d-m-Y') }}</p>
         <p>{{availability.end_date | date('d-m-Y') }}</p>
         <p>{{availability.commute_distance}}</p>
         <a href="{{path('user_edit_availability',  { 'id': availability.id })}}">modifier</a>
-        <a href="{{path('user_delete_availability',  { 'id': availability.id })}}">supprimer</a>
+        <a class="deleteLink" href="{{path('user_delete_availability',  { 'id': availability.id })}}">supprimer</a>
     {% endfor %}
 {% endblock %}

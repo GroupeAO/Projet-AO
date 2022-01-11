@@ -3,14 +3,14 @@
 {% block title %}Hello AdminController!{% endblock %}
 
 {% block body %}
-    <table>
+    <table class="table tableAdmin">
         <thead>
             <th>id</th>
-            <th>Spécialité chirugical id</th>
+            {# <th>Spécialité chirugical id</th> #}
             <th>email</th>
             <th>roles</th>
-            <th>mot de passe</th>
             <th>nom</th>
+            <th>prenom</th>
             <th>Adresse</th>
             <th>Code Postal</th>
             <th>Ville</th>
@@ -22,13 +22,13 @@
         {% for user in users %}
             <tr>
                 <td>{{user.id}}</td>
-                {# <td>{{user.surgicalSpeciality.id}}</td> #}
+                {# <td>{{user.surgicalSpeciality.name}}</td> #}
                 <td>{{user.email}}</td>
                 <td>{{user.roles | join(', ')}}</td>
                 <td>{{user.name}}</td>
                 <td>{{user.firstname}}</td>
                 <td>{{user.adress}}</td>
-                <td>{{user.postaCode}}</td>
+                <td>{{user.zipCode}}</td>
                 <td>{{user.city}}</td>
                 <td>{{user.phoneNumber}}</td>
                 <td><a href="{{path('admin_edit_user',  { 'id': user.id })}}">editer</a></td>
@@ -38,16 +38,17 @@
         {% endfor %}
         </tbody>
     </table>
-    <table>
+    <table class="table tableAdmin">
         <thead>
             <th>id</th>
             <th>date de début</th>
             <th>date de fin</th>
             <th>distance maximum a parcourir</th>
-            <th>id de l'utilisateur</th>
-            <th>nom de l'utilisateur</th>
-            <th>prenom de l'utilisateur</th>
-            <th>email de l'utilisateur</th>
+            <th>id des utilisateurs</th>
+            <th>noms des utilisateurs</th>
+            <th>prenoms des utilisateurs</th>
+            <th>emails des utilisateurs</th>
+            <th>supprimer</th>
         </thead>
         <tbody>
         {% for availability in availabilities %}
@@ -70,6 +71,38 @@
                     {{availabilityUser.email}}, 
                     {% endfor %}</td>
                     <td><a href="{{path('admin_delete_availability',  { 'id': availability.id })}}">supprimer</a></td>
+                </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+    <table class="table tableAdmin">
+        <thead>
+            <th>id</th>
+            <th>date de début</th>
+            <th >date de fin</th>
+            <th >clinicZipCode</th>
+            <th>id de l'utilisateur</th>
+            <th>nom de l'utilisateur</th>
+            <th>prenom de l'utilisateur</th>
+            <th>utilisateur code postal</th>
+            <th>Numéro de téléphone</th>
+            <th>supprimer</th>
+        </thead>
+        <tbody>
+        {% for surgery in surgeries %}
+        
+                <tr>
+                    <td>{{surgery.id}}</td>
+                    <td>{{surgery.startDate | date('d-m-Y')}}</td>
+                    <td>{{surgery.enDate | date('d-m-Y')}}</td>
+                    <td>{{surgery.clinicZipCode}}</td>
+                    <td>{{surgery.fkIdUser.id}}</td>
+                    <td>{{surgery.fkIdUser.name}}</td>
+                    <td>{{surgery.fkIdUser.firstname}}</td>
+                    <td>{{surgery.fkIdUser.zipCode}}</td>
+                    <td>{{surgery.fkIdUser.phoneNumber}}</td>
+                    <td><a href="{{path('admin_delete_surgery',  { 'id': surgery.id })}}">supprimer</a></td>
                 </tr>
             
         {% endfor %}
