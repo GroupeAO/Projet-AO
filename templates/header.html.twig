@@ -32,7 +32,7 @@
                 </ul>
                 <div class="d-flex"></div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="text-white mr-3"> Bonjour, {{app.session.get('prenomDexercice')|capitalize}} ! </div>
+                    <div class="text-white mr-3"> Bonjour, {{app.user.firstname|capitalize}} ! </div>
                     <a href="{{ path('account') }}"><button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}

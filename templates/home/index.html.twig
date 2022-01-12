@@ -17,40 +17,37 @@
         </div>
         
     </div>
+
+    {% for role in app.user.roles %}
+    {{role}}
+    {% endfor %} 
     {% if error %}
         <p class="error"> {{error.messageKey | trans(error.messageData, 'security') }}</p>
     {% endif %}
-    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <form action="{{path('search')}}" method="post">
-            <input type="search" name="search" id="search">
-            <button type="submit">rechercher un utilisateur</button>
-        </form>
-    
-        <form action="{{path('search_availability')}}" method="post">
-            <input type="date" name="date" id="date">
-            <input type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-            <button type="submit">rechercher une Aide operatoire disponible</button>
-        </form>
-        
-        <form action="{{path('search_surgery')}}" method="post">
-            <input type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-            <button type="submit">rechercher une chirurgie dans votre departement</button>
-        </form>
-    {% endif %}
+    {% if is_granted("ROLE_SURGEON") %} 
+        {% include "form/searchAO.php" %}
+        {% include "form/searchUser.php" %}
+            {% if is_granted("ROLE_NURSE") %}
+            {% include "form/searchSurgery.php" %} 
+            {% include "form/searchUser.php" %}       
+            {% endif %}
+        {% else %}
+            {% include "form/login.php" %}  
+        {% endif %}
 
-    <form class="loginForm" action="{{path('login')}}" method="POST">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-3 mb-3">
-                <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
-            </div>    
-            <div class="col-md-3 mb-3">       
-                <input type="password" class="form-control mb-3" name="_password" id="password" placeholder="Mot de Passe" required>
-            </div>
-            <div class="col-md-auto formSubmit mb-3">         
-                <button type="submit" class="btn btn-primary">Me connecter</button>
-            </div>            
-        </div>
-    </form>
+        {# {% switch role in app.user.roles %}
+        
+            {% case "["ROLE_SURGEON"]" %}
+                    
+        
+            {% case "["ROLE_NURSE"]" %}
+
+            {% default %}
+                
+        
+        {% endswitch %} #}
+
+
     <div class="row justify-content-center">
         <div class="col-md-5">
             <div class="text-white bg-primary mb-3">
