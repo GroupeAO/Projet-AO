@@ -17,7 +17,9 @@ class SearchController extends AbstractController
     #[Route('/search', name: 'search')]
     public function index(UserRepository $userRepository): Response
     {
-        $name = $_POST['search'] . '%';
+        $name ='%' . strtoupper($_POST['search']) . '%';
+        $name = str_replace(" ","", $name );
+        
         $results=$userRepository->searchUsers($name);
 
         return $this->render('search/index.html.twig', [
@@ -42,9 +44,14 @@ class SearchController extends AbstractController
     {
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$surgeryNotificationRepository->searchSurgeryQuery($zipCode,$entityManagerInterface);
+        if (!$results) {
+            $empty = true;
+        }
+        var_dump($results);
 
         return $this->render('search/search_surgery.html.twig', [
-            'results'=> $results
+            'results'=> $results,
+            'empty' => $empty
         ]);
     }
 }
