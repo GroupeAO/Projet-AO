@@ -17,17 +17,6 @@
     font-size:xx-large;
     margin-bottom: 30px;
 }
-.homeCard{
-        display: -webkit-box;
-        display: -webkit-flex;
-        display: -ms-flexbox;
-        display:         flex;
-        flex-wrap: wrap;
-      }
-.homeCard > [class*='col-'] {
-        display: flex;
-        flex-direction: column;
-      }
 .navbar{
     z-index: 11;
     margin-bottom: 20px;
