@@ -4,8 +4,8 @@
 
 {% block body %}
 <section class="container">
-        <h2 class="h2_account mb-3">Bonjour {{app.user.firstname}}, </h2>
-        <div class="row d-flex justify-content-center">
+        <h2 class="h2_account mb-4">Bonjour {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}, </h2>
+        <div class="row d-flex justify-content-center ">
 
             <div class="col-xs-12 col_account bg-primary m-1">
                 <p><i class="fas fa-user-edit"></i></p>
@@ -22,8 +22,17 @@
                 <a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Mes annonces</a>
             </div>
             <div class="col-xs-12 col_account bg-secondary m-1">
-                <p><i class="far fa-calendar-alt"></i></p>
-                <a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Mes annonces</a>
+                <ul class="list_account">
+                    <h3 class="h3_account">Informations Personelles</h3>
+                    <li><span> Adresse:</span> {{app.user.adress}}</li>
+                    <li><span> Numéro:</span> {{app.user.phoneNumber}}</li>
+                    <li><span>Code Postal:</span> {{app.user.zipCode}} </li>
+                    <li><span>Ville:</span> {{app.user.city}}</li>
+                    <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col_account bg-secondary m-1">
+                <img id="anim_scalpel" src="{{ asset('assets/img/2320895.png') }}" alt="">
             </div>
         </div>
 </section>
