@@ -69,6 +69,8 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
+    <parameter key="app.locales">fr</parameter>
+    <parameter key="locale">fr</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -96,7 +98,7 @@
     <parameter key="kernel.secret">%env(APP_SECRET)%</parameter>
     <parameter key="kernel.http_method_override">false</parameter>
     <parameter key="kernel.trusted_hosts" type="collection"/>
-    <parameter key="kernel.default_locale">en</parameter>
+    <parameter key="kernel.default_locale">fr</parameter>
     <parameter key="kernel.enabled_locales" type="collection"/>
     <parameter key="kernel.error_controller">error_controller</parameter>
     <parameter key="debug.file_link_format">null</parameter>
@@ -133,6 +135,7 @@
     <parameter key="serializer.mapping.cache.file">C:\Users\webforce3\Documents\GitHub\projet\Projet-AO\var\cache\dev/serialization.php</parameter>
     <parameter key="twig.form.resources" type="collection">
       <parameter>form_div_layout.html.twig</parameter>
+      <parameter>bootstrap_5_layout.html.twig</parameter>
     </parameter>
     <parameter key="twig.default_path">C:\Users\webforce3\Documents\GitHub\projet\Projet-AO/templates</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
@@ -330,12 +333,109 @@
       <tag name="controller.service_arguments"/>
       <tag name="routing.route_loader"/>
     </service>
-    <service id="App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="true" autowire="true" autoconfigure="true">
+    <service id="App\Controller\AccountController" class="App\Controller\AccountController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\AccountController"/>
+      </call>
+    </service>
+    <service id="App\Controller\AdminController" class="App\Controller\AdminController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\AdminController"/>
+      </call>
+    </service>
+    <service id="App\Controller\AvailabilityController" class="App\Controller\AvailabilityController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\AvailabilityController"/>
+      </call>
+    </service>
+    <service id="App\Controller\ContactController" class="App\Controller\ContactController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\ContactController"/>
+      </call>
+    </service>
+    <service id="App\Controller\CpsCheckController" class="App\Controller\CpsCheckController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="request_stack"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\CpsCheckController"/>
+      </call>
+    </service>
+    <service id="App\Controller\HomeController" class="App\Controller\HomeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\HomeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\InformationsController" class="App\Controller\InformationsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\InformationsController"/>
+      </call>
+    </service>
+    <service id="App\Controller\LoginController" class="App\Controller\LoginController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\LoginController"/>
+      </call>
+    </service>
+    <service id="App\Controller\RegistrationController" class="App\Controller\RegistrationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="request_stack"/>
+      <call method="setContainer">
         <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\RegistrationController"/>
       </call>
+    </service>
+    <service id="App\Controller\SearchController" class="App\Controller\SearchController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\SearchController"/>
+      </call>
+    </service>
+    <service id="App\Controller\SurgeryNotificationController" class="App\Controller\SurgeryNotificationController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\SurgeryNotificationController"/>
+      </call>
+    </service>
+    <service id="App\Controller\UpdateUserController" class="App\Controller\UpdateUserController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.l1ae.Qz.App\Controller\UpdateUserController"/>
+      </call>
+    </service>
+    <service id="App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\CpsType" class="App\Form\CpsType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\InsertAvailabilityType" class="App\Form\InsertAvailabilityType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\SurgeryNotificationType" class="App\Form\SurgeryNotificationType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\UpdateUserType" class="App\Form\UpdateUserType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
     </service>
     <service id="App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
@@ -349,6 +449,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\CpsCardOwnerRepository" class="App\Repository\CpsCardOwnerRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -385,7 +489,7 @@
       <tag name="container.hot_path"/>
       <tag name="container.hot_path"/>
       <argument type="service" id="request_stack"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="service" id="router.default" on-invalid="ignore"/>
       <argument>false</argument>
       <argument type="collection"/>
@@ -585,7 +689,7 @@
     </service>
     <service id="slugger" class="Symfony\Component\String\Slugger\AsciiSlugger">
       <tag name="kernel.locale_aware"/>
-      <argument>en</argument>
+      <argument>fr</argument>
     </service>
     <service id="container.getenv" class="Closure">
       <tag name="routing.expression_language_function" function="env"/>
@@ -905,7 +1009,7 @@
       <argument type="service" id="translation.writer"/>
       <argument type="service" id="translation.reader"/>
       <argument type="service" id="translation.extractor"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument>C:\Users\webforce3\Documents\GitHub\projet\Projet-AO/translations</argument>
       <argument>C:\Users\webforce3\Documents\GitHub\projet\Projet-AO/templates</argument>
       <argument type="collection">
@@ -942,7 +1046,7 @@
       <argument type="service" id="translation.provider_collection"/>
       <argument type="service" id="translation.writer"/>
       <argument type="service" id="translation.reader"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="collection"/>
       <argument type="collection"/>
       <call method="setName">
@@ -996,6 +1100,12 @@
         <argument>Symfony\Bridge\Doctrine\Form\Type</argument>
       </argument>
       <argument type="collection">
+        <argument>App\Form\ContactType</argument>
+        <argument>App\Form\CpsType</argument>
+        <argument>App\Form\InsertAvailabilityType</argument>
+        <argument>App\Form\LoginType</argument>
+        <argument>App\Form\SurgeryNotificationType</argument>
+        <argument>App\Form\UpdateUserType</argument>
         <argument>App\Form\UserType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -1381,7 +1491,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator.CfnR51D"/>
+      <argument type="service" id=".service_locator.re6FTMc"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -1768,7 +1878,7 @@
       <tag name="kernel.locale_aware"/>
       <argument type="service" id=".service_locator.yY.p4P7"/>
       <argument type="service" id="translator.formatter.default"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <argument type="collection">
         <argument key="translation.loader.php" type="collection">
           <argument>php</argument>
@@ -3152,7 +3262,7 @@
       <argument type="service" id="router.request_context" on-invalid="ignore"/>
       <argument type="service" id="parameter_bag" on-invalid="ignore"/>
       <argument type="service" id="monolog.logger.router" on-invalid="ignore"/>
-      <argument>en</argument>
+      <argument>fr</argument>
       <call method="setConfigCacheFactory">
         <argument type="service" id="config_cache_factory"/>
       </call>
@@ -4428,7 +4538,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.hGsFGnO"/>
+      <argument type="service" id=".service_locator.tLXjayf"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4931,6 +5041,14 @@
       <argument type="service" id="request_stack" on-invalid="null"/>
       <argument type="service" id="router.default" on-invalid="null"/>
       <argument type="service" id="security.token_storage" on-invalid="null"/>
+      <call method="registerListener">
+        <argument>main</argument>
+        <argument>app_logout</argument>
+        <argument>logout</argument>
+        <argument>_csrf_token</argument>
+        <argument>null</argument>
+        <argument>null</argument>
+      </call>
     </service>
     <service id="security.user.provider.missing" class="Symfony\Component\Security\Core\User\MissingUserProvider" abstract="true">
       <argument type="abstract">firewall</argument>
@@ -5033,9 +5151,9 @@
         <argument>null</argument>
       </call>
       <call method="add">
-        <argument type="service" id=".security.request_matcher.68mRR3X"/>
+        <argument type="service" id=".security.request_matcher.E6VBd36"/>
         <argument type="collection">
-          <argument>ROLE_IBODE</argument>
+          <argument>ROLE_NURSE</argument>
         </argument>
         <argument>null</argument>
       </call>
@@ -5263,7 +5381,9 @@
       <argument type="service" id=".service_locator.zJyh7qS"/>
       <argument type="service" id=".service_locator.jlyTfzM"/>
       <argument type="collection">
-        <argument key="main" type="collection"/>
+        <argument key="main" type="collection">
+          <argument type="service" id="security.authenticator.form_login.main"/>
+        </argument>
       </argument>
       <argument>false</argument>
       <call method="setName">
@@ -5310,10 +5430,12 @@
       <argument>false</argument>
       <argument>security.user.provider.concrete.app_user_provider</argument>
       <argument>main</argument>
+      <argument>security.authenticator.form_login.main</argument>
       <argument>null</argument>
       <argument>null</argument>
-      <argument>null</argument>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument>form_login</argument>
+      </argument>
       <argument>null</argument>
     </service>
     <service id="security.listener.main.user_provider" class="Symfony\Component\Security\Http\EventListener\UserProviderListener">
@@ -5335,6 +5457,22 @@
         <argument type="collection">
           <argument type="service_closure" id="security.listener.session.main"/>
           <argument>onSuccessfulLogin</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>Symfony\Component\Security\Http\Event\LogoutEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="security.logout.listener.default.main"/>
+          <argument>onLogout</argument>
+        </argument>
+        <argument>64</argument>
+      </call>
+      <call method="addListener">
+        <argument>Symfony\Component\Security\Http\Event\LogoutEvent</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="security.logout.listener.session.main"/>
+          <argument>onLogout</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -5415,9 +5553,78 @@
       <tag name="kernel.event_subscriber" dispatcher="security.event_dispatcher.main"/>
       <argument type="service" id="security.authentication.session_strategy"/>
     </service>
+    <service id="security.logout_listener.main" class="Symfony\Component\Security\Http\Firewall\LogoutListener">
+      <argument type="service" id="security.token_storage"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="service" id="security.event_dispatcher.main"/>
+      <argument type="collection">
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">logout</argument>
+        <argument key="logout_path">app_logout</argument>
+      </argument>
+    </service>
+    <service id="security.logout.listener.default.main" class="Symfony\Component\Security\Http\EventListener\DefaultLogoutListener">
+      <tag name="kernel.event_subscriber" dispatcher="security.event_dispatcher.main"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument>home</argument>
+    </service>
+    <service id="security.logout.listener.session.main" class="Symfony\Component\Security\Http\EventListener\SessionLogoutListener">
+      <tag name="kernel.event_subscriber" dispatcher="security.event_dispatcher.main"/>
+    </service>
+    <service id="security.authenticator.form_login.main" class="Symfony\Component\Security\Http\Authenticator\FormLoginAuthenticator">
+      <argument type="service" id="security.http_utils"/>
+      <argument type="service" id="security.user.provider.concrete.app_user_provider"/>
+      <argument type="service" id="security.authentication.success_handler.main.form_login"/>
+      <argument type="service" id="security.authentication.failure_handler.main.form_login"/>
+      <argument type="collection">
+        <argument key="login_path">login</argument>
+        <argument key="check_path">login</argument>
+        <argument key="use_forward">false</argument>
+        <argument key="require_previous_session">false</argument>
+        <argument key="username_parameter">_username</argument>
+        <argument key="password_parameter">_password</argument>
+        <argument key="csrf_parameter">_csrf_token</argument>
+        <argument key="csrf_token_id">authenticate</argument>
+        <argument key="enable_csrf">false</argument>
+        <argument key="post_only">true</argument>
+        <argument key="form_only">false</argument>
+      </argument>
+    </service>
+    <service id="security.authentication.success_handler.main.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler">
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">login</argument>
+          <argument key="always_use_default_target_path">false</argument>
+          <argument key="default_target_path">/</argument>
+          <argument key="target_path_parameter">_target_path</argument>
+          <argument key="use_referer">false</argument>
+        </argument>
+      </call>
+      <call method="setFirewallName">
+        <argument>main</argument>
+      </call>
+    </service>
+    <service id="security.authentication.failure_handler.main.form_login" class="Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler">
+      <argument type="service" id="http_kernel"/>
+      <argument type="service" id="security.http_utils"/>
+      <argument type="collection"/>
+      <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+      <call method="setOptions">
+        <argument type="collection">
+          <argument key="login_path">login</argument>
+          <argument key="failure_path">null</argument>
+          <argument key="failure_forward">false</argument>
+          <argument key="failure_path_parameter">_failure_path</argument>
+        </argument>
+      </call>
+    </service>
     <service id="security.authenticator.manager.main" class="Symfony\Component\Security\Http\Authentication\AuthenticatorManager">
       <tag name="monolog.logger" channel="security"/>
-      <argument type="collection"/>
+      <argument type="collection">
+        <argument type="service" id="security.authenticator.form_login.main"/>
+      </argument>
       <argument type="service" id="security.token_storage"/>
       <argument type="service" id="security.event_dispatcher.main"/>
       <argument>main</argument>
@@ -5438,7 +5645,7 @@
       <argument type="service" id="security.authentication.trust_resolver"/>
       <argument type="service" id="security.http_utils"/>
       <argument>main</argument>
-      <argument>null</argument>
+      <argument type="service" id="security.authenticator.form_login.main"/>
       <argument>null</argument>
       <argument>null</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
@@ -5452,7 +5659,7 @@
         <argument type="service" id="security.access_listener"/>
       </argument>
       <argument type="service" id="security.exception_listener.main"/>
-      <argument>null</argument>
+      <argument type="service" id="security.logout_listener.main"/>
       <argument type="service" id="security.firewall.map.config.main"/>
       <argument type="service" id="security.untracked_token_storage"/>
     </service>
@@ -5472,8 +5679,8 @@
     <service id=".security.request_matcher._kl8Zey" class="Symfony\Component\HttpFoundation\RequestMatcher">
       <argument>^/surgeon</argument>
     </service>
-    <service id=".security.request_matcher.68mRR3X" class="Symfony\Component\HttpFoundation\RequestMatcher">
-      <argument>^/IBODE</argument>
+    <service id=".security.request_matcher.E6VBd36" class="Symfony\Component\HttpFoundation\RequestMatcher">
+      <argument>^/nurse</argument>
     </service>
     <service id="security.command.user_password_hash" class="Symfony\Component\PasswordHasher\Command\UserPasswordHashCommand">
       <tag name="console.command"/>
@@ -5491,9 +5698,54 @@
       </call>
     </service>
     <service id="twig.missing_extension_suggestor" class="Twig\Extra\TwigExtraBundle\MissingExtensionSuggestor"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AccountController" class="App\Controller\AccountController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AccountController" class="App\Controller\AccountController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AccountController" class="App\Controller\AccountController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AvailabilityController" class="App\Controller\AvailabilityController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AvailabilityController" class="App\Controller\AvailabilityController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AvailabilityController" class="App\Controller\AvailabilityController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\ContactController" class="App\Controller\ContactController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CpsCheckController" class="App\Controller\CpsCheckController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CpsCheckController" class="App\Controller\CpsCheckController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CpsCheckController" class="App\Controller\CpsCheckController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\HomeController" class="App\Controller\HomeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\InformationsController" class="App\Controller\InformationsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\InformationsController" class="App\Controller\InformationsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\InformationsController" class="App\Controller\InformationsController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\LoginController" class="App\Controller\LoginController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\RegistrationController" class="App\Controller\RegistrationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SearchController" class="App\Controller\SearchController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SearchController" class="App\Controller\SearchController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SearchController" class="App\Controller\SearchController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SurgeryNotificationController" class="App\Controller\SurgeryNotificationController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SurgeryNotificationController" class="App\Controller\SurgeryNotificationController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SurgeryNotificationController" class="App\Controller\SurgeryNotificationController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\UpdateUserController" class="App\Controller\UpdateUserController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\UpdateUserController" class="App\Controller\UpdateUserController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\UpdateUserController" class="App\Controller\UpdateUserController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\ContactType" class="App\Form\ContactType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\ContactType" class="App\Form\ContactType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CpsType" class="App\Form\CpsType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\CpsType" class="App\Form\CpsType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\InsertAvailabilityType" class="App\Form\InsertAvailabilityType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\InsertAvailabilityType" class="App\Form\InsertAvailabilityType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\LoginType" class="App\Form\LoginType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\LoginType" class="App\Form\LoginType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SurgeryNotificationType" class="App\Form\SurgeryNotificationType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\SurgeryNotificationType" class="App\Form\SurgeryNotificationType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UpdateUserType" class="App\Form\UpdateUserType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\UpdateUserType" class="App\Form\UpdateUserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\UserType" class="App\Form\UserType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\UserType" class="App\Form\UserType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AvailabilityRepository" class="App\Repository\AvailabilityRepository" autowire="true" abstract="true"/>
@@ -5502,6 +5754,8 @@
     <service id=".abstract.instanceof.App\Repository\ClinicRepository" class="App\Repository\ClinicRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ContactRepository" class="App\Repository\ContactRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CpsCardOwnerRepository" class="App\Repository\CpsCardOwnerRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\CpsCardOwnerRepository" class="App\Repository\CpsCardOwnerRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RoleRepository" class="App\Repository\RoleRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\RoleRepository" class="App\Repository\RoleRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SurgeryNotificationRepository" class="App\Repository\SurgeryNotificationRepository" autowire="true" abstract="true"/>
@@ -5825,6 +6079,14 @@
         <argument key="loader" type="service_closure" id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface"/>
       </argument>
     </service>
+    <service id=".service_locator.WhLgZI0" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="availabilityRepository" type="service_closure" id="App\Repository\AvailabilityRepository"/>
+        <argument key="surgeryNotificationRepository" type="service_closure" id="App\Repository\SurgeryNotificationRepository"/>
+        <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.Ty8_ac6" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -5833,13 +6095,26 @@
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.uCBo4PM" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.Cayct2e" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
-        <argument key="user" type="service_closure" id=".errored..service_locator.uCBo4PM.App\Entity\User"/>
-        <argument key="userPasswordHasherInterface" type="service_closure" id="security.user_password_hasher"/>
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.jPEmy.I" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="availabilityRepository" type="service_closure" id="App\Repository\AvailabilityRepository"/>
+        <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.frza3Kn" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="user" type="service_closure" id=".errored..service_locator.frza3Kn.App\Entity\User"/>
+        <argument key="userPasswordHasherInterface" type="service_closure" id="security.user_password_hasher"/>
       </argument>
     </service>
     <service id=".service_locator.57UVbl1" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -5849,29 +6124,131 @@
         <argument key="user" type="service_closure" id=".errored..service_locator.57UVbl1.App\Entity\User"/>
       </argument>
     </service>
+    <service id=".service_locator.yvIuFrf" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="cpsCardOwnerRepository" type="service_closure" id="App\Repository\CpsCardOwnerRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.08xDTZa" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.on5.8BR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="availability" type="service_closure" id=".errored..service_locator.on5.8BR.App\Entity\Availability"/>
+        <argument key="availabilityRepository" type="service_closure" id="App\Repository\AvailabilityRepository"/>
+        <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.CpaXrFh" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mailer" type="service_closure" id="mailer.mailer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.5wZKjk8" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="cpsCardOwnerRepository" type="service_closure" id="App\Repository\CpsCardOwnerRepository"/>
+        <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.UDgw6Ol" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="authenticationUtils" type="service_closure" id="security.authentication_utils"/>
+      </argument>
+    </service>
     <service id=".service_locator..Ae5NXw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="userRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Ovl1niP" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.FFI4YJI" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="App\Controller\RegistrationController::addUser" type="service_closure" id=".service_locator.57UVbl1"/>
-        <argument key="App\Controller\RegistrationController::checkUser" type="service_closure" id=".service_locator.uCBo4PM"/>
+        <argument key="entityManagerInterface" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="surgeryNotificationRepository" type="service_closure" id="App\Repository\SurgeryNotificationRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.iQurnKr" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="App\Controller\AdminController::addUser" type="service_closure" id=".service_locator.57UVbl1"/>
+        <argument key="App\Controller\AdminController::checkUser" type="service_closure" id=".service_locator.frza3Kn"/>
+        <argument key="App\Controller\AdminController::deleteAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\AdminController::deleteSurgery" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\AdminController::deleteUser" type="service_closure" id=".service_locator.Cayct2e"/>
+        <argument key="App\Controller\AdminController::editUser" type="service_closure" id=".service_locator.Ty8_ac6"/>
+        <argument key="App\Controller\AdminController::index" type="service_closure" id=".service_locator.WhLgZI0"/>
+        <argument key="App\Controller\AdminController::isCpsCardNumberExist" type="service_closure" id=".service_locator.yvIuFrf"/>
+        <argument key="App\Controller\AvailabilityController::deleteUserAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\AvailabilityController::displayAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\AvailabilityController::editAvailability" type="service_closure" id=".service_locator.on5.8BR"/>
+        <argument key="App\Controller\AvailabilityController::index" type="service_closure" id=".service_locator.08xDTZa"/>
+        <argument key="App\Controller\ContactController::index" type="service_closure" id=".service_locator.CpaXrFh"/>
+        <argument key="App\Controller\CpsCheckController::index" type="service_closure" id=".service_locator.5wZKjk8"/>
+        <argument key="App\Controller\CpsCheckController::isCpsCardNumberExist" type="service_closure" id=".service_locator.yvIuFrf"/>
+        <argument key="App\Controller\CpsCheckController::isNameAndCardMatch" type="service_closure" id=".service_locator.yvIuFrf"/>
+        <argument key="App\Controller\HomeController::index" type="service_closure" id=".service_locator.UDgw6Ol"/>
+        <argument key="App\Controller\LoginController::index" type="service_closure" id=".service_locator.UDgw6Ol"/>
+        <argument key="App\Controller\RegistrationController::addUser" type="service_closure" id=".service_locator.frza3Kn"/>
         <argument key="App\Controller\RegistrationController::index" type="service_closure" id=".service_locator.Ty8_ac6"/>
+        <argument key="App\Controller\RegistrationController::isCpsCardNumberExist" type="service_closure" id=".service_locator.yvIuFrf"/>
         <argument key="App\Controller\RegistrationController::isEmailExist" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\SearchController::index" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\SearchController::searchAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\SearchController::searchSurgery" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController::deleteUserAvailability" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController::displaySurgeryNotification" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController::editSurgeryNotification" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController::index" type="service_closure" id=".service_locator.08xDTZa"/>
+        <argument key="App\Controller\UpdateUserController::index" type="service_closure" id=".service_locator.Ty8_ac6"/>
+        <argument key="App\Controller\UpdateUserController::isEmailExist" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\UpdateUserController::updateUser" type="service_closure" id=".service_locator.57UVbl1"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="App\Kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel::terminate" type="service_closure" id=".service_locator.KfwZsne"/>
-        <argument key="App\Controller\RegistrationController:addUser" type="service_closure" id=".service_locator.57UVbl1"/>
-        <argument key="App\Controller\RegistrationController:checkUser" type="service_closure" id=".service_locator.uCBo4PM"/>
+        <argument key="App\Controller\AdminController:addUser" type="service_closure" id=".service_locator.57UVbl1"/>
+        <argument key="App\Controller\AdminController:checkUser" type="service_closure" id=".service_locator.frza3Kn"/>
+        <argument key="App\Controller\AdminController:deleteAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\AdminController:deleteSurgery" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\AdminController:deleteUser" type="service_closure" id=".service_locator.Cayct2e"/>
+        <argument key="App\Controller\AdminController:editUser" type="service_closure" id=".service_locator.Ty8_ac6"/>
+        <argument key="App\Controller\AdminController:index" type="service_closure" id=".service_locator.WhLgZI0"/>
+        <argument key="App\Controller\AdminController:isCpsCardNumberExist" type="service_closure" id=".service_locator.yvIuFrf"/>
+        <argument key="App\Controller\AvailabilityController:deleteUserAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\AvailabilityController:displayAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\AvailabilityController:editAvailability" type="service_closure" id=".service_locator.on5.8BR"/>
+        <argument key="App\Controller\AvailabilityController:index" type="service_closure" id=".service_locator.08xDTZa"/>
+        <argument key="App\Controller\ContactController:index" type="service_closure" id=".service_locator.CpaXrFh"/>
+        <argument key="App\Controller\CpsCheckController:index" type="service_closure" id=".service_locator.5wZKjk8"/>
+        <argument key="App\Controller\CpsCheckController:isCpsCardNumberExist" type="service_closure" id=".service_locator.yvIuFrf"/>
+        <argument key="App\Controller\CpsCheckController:isNameAndCardMatch" type="service_closure" id=".service_locator.yvIuFrf"/>
+        <argument key="App\Controller\HomeController:index" type="service_closure" id=".service_locator.UDgw6Ol"/>
+        <argument key="App\Controller\LoginController:index" type="service_closure" id=".service_locator.UDgw6Ol"/>
+        <argument key="App\Controller\RegistrationController:addUser" type="service_closure" id=".service_locator.frza3Kn"/>
         <argument key="App\Controller\RegistrationController:index" type="service_closure" id=".service_locator.Ty8_ac6"/>
+        <argument key="App\Controller\RegistrationController:isCpsCardNumberExist" type="service_closure" id=".service_locator.yvIuFrf"/>
         <argument key="App\Controller\RegistrationController:isEmailExist" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\SearchController:index" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\SearchController:searchAvailability" type="service_closure" id=".service_locator.jPEmy.I"/>
+        <argument key="App\Controller\SearchController:searchSurgery" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController:deleteUserAvailability" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController:displaySurgeryNotification" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController:editSurgeryNotification" type="service_closure" id=".service_locator.FFI4YJI"/>
+        <argument key="App\Controller\SurgeryNotificationController:index" type="service_closure" id=".service_locator.08xDTZa"/>
+        <argument key="App\Controller\UpdateUserController:index" type="service_closure" id=".service_locator.Ty8_ac6"/>
+        <argument key="App\Controller\UpdateUserController:isEmailExist" type="service_closure" id=".service_locator..Ae5NXw"/>
+        <argument key="App\Controller\UpdateUserController:updateUser" type="service_closure" id=".service_locator.57UVbl1"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.KfbR3DY"/>
         <argument key="kernel:terminate" type="service_closure" id=".service_locator.KfwZsne"/>
@@ -5936,9 +6313,15 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator.CfnR51D" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.re6FTMc" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Form\ContactType" type="service_closure" id="App\Form\ContactType"/>
+        <argument key="App\Form\CpsType" type="service_closure" id="App\Form\CpsType"/>
+        <argument key="App\Form\InsertAvailabilityType" type="service_closure" id="App\Form\InsertAvailabilityType"/>
+        <argument key="App\Form\LoginType" type="service_closure" id="App\Form\LoginType"/>
+        <argument key="App\Form\SurgeryNotificationType" type="service_closure" id="App\Form\SurgeryNotificationType"/>
+        <argument key="App\Form\UpdateUserType" type="service_closure" id="App\Form\UpdateUserType"/>
         <argument key="App\Form\UserType" type="service_closure" id="App\Form\UserType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -6131,12 +6514,13 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.hGsFGnO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.tLXjayf" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AvailabilityRepository" type="service_closure" id="App\Repository\AvailabilityRepository"/>
         <argument key="App\Repository\ClinicRepository" type="service_closure" id="App\Repository\ClinicRepository"/>
         <argument key="App\Repository\ContactRepository" type="service_closure" id="App\Repository\ContactRepository"/>
+        <argument key="App\Repository\CpsCardOwnerRepository" type="service_closure" id="App\Repository\CpsCardOwnerRepository"/>
         <argument key="App\Repository\RoleRepository" type="service_closure" id="App\Repository\RoleRepository"/>
         <argument key="App\Repository\SurgeryNotificationRepository" type="service_closure" id="App\Repository\SurgeryNotificationRepository"/>
         <argument key="App\Repository\SurgicalSpecialtyRepository" type="service_closure" id="App\Repository\SurgicalSpecialtyRepository"/>
@@ -6208,9 +6592,75 @@
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\AccountController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AccountController"/>
+      <argument>App\Controller\AccountController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\AdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AdminController"/>
+      <argument>App\Controller\AdminController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\AvailabilityController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AvailabilityController"/>
+      <argument>App\Controller\AvailabilityController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\ContactController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\ContactController"/>
+      <argument>App\Controller\ContactController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\CpsCheckController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\CpsCheckController"/>
+      <argument>App\Controller\CpsCheckController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\HomeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\HomeController"/>
+      <argument>App\Controller\HomeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\InformationsController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\InformationsController"/>
+      <argument>App\Controller\InformationsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\LoginController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\LoginController"/>
+      <argument>App\Controller\LoginController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
     <service id=".service_locator.l1ae.Qz.App\Controller\RegistrationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\RegistrationController"/>
       <argument>App\Controller\RegistrationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\SearchController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\SearchController"/>
+      <argument>App\Controller\SearchController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\SurgeryNotificationController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\SurgeryNotificationController"/>
+      <argument>App\Controller\SurgeryNotificationController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.l1ae.Qz" method="withContext"/>
+    </service>
+    <service id=".service_locator.l1ae.Qz.App\Controller\UpdateUserController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\UpdateUserController"/>
+      <argument>App\Controller\UpdateUserController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.l1ae.Qz" method="withContext"/>
     </service>
@@ -6386,12 +6836,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.Ovl1niP"/>
+      <argument type="service" id=".service_locator.iQurnKr"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.Ovl1niP"/>
+      <argument type="service" id=".service_locator.iQurnKr"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface">
       <argument type="collection"/>
@@ -6409,8 +6859,9 @@
     </service>
     <service id=".errored..service_locator.KfwZsne.Symfony\Component\HttpFoundation\Response" class="Symfony\Component\HttpFoundation\Response"/>
     <service id=".errored..service_locator.KfbR3DY.Symfony\Component\Config\Loader\LoaderInterface" class="Symfony\Component\Config\Loader\LoaderInterface"/>
-    <service id=".errored..service_locator.uCBo4PM.App\Entity\User" class="App\Entity\User"/>
+    <service id=".errored..service_locator.frza3Kn.App\Entity\User" class="App\Entity\User"/>
     <service id=".errored..service_locator.57UVbl1.App\Entity\User" class="App\Entity\User"/>
+    <service id=".errored..service_locator.on5.8BR.App\Entity\Availability" class="App\Entity\Availability"/>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
       <argument>about</argument>
       <argument type="collection"/>
@@ -7221,7 +7672,7 @@
     <service id="Symfony\Component\Security\Core\User\UserCheckerInterface" alias="security.user_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.gSv9zYw" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Ovl1niP"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.iQurnKr"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
@@ -7238,10 +7689,15 @@
     <service id="Psr\Log\LoggerInterface $securityLogger" alias="monolog.logger.security"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id=".service_locator.0GV1BZZ" alias=".service_locator.gSv9zYw"/>
-    <service id=".service_locator.7TFlG25" alias=".service_locator.uCBo4PM"/>
-    <service id=".service_locator.w_oOxmo" alias=".service_locator.Ovl1niP"/>
+    <service id=".service_locator.KAE_CpL" alias=".service_locator.WhLgZI0"/>
+    <service id=".service_locator.yoRPLzb" alias=".service_locator.jPEmy.I"/>
+    <service id=".service_locator.mhUAD0A" alias=".service_locator.frza3Kn"/>
+    <service id=".service_locator.5wCcnML" alias=".service_locator.on5.8BR"/>
+    <service id=".service_locator.Su7n6y8" alias=".service_locator.5wZKjk8"/>
+    <service id=".service_locator.lgNpsxh" alias=".service_locator.FFI4YJI"/>
+    <service id=".service_locator.1aLwWXN" alias=".service_locator.iQurnKr"/>
     <service id=".service_locator.wKF4yn1" alias=".service_locator.19_mNxd"/>
-    <service id=".service_locator.GRReuIi" alias=".service_locator.CfnR51D"/>
+    <service id=".service_locator.vv31Ia9" alias=".service_locator.re6FTMc"/>
     <service id=".service_locator.qBCHs1a" alias=".service_locator.QXcJQkF"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.jkb6XQV" alias=".service_locator.l1ae.Qz"/>
@@ -7267,10 +7723,20 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator._5g_Wvc" alias=".service_locator.KfwZsne"/>
     <service id=".service_locator.JBAFp66" alias=".service_locator.KfbR3DY"/>
+    <service id=".service_locator.wQqm_iy" alias=".service_locator.WhLgZI0"/>
     <service id=".service_locator.YJ2_D1N" alias=".service_locator.Ty8_ac6"/>
-    <service id=".service_locator.qv9jASU" alias=".service_locator.uCBo4PM"/>
+    <service id=".service_locator._p8CO5y" alias=".service_locator.Cayct2e"/>
+    <service id=".service_locator.qoOo9G7" alias=".service_locator.jPEmy.I"/>
+    <service id=".service_locator.NgGI85u" alias=".service_locator.frza3Kn"/>
     <service id=".service_locator.WtbzhaV" alias=".service_locator.57UVbl1"/>
+    <service id=".service_locator.fZ7c_MK" alias=".service_locator.yvIuFrf"/>
+    <service id=".service_locator.NUAL6SA" alias=".service_locator.08xDTZa"/>
+    <service id=".service_locator.Ze4DJM3" alias=".service_locator.on5.8BR"/>
+    <service id=".service_locator.yciRRzv" alias=".service_locator.CpaXrFh"/>
+    <service id=".service_locator.GQtkeLb" alias=".service_locator.5wZKjk8"/>
+    <service id=".service_locator.kXCVHeG" alias=".service_locator.UDgw6Ol"/>
     <service id=".service_locator.8PQa8Mp" alias=".service_locator..Ae5NXw"/>
+    <service id=".service_locator.R2dWpoq" alias=".service_locator.FFI4YJI"/>
     <service id=".service_locator.moWzgtz" alias=".service_locator.l1ae.Qz"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.9YCWxeJ" alias=".service_locator.dw8O4oN"/>
