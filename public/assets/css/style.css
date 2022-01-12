@@ -113,13 +113,27 @@ border: 1px solid black;
 
 .flip-card-front {
     color: white;
+    background-color: rgba(108, 99, 255);
+    border-radius: 7px;
+}
+.flip-card-front img {
+    max-width: 30%;
+    background-color: white;
+    border-radius: 7px;
+    margin-top: 10px;
+    
 }
 
 .flip-card-back {
     background-color: #4fc19e;
     color: white;
     transform: rotateY(180deg);
+    border-radius: 7px;
 } 
+.list_search{
+    font-size: 1rem;
+    text-align: left;
+}
 
 /* **********************PAGES ACCOUNT************************** */
 
@@ -146,6 +160,11 @@ border: 1px solid black;
     padding-top: 10px;
     font-size: 5rem;
 }
+
+#calendar{
+    font-size: 6rem;
+}
+
 .col_account img {
     padding-top: 10px;
     color: white;
@@ -166,7 +185,7 @@ border: 1px solid black;
     list-style: none;
     text-align: left;
 }
-.list_account span{font-weight: bold;}
+ul li span{font-weight: bold;}
 .h3_account{
     color: white;
     font-size: 1.4rem;
@@ -178,11 +197,11 @@ border: 1px solid black;
     25%  {left:50px; top:0px;}
     50%  {left:75px; top:100px;}
     75%  {left:0px; top:100px;}
-    100% { left:0px; top:0px;}
+    100% { border-bottom:2px solid red ; left:0px; top:0px;}
 }
 #anim_scalpel{
     position: relative;
     animation-name: scalpel;
-    animation-duration: 1s;
+    animation-duration: 2s;
     animation-iteration-count: infinite
 }

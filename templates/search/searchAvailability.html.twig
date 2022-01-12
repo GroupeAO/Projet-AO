@@ -4,11 +4,6 @@
 
 {% block body %}
 
-    {# {% for result in results %}
-        {{result.start_date | date('d-m-Y')}} <br>
-        {{result.end_date| date('d-m-Y')}} <br>
-        {{result.zip_code}} <br>
-    {% endfor %} #}
 <main class="container">
     <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
         <input class="mb-2 form-control" type="date" name="date" id="date">
@@ -19,17 +14,18 @@
     {% for result in results %}
         <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front bg-secondary">
+                <div class="flip-card-front">
+                <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="">
                 <h2 class="h2CardSearch">{{result.name}} {{result.name}} </h2>
-                <p>Disponible du :</p>
-                <p>{{result.start_date | date('d-m-Y')}} </p>
-                <p>Au </p>
-                <p>{{result.start_date | date('d-m-Y')}} </p>
+                <p>Disponible du : <br> {{result.start_date | date('d-m-Y')}} Au {{result.end_date | date('d-m-Y')}} </p>
                 </div>
                 <div class="flip-card-back">
-                <h2class="h2CardSearch">Contacte moi !</h2>
-                    <p>{{result.email}} </p>
-                    <p{{result.phone_number}}</p>
+                <h2 class="h2CardSearch mt-2">Contacte moi !</h2>
+                <ul class="list_search">
+                    <li> <span> Adresse email: </span>{{result.email}}</li>
+                    <li><span> Numéro: </span> {{result.phone_number}}</li>
+                    <li><span> Numéro Cps:</span> {{result.cpsnumber}}</li>
+                </ul>
                 </div>
             </div>
         </div> 

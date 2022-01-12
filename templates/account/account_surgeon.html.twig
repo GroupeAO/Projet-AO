@@ -4,8 +4,15 @@
 
 {% block body %}
 <section class="container">
-        <h2 class="h2_account mb-4">Bonjour {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}, </h2>
-        <div class="row d-flex justify-content-center ">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="pageTitle">
+                Votre Espace Personel
+            </div>
+        </div>
+    </div>
+        <h2 class="h2_account mb-4">Bonjour Dr. {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
+        <div class="row d-flex justify-content-center">
 
             <div class="col-xs-12 col_account bg-primary m-1">
                 <p><i class="fas fa-user-edit"></i></p>
@@ -18,7 +25,7 @@
             </div>
 
             <div class="col-xs-12 col_account bg-primary m-1">
-                <p><i class="far fa-calendar-alt"></i></p>
+                <p><i class="far fa-calendar-alt" id="calendar"></i></p>
                 <a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Mes annonces</a>
             </div>
             <div class="col-xs-12 col_account bg-secondary m-1">
@@ -31,9 +38,5 @@
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
                 </ul>
             </div>
-            <div class="col-xs-12 col_account bg-secondary m-1">
-                <img id="anim_scalpel" src="{{ asset('assets/img/2320895.png') }}" alt="">
-            </div>
-        </div>
 </section>
 {% endblock %}
