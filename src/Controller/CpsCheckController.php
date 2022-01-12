@@ -58,7 +58,7 @@ class CpsCheckController extends AbstractController
                 $session->set('codeProfession', $codeProfession);
                 
                //$session->set('codeProfession',$cpsCardOwnerRepository->getCodeProfession());
-              
+            
                 return $this->redirectToRoute('registration');
                 
             } else {

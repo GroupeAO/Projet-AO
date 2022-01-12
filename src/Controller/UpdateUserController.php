@@ -38,43 +38,25 @@ class UpdateUserController extends AbstractController
         //check submit  and valid from
             
         if($form->isSubmitted() && $form->isValid()){
-            $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository, $email);
-            echo 'cool';
-           // return $this->redirectToRoute('account');
+            $newEmail=$user->getEmail();
+        
+            if ($this->isEmailExist($newEmail, $userRepository)===false || $newEmail == $email )  {
+            $unsecurePassword= $user->getPassword();
+            $hashedPassword = $userPasswordHasherInterface->hashPassword(
+                $user,
+                $unsecurePassword);
+
+            $this->updateUser($entityManagerInterface, $user, $hashedPassword);
+            return $this->redirectToRoute('home');
+            }else{
+                return $this->redirectToRoute('account');
+            }
+
         }
         return $this->render('update_user/index.html.twig', [
             'form' => $form->createView(),
             'id'=>$id
         ]);
-    }
-
-    public function checkUser(
-        EntityManagerInterface $entityManagerInterface,
-        UserPasswordHasherInterface $userPasswordHasherInterface,
-        User $user,
-        UserRepository $userRepository,
-        string $email
-    ): RedirectResponse
-    {
-        $newEmail=$user->getEmail();
-        
-        if ($this->isEmailExist($newEmail, $userRepository)===false || $newEmail == $email )  {
-
-            var_dump($newEmail);
-        $unsecurePassword= $user->getPassword();
-        $hashedPassword = $userPasswordHasherInterface->hashPassword(
-            $user,
-            $unsecurePassword
-            
-        );
-        $this->updateUser($entityManagerInterface, $user, $hashedPassword);
-        return $this->redirectToRoute('home');
-        }else{
-            var_dump($newEmail);
-            $userEmail=$user->getEmail();
-                    echo "L'email $userEmail existe déja en base de données";
-                    return $this->redirectToRoute('account');
-        }
     }
 
     public function updateUser( EntityManagerInterface $entityManagerInterface,
