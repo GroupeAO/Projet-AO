@@ -24,10 +24,15 @@
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
 
-            {% if is_granted("ROLE_SURGEON") %} 
-                {% include "form/searchAO.php" %}
+            {% if is_granted("ROLE_SURGEON") %}
+            <div class="row justify-content-center">
+                <div class="col-md-5"> 
+                    {% include "form/searchAO.php" %}
+                </div>
+                <div class="col-md-5">
                 {% include "form/searchUser.php" %}
-    
+                </div>
+            </div>
             
             {% elseif is_granted("ROLE_NURSE") %}
                 {% include "form/searchSurgery.php" %} 
@@ -35,8 +40,9 @@
             {% endif %}
     {% else %}
             {% include "form/login.php" %} 
+            {% include "home/homeCards.php" %}
     {% endif %}
-      
+     
         {# {% switch role in app.user.roles %}
         
             {% case "["ROLE_SURGEON"]" %}
@@ -50,29 +56,5 @@
         {% endswitch %} #}
 
 
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="text-white bg-primary mb-3">
-                <div class="card-header">Aides Opératoires</div>
-                <div class="card-body">
-                    <p class="card-text">Indiquez vos coordonnées, vos disponibilités et un chirurgien entrera directement en contact avec vous.</p>
-                </div>
-                <div class="formSubmit">
-                    <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="text-white bg-secondary mb-3">
-                <div class="card-header">Chirurgiens</div>
-                <div class="card-body">
-                    <p class="card-text">Créez votre compte et recherchez un(e) IBODE ou IDE en quelques clics.</p>
-                </div>
-                <div class="formSubmit">
-                    <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 {% endblock %}
