@@ -2,7 +2,7 @@
 
 {% block body %}
     {% for message in app.flashes('registrationSuccess') %}
-        <div class="alert alert-success registrationSuccess">
+        <div class="alert alert-success">
             {{ message }}
         </div>
     {% endfor %}
@@ -11,7 +11,7 @@
             <img src="{{ asset('../assets/img/undraw_doctors_hwty.png') }}" class="img-fluid homeBanner">
             <div class="homeIntro">
                 {# <img src="{{ asset('../assets/img/aideopLogo.png') }}" class="img-fluid"> #}
-                <h2 class="logo"><span class="text-primary">aide</span><span class="text-secondary">op</span>.com</h2> 
+                <h2 class="display-2 logo"><span class="text-primary">aide</span><span class="text-secondary">op</span>.com</h2> 
                 <p>Mise en relation des Chirurgiens et Aides Opératoires (IBODE et IDE)</p>
             </div>
         </div>
@@ -20,69 +20,42 @@
     {% if error %}
         <p class="error"> {{error.messageKey | trans(error.messageData, 'security') }}</p>
     {% endif %}
+
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <section class="row">
-            <div class="col">
-                <form action="{{path('search')}}" method="post">
-                    <input type="search" name="search" id="search">
-                    <button type="submit">rechercher un utilisateur</button>
-                </form>
+
+
+            {% if is_granted("ROLE_SURGEON") %}
+            <div class="row row-flex justify-content-center">
+                <div class="col-md-5"> 
+                    {% include "form/searchAO.php" %}
+                </div>
+                <div class="col-md-5">
+                {% include "form/searchUser.php" %}
+                </div>
             </div>
-            {% if is_granted('ROLE_SURGEON') %}
             
-            <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
-                <input class="mb-2 form-control" type="date" name="date" id="date">
-                <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-                <button class="btn btn-primary" type="submit">rechercher une Aide operatoire disponible</button>
-            </form>
-            {% else %}
-            <form class="row justify-content-center mb-5 form-group" action="{{path('search_surgery')}}" method="post">
-                <div class="col-md-3">
-                    <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-                </div>
-                <div class="row justify-content-center mb-5 formSubmit">
-                    <button class="btn btn-primary col-md-auto" type="submit">rechercher une chirurgie</button>
-                </div>
-            </form>
-        </section>
-        {% endif %}
+            {% elseif is_granted("ROLE_NURSE") %}
+
+                {% include "form/searchSurgery.php" %} 
+                {% include "form/searchUser.php" %}       
+            {% endif %}
     {% else %}
-    <form class="loginForm" action="{{path('login')}}" method="POST">
-        <div class="row justify-content-center mb-5">
-            <div class="col-md-3">
-                <input type="text" class="mb-2 form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
-            </div>    
-            <div class="col-md-3">       
-                <input type="password" class="mb-2 form-control" name="_password" id="password" placeholder="Mot de Passe" required>
-            </div>
-            <div class="col-md-auto formSubmit">         
-                <button type="submit" class="btn btn-primary">Me connecter</button>
-            </div>            
-        </div>
-    </form>
-    <div class="row justify-content-center">
-        <div class="col-md-5">
-            <div class="text-white bg-primary mb-3">
-                <div class="card-header">Aides Opératoires</div>
-                <div class="card-body">
-                    <p class="card-text">Indiquez vos coordonnées, vos disponibilités et un chirurgien entrera directement en contact avec vous.</p>
-                </div>
-                <div class="formSubmit">
-                    <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="text-white bg-secondary mb-3">
-                <div class="card-header">Chirurgiens</div>
-                <div class="card-body">
-                    <p class="card-text">Créez votre compte et recherchez un(e) IBODE ou IDE en quelques clics.</p>
-                </div>
-                <div class="formSubmit">
-                    <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
-                </div>
-            </div>
-        </div>
-    </div>
+            {% include "form/login.php" %} 
+            {% include "home/homeCards.php" %}
     {% endif %}
+     
+        {# {% switch role in app.user.roles %}
+        
+            {% case "["ROLE_SURGEON"]" %}
+                    
+        
+            {% case "["ROLE_NURSE"]" %}
+
+            {% default %}
+                
+        
+        {% endswitch %} #}
+
+
+
 {% endblock %}

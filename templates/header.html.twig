@@ -7,17 +7,6 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
-                    {# <li class="nav-item">
-                        <a class="nav-link active" >Accueil</a>
-                        <span class="visually-hidden">(current)</span>
-                    </li> #}
-                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    {% else %}
-                    <li class="nav-item">
-                        <a class="nav-link active" href="{{ path('cps_check') }}">Enregistrement</a>
-                        <span class="visually-hidden">(current)</span>
-                    </li>
-                    {% endif %}
                     <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                         <div class="dropdown-menu">
@@ -25,14 +14,16 @@
                             <a class="dropdown-item" href="{{path('informations')}}">Infos Pratiques</a>
                             <a class="dropdown-item" href="{{path('donate')}}">Faire un don</a>
                             <a class="dropdown-item" href="{{path('credits')}}">Crédits</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="{{path('contact')}}">Contactez-nous</a>
                         </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="{{path('contact')}}">Contactez-nous</a>
+                        <span class="visually-hidden">(current)</span>
                     </li>
                 </ul>
                 <div class="d-flex"></div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="text-white mr-3"> Bonjour, {{app.session.get('prenomDexercice')|capitalize}} ! </div>
+                    <div class="text-white mr-3"> Bonjour, {{app.user.firstname|capitalize}} ! </div>
                     <a href="{{ path('account') }}"><button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}
