@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Form\ShowHidePasswordType;
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -14,7 +15,7 @@ class LoginType extends AbstractType
     {
         $builder
             ->add('email')
-            ->add('password', PasswordType::class)
+            ->add('password', ShowHidePasswordType::class)
         ;
     }
 
