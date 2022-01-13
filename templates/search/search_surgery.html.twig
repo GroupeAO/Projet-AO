@@ -9,6 +9,11 @@
 </style>
 
 <div class="example-wrapper">
+
+{% if empty == true %}
+    <p>djjjjjjjjjjjjjjjjjjj</p>
+</div>
+{% endif %}
     {% for result in results %}
         {{result.start_date | date('d-m-Y')}} <br>
         {{result.en_date| date('d-m-Y')}} <br>
