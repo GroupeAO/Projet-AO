@@ -9,6 +9,9 @@
 }
 .logo{
     font-family: 'Comfortaa', cursive;
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+}
+.bannerLogo{
     text-shadow: 0px 0px 9px #FFF;
 }
 .pageTitle{
@@ -21,11 +24,7 @@
     z-index: 11;
     margin-bottom: 20px;
 }
-.homeBanner{
-    /* position: relative; */
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
+
 .bannerImage {
     background: fixed center no-repeat;
     background-size: contain;
@@ -33,17 +32,14 @@
     
    }
 .homeIntro{
-
+    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
     text-align: center;
-    /* position: absolute; */
-    /* top: 100px;
-    left : 50%; */
+    height: min-content;
     background-color: rgba(255, 255, 255, 0.8);
     border: 1px solid #4fc19e;
     border-radius: 5px;
     padding: 15px;
     margin-bottom: 50px;
-    /* transform: translate(-50%); */
 }
 
 .card-header{

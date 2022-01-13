@@ -1,5 +1,5 @@
 <form class="loginForm" action="{{path('login')}}" method="POST">
-    <div class="row row-flex justify-content-center align-self-end mb-5">
+    <div class="row row-flex justify-content-center align-self-end">
         <div class="col-md-auto mb-3">
             <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
         </div>    
