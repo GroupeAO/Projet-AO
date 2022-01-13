@@ -15,9 +15,9 @@
         <div class="flip-card">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
-                <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="">
+                <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
                 <h2 class="h2CardSearch">{{result.name}} {{result.name}} </h2>
-                <p>Disponible du : <br> {{result.start_date | date('d-m-Y')}} Au {{result.end_date | date('d-m-Y')}} </p>
+                    <p>Disponible du : <br> {{result.start_date | date('d-m-Y')}} Au {{result.end_date | date('d-m-Y')}} </p>
                 </div>
                 <div class="flip-card-back">
                 <h2 class="h2CardSearch mt-2">Contacte moi !</h2>
@@ -25,6 +25,8 @@
                     <li> <span> Adresse email: </span>{{result.email}}</li>
                     <li><span> Numéro: </span> {{result.phone_number}}</li>
                     <li><span> Numéro Cps:</span> {{result.cpsnumber}}</li>
+                    <li><span> kilomètrage maximum:</span> {{result.commute_distance}}</li>
+
                 </ul>
                 </div>
             </div>

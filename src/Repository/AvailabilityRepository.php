@@ -35,6 +35,22 @@ class AvailabilityRepository extends ServiceEntityRepository
         return $result->fetchAllAssociative();
     }
 
+    public function checkAvailabilityQuery($date,$id,EntityManagerInterface $entityManagerInterface) 
+    {
+        $conn=$entityManagerInterface->getConnection();
+        $rawSql = "SELECT * FROM availability 
+        LEFT JOIN user_availability
+        ON availability.id=user_availability.availability_id
+        LEFT JOIN user 
+        ON    user_availability.user_id =user.id
+        WHERE start_date <= :date AND end_date >= :date AND user.id = :id";
+        $query=$conn->prepare($rawSql);
+        $result= $query->executeQuery(['date'=>$date,
+                                        'id'=> $id        
+                                        ]);
+        return $result->fetchAllAssociative();
+    }
+
     public function displayUserAvailabilityQuery($id,  EntityManagerInterface $entityManagerInterface)
     {
         $conn=$entityManagerInterface->getConnection();

@@ -3,7 +3,11 @@
 {% block title %}Vos disponibilités{% endblock %}
 
 {% block body %}
-{# bloqué les dates passé peu-être fait en js/jQuery #}
+{% for message in app.flashes('addAvailabiltyError') %}
+        <div class="alert alert-danger appFlashError"">
+            {{ message }}
+        </div>
+{% endfor %}
 
 {{form_start(form, {attr: {novalidate: 'novalidate'}})}}
     <div class="row justify-content-center">
@@ -15,7 +19,7 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-auto">
-            <button class="btn btn-secondary" type="submit">Enregistrer cette disponibilité</button>
+            <button class="btn btn-secondary" type="submit">Ajouter cette disponibilité</button>
         </div>
     </div>
 {{form_end(form)}}

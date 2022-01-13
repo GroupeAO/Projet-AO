@@ -8,6 +8,7 @@ use App\Form\InsertAvailabilityType;
 use App\Repository\AvailabilityRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,12 +19,13 @@ class AvailabilityController extends AbstractController
     #[Route('/availability', name: 'availability')]
     public function index(Request $request,
     EntityManagerInterface $entityManagerInterface,
+    AvailabilityRepository $availabilityRepository,
     ): Response
     {
         /** @var \App\Entity\User $user */
         
         $user = $this->getUser();
-        $idUser=$user->getId();
+        $id=$user->getId();
         
         $availability= new Availability;
 
@@ -31,12 +33,23 @@ class AvailabilityController extends AbstractController
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
+            // testing if the nusre has already a registered availability for this timeframe
+            $date=$availability->getStartDate();
+            $date= $date->format('Y-m-d H:i:s');
+            $availabilities=$availabilityRepository->checkAvailabilityQuery($date,$id, $entityManagerInterface);
 
+            if ($availabilities) {
+                $this->addFlash('addAvailabiltyError', "Vous êtes déja enrgistré comme disponible sur cette période ou une partie de cette période.");
+                return $this->redirectToRoute('availability');
+
+            }
             $availability->getUsers()->add($user);
             $user->getFkavailability()->add($availability);
 
             $entityManagerInterface->persist($availability);
             $entityManagerInterface->flush();
+            $this->addFlash('addAvailabiltyError', "Vous êtes déja enrgistré comme disponible sur cette période ou une partie de cette période.");
+            return $this->redirectToRoute('availability');
     }
         return $this->render('availability/index.html.twig', [
             'form' => $form->createView(),
@@ -52,7 +65,6 @@ class AvailabilityController extends AbstractController
     ): Response
     {
         /** @var \App\Entity\User $user */
-        
         $user = $this->getUser();
         $id=$user->getId();
         $availabilities=$availabilityRepository->displayUserAvailabilityQuery($id, $entityManagerInterface);
@@ -72,16 +84,26 @@ class AvailabilityController extends AbstractController
     {
          /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $user->getId();
+        $idUser=$user->getId();
+        
         $availability=$availabilityRepository->find($id);
-        $availability= new Availability;
 
-        $availability=$availabilityRepository->find($id);
+        $availability= new Availability;
 
         $form = $this->createForm(InsertAvailabilityType::class, $availability);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
+            // testing if the nusre has already a registered availability for this timeframe
+            $date=$availability->getStartDate();
+
+            $availabilities=$availabilityRepository->checkAvailabilityQuery($date,$id, $entityManagerInterface);
+
+            if ($availabilities) {
+                $this->addFlash('addAvailabiltyError', "Vous êtes déja enrgistré comme disponible sur cette période ou une partie de cette période.");
+            return $this->redirectToRoute('user_edit_availability');
+
+            }
             $entityManagerInterface->flush();
         }
     
@@ -108,8 +130,7 @@ class AvailabilityController extends AbstractController
             
             usleep(2000000);
 
-            return $this->redirectToRoute('display_availability' ,$user=['id' => $idUser ]);
+            return $this->redirectToRoute('display_availability', $user=['id' => $idUser ]);
             
         }
-
-}
+    }
