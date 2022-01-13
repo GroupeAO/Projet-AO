@@ -3,11 +3,31 @@
 {% block title %}Hello SearchController!{% endblock %}
 
 {% block body %}
+<div class="row row-flex justify-content-center mb-5">
+    <div class="col-md-5"> 
+            {% include "form/searchUser.php" %}
+    </div>
+</div>
 
-
-    {% for result in results %}
-        {{result.name}} <br>
-        {{result.firstname}} <br>
-    {% endfor %}
+    <section class="row d-flew justify-content-center">
+        {% for result in results %}
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                    <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
+                    <h2 class="h2CardSearch">{{result.name}} {{result.firstname}} </h2>
+                    </div>
+                    <div class="flip-card-back">
+                    <h2 class="h2CardSearch mt-2">Contacte moi !</h2>
+                    <ul class="list_search">
+                        <li> <span> Adresse email: </span>{{result.email}}</li>
+                        <li><span> Numéro: </span> {{result.phoneNumber}}</li>
+                        <li><span> Numéro Cps:</span> {{result.cpsnumber}}</li>
+                    </ul>
+                    </div>
+                </div>
+            </div> 
+        {% endfor %}
+        </section>
 
 {% endblock %}

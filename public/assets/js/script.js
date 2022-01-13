@@ -24,5 +24,9 @@ var deleteLink = document.querySelector('.deleteLink')
 $(".appFlashError").fadeTo(8000, 500).slideUp(500, function(){
     $(".appFlashError").slideUp(500);
 });
+/***app flash success ****/
+$(".appFlashSuccess").fadeTo(3000, 500).slideUp(500, function(){
+    $(".appFlashSuccess").slideUp(500);
+});
 
 })( jQuery );
