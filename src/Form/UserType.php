@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Form;
+use App\Form\ShowHidePasswordType;
 use Twig\Extra\Intl\IntlExtension;
 use App\Entity\SurgicalSpecialty;
 use App\Entity\User;
@@ -27,7 +28,7 @@ class UserType extends AbstractType
             ->add(  'firstname', TextType::class,    ['label' => 'Prénom'])
             ->add(  'email', EmailType::class,       ['label' => 'Email'])
             ->add(  'password', RepeatedType::class, [
-                        'type' => PasswordType::class,
+                        'type' => ShowHidePasswordType::class,
                         'invalid_message' => 'Les mots de passe ne sont pas identiques.',
                         'options' =>        ['attr' => ['class' => 'password-field']],
                         'required' => true,
