@@ -12,10 +12,13 @@ var deleteLink = document.querySelector('.deleteLink')
             }
         });
     });
-
+    /*****home after registration****/ 
     $(".registrationSuccess").fadeTo(3000, 500).slideUp(500, function(){
         $(".registrationSuccess").slideUp(500);
     });
-
+/***form** */
+    $(document).ready(function () { 
+        $('#zipCode').selectize({ sortField: 'text' }); 
+    });
 
 })( jQuery );

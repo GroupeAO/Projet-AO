@@ -7,6 +7,7 @@ use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -18,14 +19,18 @@ class InsertAvailabilityType extends AbstractType
             ->add('startDate', DateTimeType::class, [
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
+                'label'  => 'Date de début'
                 
 
             ])
             ->add('endDate',DateTimeType::class, [
                 'widget' => 'single_text',
-                'input'  => 'datetime_immutable'
+                'input'  => 'datetime_immutable',
+                'label'  => 'Date de fin'
                 ])
-            ->add('commuteDistance')
+            ->add('commuteDistance', IntegerType::class,[
+                'label'  => 'Distance que vous êtes prêt(e) à parcourir en Kilomètre'
+            ])
         ;
     }
 

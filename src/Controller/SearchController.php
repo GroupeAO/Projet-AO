@@ -33,10 +33,16 @@ class SearchController extends AbstractController
         $date = $_POST['date'];
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$availabilityRepository->searchAvailabilityQuery($date, $zipCode,  $entityManagerInterface);
+        /* cheking if the search result is empty */ 
+        $empty=false;
+        if (!$results) {
+            $empty = true;
+        }
 
         return $this->render('search/searchAvailability.html.twig', [
             'date'=>$date,
-            'results'=> $results
+            'results'=> $results,
+            'empty' => $empty
         ]);
     }
     #[Route('/search/surgery', name: 'search_surgery')]
@@ -44,10 +50,10 @@ class SearchController extends AbstractController
     {
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$surgeryNotificationRepository->searchSurgeryQuery($zipCode,$entityManagerInterface);
+        $empty= false;
         if (!$results) {
             $empty = true;
         }
-        var_dump($results);
 
         return $this->render('search/search_surgery.html.twig', [
             'results'=> $results,
