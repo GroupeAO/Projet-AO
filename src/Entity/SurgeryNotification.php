@@ -106,7 +106,7 @@ class SurgeryNotification
         return $this->numberAoNeeded;
     }
 
-    public function setNumberAo(int $numberAoNeeded): self
+    public function setNumberAoNeeded(int $numberAoNeeded): self
     {
         $this->numberAoNeeded = $numberAoNeeded;
 

@@ -3,8 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-
-use App\Form\UserType;
+use App\Form\UpdateUserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -31,7 +30,7 @@ class UpdateUserController extends AbstractController
         $id=$user->getId();
         $email=$user->getEmail();
         
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(UpdateUserType::class, $user);
         $form->handleRequest($request);
 
 

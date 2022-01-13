@@ -3,11 +3,82 @@
 {% form_theme form 'bootstrap_5_layout.html.twig' %}
 
 {% block body %}
-{{form_start(form)}}
- <select name="role" id="role" class="form-select">
-                            <option value ="ROLE_SURGEON">Chirugien</option>
-                            <option value ="ROLE_NURSE">Aide opératoire</option>  
-                        </select>
-<button type="submit">trop cool</button>
-{{form_end(form)}}
+    <div class="row justify-content-center">
+        <div class="pageTitle">
+            Mettez à jour vos données 
+        </div>
+        <div class="col-md-5">
+            {% for message in app.flashes('cpsSuccess') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            {% for message in app.flashes('registrationError') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-auto text-center">
+            <h5 class="my-3">Données fournis par votre CPS/CPF (non modifiables) :</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            {{form_start(form, {attr: {novalidate: 'novalidate'}})}}
+            
+            {{form_row(form.cpsnumber, {'attr': {'value' : app.user.cpsnumber, 'class' : 'formDisabled'} })}} 
+            {{ app.user.cpsnumber}}
+            <label for="role" class="form-label">Profession</label>
+            <select name="role" id="role" class="form-select formDisabled mb-3">
+                <option value ="ROLE_SURGEON" >Chirugien</option>
+                <option value ="ROLE_NURSE" >Aide opératoire</option>  
+            </select>
+        </div>
+        <div class="col-md-5">
+            {{form_row(form.name, {'attr': {'value' : app.user.name, 'class' : 'formDisabled'} }) }}
+            {{form_row(form.firstname, {'attr': {'value' : app.user.firstname, 'class' : 'formDisabled'}} ) }}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-auto text-center">
+            <h5 class="my-3">Identifiants :</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            {{form_row(form.email) }}
+        </div>
+        <div class="col-md-5">
+            {{form_row(form.password, {'attr': {'label' : 'Nouveau mot de passe'}}) }}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5 text-center">
+            <h5 class="my-3">Coordonnées :</h5>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            {{form_row(form.phoneNumber)}}
+            {{form_row(form.adress)}}
+        </div>
+        <div class="col-md-5">
+            {{form_row(form.zipCode) }} 
+            {{form_row(form.city)}}
+        </div>   
+            
+        
+        {# {{form_row(form.surgicalSpeciality)}} #}
+        
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-auto">
+        <button type="submit" class="btn btn-secondary">Mettre à jour</button>
+    </div>
+</div>
+    {{form_end(form)}}
 {% endblock %}

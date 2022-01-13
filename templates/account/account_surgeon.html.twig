@@ -4,7 +4,14 @@
 
 {% block body %}
 <section class="container">
-        <h2 class="h2_account mb-3">Bonjour {{app.user.firstname}}, </h2>
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="pageTitle">
+                Votre Espace Personel
+            </div>
+        </div>
+    </div>
+        <h2 class="h2_account mb-4">Bonjour Dr. {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
         <div class="row d-flex justify-content-center">
 
             <div class="col-xs-12 col_account bg-primary m-1">
@@ -18,13 +25,18 @@
             </div>
 
             <div class="col-xs-12 col_account bg-primary m-1">
-                <p><i class="far fa-calendar-alt"></i></p>
+                <p><i class="far fa-calendar-alt" id="calendar"></i></p>
                 <a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Mes annonces</a>
             </div>
             <div class="col-xs-12 col_account bg-secondary m-1">
-                <p><i class="far fa-calendar-alt"></i></p>
-                <a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Mes annonces</a>
+                <ul class="list_account">
+                    <h3 class="h3_account">Informations Personelles</h3>
+                    <li><span> Adresse:</span> {{app.user.adress}}</li>
+                    <li><span> Numéro:</span> {{app.user.phoneNumber}}</li>
+                    <li><span>Code Postal:</span> {{app.user.zipCode}} </li>
+                    <li><span>Ville:</span> {{app.user.city}}</li>
+                    <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
+                </ul>
             </div>
-        </div>
 </section>
 {% endblock %}

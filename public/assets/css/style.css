@@ -117,15 +117,28 @@ border: 1px solid black;
 }
 
 .flip-card-front {
-    background-color: #ec8297ea;
     color: white;
+    background-color: rgba(108, 99, 255);
+    border-radius: 7px;
+}
+.flip-card-front img {
+    max-width: 30%;
+    background-color: white;
+    border-radius: 7px;
+    margin-top: 10px;
+    
 }
 
 .flip-card-back {
     background-color: #4fc19e;
     color: white;
     transform: rotateY(180deg);
+    border-radius: 7px;
 } 
+.list_search{
+    font-size: 1rem;
+    text-align: left;
+}
 
 /* **********************PAGES ACCOUNT************************** */
 
@@ -133,22 +146,30 @@ border: 1px solid black;
     color: white;
     text-align: center;
     height: 200px;
-    width: 200px;
+    width: 300px;
     border: 2px solid white;
+    -webkit-box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.5); 
+    box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.5);
 }
 
 .h2_account{
     color: #6C63FF;
+    font-size: 1.30rem;
 }
 
 .col_account:hover{
-    transform: scale(1.25);
+    transform: scale(1.20);
 }
 .col_account i{
 
     padding-top: 10px;
     font-size: 5rem;
 }
+
+#calendar{
+    font-size: 6rem;
+}
+
 .col_account img {
     padding-top: 10px;
     color: white;
@@ -162,6 +183,43 @@ border: 1px solid black;
     z-index: 1;
     padding: 100px 20px 20px 50px;
     margin: -100px -20px -20px -50px ;
-    
-
 } 
+
+.list_account{
+    font-size: 0.75rem;
+    list-style: none;
+    text-align: left;
+}
+ul li span{font-weight: bold;}
+.h3_account{
+    color: white;
+    font-size: 1.4rem;
+    margin-top: 10px;
+}
+
+@keyframes scalpel {
+    0%   {left:0px; top:0px;}
+    25%  {left:50px; top:0px;}
+    50%  {left:75px; top:100px;}
+    75%  {left:0px; top:100px;}
+    100% { border-bottom:2px solid red ; left:0px; top:0px;}
+}
+#anim_scalpel{
+    position: relative;
+    animation-name: scalpel;
+    animation-duration: 2s;
+    animation-iteration-count: infinite
+}
+/********page search*****/
+.selectize-input{
+    border-radius: 7px;
+}
+.selectize-input.focus{
+    border-color: #6C63FF;
+}
+
+.noResult{
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 1.25rem;
+}

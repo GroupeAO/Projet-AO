@@ -21,21 +21,25 @@
         <p class="error"> {{error.messageKey | trans(error.messageData, 'security') }}</p>
     {% endif %}
 
+
     <div class="row row-flex justify-content-center align-self-end">
         <div class="col-md-5"> 
 
     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
         {% if is_granted("ROLE_SURGEON") %}
             {% include "form/searchAO.html.twig" %}
+
             </div>
             <div class="col-md-5">
             {% include "form/searchUser.php" %}
               
             
+
         {% elseif is_granted("ROLE_NURSE") %}
             {% include "form/searchSurgery.php" %} 
         </div>
         <div class="col-md-5">
+
                 {% include "form/searchUser.php" %}       
         {% endif %}
     {% else %}
