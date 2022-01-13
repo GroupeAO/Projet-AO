@@ -24,9 +24,9 @@ class ContactController extends AbstractController
                 ->to('aideop.com@gmail.com')
                 ->subject($contactFormData['subject'])
                 ->text( 'Email envoyé via aideop.com/contact
-                         Expéditeur : '.$contactFormData['name'].' 
-                         Email de l\'expéditeur : '.$contactFormData['email'].'
-                         Message : '. $contactFormData['message'],'text/plain');
+                        Expéditeur : '.$contactFormData['name'].' 
+                        Email de l\'expéditeur : '.$contactFormData['email'].'
+                        Message : '. $contactFormData['message'],'text/plain');
             $mailer->send($message);
             $this->addFlash('contactSuccess', "Vore message a été envoyé. Merci! Cliquez ici pour revenir vers l'accueil.");
             return $this->redirectToRoute('contact');

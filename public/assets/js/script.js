@@ -20,5 +20,9 @@ var deleteLink = document.querySelector('.deleteLink')
     $(document).ready(function () { 
         $('#zipCode').selectize({ sortField: 'text' }); 
     });
+/***app flash error ****/
+$(".appFlashError").fadeTo(8000, 500).slideUp(500, function(){
+    $(".appFlashError").slideUp(500);
+});
 
 })( jQuery );

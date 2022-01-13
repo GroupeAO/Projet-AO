@@ -17,14 +17,24 @@ class Availability
     private $id;
 
     #[ORM\Column(type: 'datetime_immutable')]
+    /**
+     * @Assert\GreaterThan("today",
+     * message="le {{ value }} est une date révolu."
+     * )
+     */
     private $startDate;
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
+    /**
+     * @Assert\GreaterThan("today",
+     * message="le {{ value }} est une date révolu."
+     * )
+     */
     private $endDate;
 
     #[ORM\Column(type: 'integer', nullable: true)]
     /**
-     * @Assert\NotBlank(message="Veuillez remplir le champ si dessus")
+     * @Assert\NotBlank(message="Veuillez remplir le champ ci-dessus")
      */
     private $commuteDistance;
 

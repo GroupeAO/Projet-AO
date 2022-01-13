@@ -3,10 +3,42 @@
 {% block title %}Hello AccountController!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+<section class="container">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <div class="pageTitle">
+                Votre Espace Personel
+            </div>
+        </div>
+    </div>
+        <h2 class="h2_account mb-4">Bonjour {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-xs-12 col_account bg-primary m-1">
+                <p><i class="fas fa-user-edit"></i></p>
+                <a href="{{path('update_user',  { 'id': app.user.id })}}">mettre à jour mes informations personnelles</a>
+            </div>
+
+            <div class="col-xs-12 col_account bg-secondary m-1">
+                <p><img src="{{ asset('assets/img/scalpel-line-dashed.svg') }}" alt=""></p>
+                <a href="{{path('availability')}}">Ajouter une annonce disponibilité</a>
+            </div>
+
+            <div class="col-xs-12 col_account bg-primary m-1">
+                <p><i class="far fa-calendar-alt" id="calendar"></i></p>
+                <a href="{{path('display_availability',  { 'id': app.user.id })}}">Mes disponibilités</a>
+            </div>
+            <div class="col-xs-12 col_account bg-secondary m-1">
+                <ul class="list_account">
+                    <h3 class="h3_account">Informations Personelles</h3>
+                    <li><span> Adresse:</span> {{app.user.adress}}</li>
+                    <li><span> Numéro:</span> {{app.user.phoneNumber}}</li>
+                    <li><span>Code Postal:</span> {{app.user.zipCode}} </li>
+                    <li><span>Ville:</span> {{app.user.city}}</li>
+                    <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
+                </ul>
+            </div>
+</section>
 <a href="{{path('update_user',  { 'id': app.user.id })}}">mettre a jour mes infos</a>
 <a href="{{path('availability')}}">Déclarer mes disponibilités</a>
 <a href="{{path('display_availability',  { 'id': app.user.id })}}">Afficher mes disponibilités</a>
