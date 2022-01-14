@@ -4,9 +4,20 @@
 
 {% block body %}
 
-{# bloqué les dates passé peu-être fait en js/jQuery #}
-{{form_start(form)}}
-<button type="submit">mettre à jour ma disponibilité</button>
+{{form_start(form, {attr: {novalidate: 'novalidate'}})}}
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            {{form_row(form.startDate)}}
+            {{form_row(form.endDate)}}
+            {{form_row(form.commuteDistance)}}
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-auto">
+            <button class="btn btn-secondary mt-3" type="submit">Ajouter cette disponibilité</button>
+        </div>
+    </div>
 {{form_end(form)}}
+
 
 {% endblock %}

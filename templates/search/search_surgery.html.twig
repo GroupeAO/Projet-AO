@@ -9,20 +9,30 @@
     </div>
 </div>
 
-{% if empty == true %}
-    <p class="noResult">Il n'y a aucun résultats pour cette recherche.</p>
-{% endif %}
+<section class="row d-flew justify-content-center mt-5">
     {% for result in results %}
-        {{result.start_date | date('d-m-Y')}} <br>
-        {{result.en_date| date('d-m-Y')}} <br>
-        {{result.zip_code}} <br>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
+                <h3 class="h3CardSearch">{{result.name}} {{result.firstname}} </h3>
+                    <p>Chirugie le: {{result.start_date | date('d-m-Y')}}<br>
+                        Spécialité: {{result.speciality}}
+                    </p>
+                </div>
+                <div class="flip-card-back">
+                <h2 class="h2CardSearch mt-2">Coordonées.</h2>
+                <ul class="list_search">
+                    <li> <span> Adresse email: </span>{{result.email}}</li>
+                    <li><span> Numéro: </span> {{result.phone_number}}</li>
+                    <li><span> code postale:</span> {{result.clinic_zip_code}}</li>
+                    <li><span> code postal:</span> {{result.clinic_zip_code}}</li>
+
+                </ul>
+                </div>
+            </div>
+        </div> 
     {% endfor %}
-</div>
-<div class="container">
-    <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
-        <input class="mb-2 form-control" type="date" name="date" id="date">
-        <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-        <button class="btn btn-primary" type="submit">rechercher une Aide operatoire disponible</button>
-    </form>
+    </section>
 </div>
 {% endblock %}
