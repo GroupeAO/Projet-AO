@@ -9,7 +9,14 @@
 }
 .logo{
     font-family: 'Comfortaa', cursive;
-    text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
+    text-shadow:    2px 0 0 #fff,
+                    -2px 0 0 #fff, 
+                    0 2px 0 #fff,
+                    0 -2px 0 #fff, 
+                    1px 1px #fff, 
+                    -1px -1px 0 #fff, 
+                    1px -1px 0 #fff, 
+                    -1px 1px 0 #fff;
 }
 .bannerLogo{
     text-shadow: 0px 0px 9px #FFF;
@@ -22,14 +29,14 @@
 }
 .navbar{
     z-index: 11;
-    margin-bottom: 20px;
 }
 
 .bannerImage {
     background: fixed center no-repeat;
-    background-size: contain;
-    padding-top: 40px;
-    
+    background-size: cover;
+    background-clip: content-box;
+    /* padding-top: 40px; */
+
    }
 .homeIntro{
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
