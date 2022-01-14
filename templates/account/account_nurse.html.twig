@@ -21,7 +21,7 @@
 
             <div class="col-xs-12 col_account bg-secondary m-1">
                 <p><img src="{{ asset('assets/img/scalpel-line-dashed.svg') }}" alt=""></p>
-                <a href="{{path('availability')}}">Ajouter une annonce disponibilité</a>
+                <a href="{{path('availability')}}">Ajouter une annonce de disponibilité</a>
             </div>
 
             <div class="col-xs-12 col_account bg-primary m-1">
@@ -38,8 +38,10 @@
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
                 </ul>
             </div>
+            <form action="{{path('account_nurse_active')}}">
+                <input type="hidden" name="nurseActive" id="nurseActive" value="nurseActive">
+                <button type="submit">je suis disponible</button>
+            </form>
+
 </section>
-<a href="{{path('update_user',  { 'id': app.user.id })}}">mettre a jour mes infos</a>
-<a href="{{path('availability')}}">Déclarer mes disponibilités</a>
-<a href="{{path('display_availability',  { 'id': app.user.id })}}">Afficher mes disponibilités</a>
 {% endblock %}

@@ -121,6 +121,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'fkIdUser', targetEntity: SurgeryNotification::class, orphanRemoval: true)]
     private $surgeryNotifications;
 
+    #[ORM\Column(type: 'string', length: 45, nullable: true)]
+    private $InstantAvailability;
+
     public function __construct()
     {
         $this->surgery = new ArrayCollection();
@@ -415,6 +418,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCPSNumber(?int $CPSNumber): self
     {
         $this->CPSNumber = $CPSNumber;
+
+        return $this;
+    }
+
+    public function getInstantAvailability(): ?string
+    {
+        return $this->InstantAvailability;
+    }
+
+    public function setInstantAvailability(?string $InstantAvailability): self
+    {
+        $this->InstantAvailability = $InstantAvailability;
 
         return $this;
     }
