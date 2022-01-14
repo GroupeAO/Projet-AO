@@ -5,22 +5,23 @@
 {% block body %}
 
 <div class="container">
-    <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
-        <input class="mb-2 form-control" type="date" name="date" id="date">
-        <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
-        <button class="btn btn-primary" type="submit">rechercher une Aide operatoire disponible</button>
-    </form>
-<section class="row d-flew justify-content-center">
+    <div class="row row-flex justify-content-center mt-3">
+        <div class="col-lg-6 col-md-10">
+            {% include "form/searchAO.html.twig" %}
+        </div>
+    </div>
+
+<section class="row d-flex justify-content-center">
     {% for result in results %}
-        <div class="flip-card">
+        <div class="flip-card mt-3">
             <div class="flip-card-inner">
-                <div class="flip-card-front d-flex">
+                <div class="flip-card-front">
                 <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
-                <h2 class="h2CardSearch">{{result.name}} {{result.name}} </h2>
+                <h3 class="h3CardSearch">{{result.name}} {{result.name}} </h3>
                     <p>Disponible du : <br> {{result.start_date | date('d-m-Y')}} Au {{result.end_date | date('d-m-Y')}} </p>
                 </div>
                 <div class="flip-card-back">
-                <h2 class="h2CardSearch mt-2">Contacte moi !</h2>
+                <h2 class="h2CardSearch mt-2">Mes coordonées</h2>
                 <ul class="list_search">
                     <li> <span> Adresse email: </span>{{result.email}}</li>
                     <li><span> Numéro: </span> {{result.phone_number}}</li>

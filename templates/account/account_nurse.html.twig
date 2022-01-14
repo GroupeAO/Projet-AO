@@ -37,10 +37,18 @@
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
                 </ul>
             </div>
-            <form action="{{path('account_nurse_active')}}">
-                <input type="hidden" name="nurseActive" id="nurseActive" value="nurseActive">
-                <button type="submit">je suis disponible</button>
-            </form>
+            
+            {% if (app.user.InstantAvailability =='Inactive') or (app.user.InstantAvailability == null)  %}
+                <form action="{{path('account_nurse_active')}}">
+                    <input type="hidden" name="nurseActive" id="nurseActive" value="nurseActive">
+                    <button type="submit">Me rendre disponible</button>
+                </form>
+            {% else %}
+                <form action="{{path('account_nurse_inactive')}}">
+                    <input type="hidden" name="nurseInactive" id="nurseInactive" value="nurseInactive">
+                    <button type="submit">Me rendre non disponible</button>
+                </form>
+            {% endif %}
 
 </section>
 {% endblock %}

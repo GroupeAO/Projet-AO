@@ -33,6 +33,7 @@ class SearchController extends AbstractController
         $date = $_POST['date'];
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$availabilityRepository->searchAvailabilityQuery($date, $zipCode,  $entityManagerInterface);
+        
         /* cheking if the search result is empty */ 
         $empty=false;
         if (!$results) {

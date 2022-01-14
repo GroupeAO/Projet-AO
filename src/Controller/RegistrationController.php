@@ -8,6 +8,7 @@ use App\Repository\CpsCardOwnerRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -103,16 +104,43 @@ public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository
     return false;
 }
 
-public function isEmailExist(string $emailUser,
-UserRepository $userRepository) :bool
-{
-    // search for an existing email in db
-    $emailInDB= $userRepository->findOneBy(['email' => $emailUser]);
+    public function isEmailExist(string $emailUser,
+    UserRepository $userRepository) :bool
+    {
+        // search for an existing email in db
+        $emailInDB= $userRepository->findOneBy(['email' => $emailUser]);
 
-    if (!empty($emailInDB)) {
-        return true;
+        if (!empty($emailInDB)) {
+            return true;
+        }
+        return false;
     }
-    return false;
-}
+    #[Route('/profile/nusre/active', name: "account_nurse_active")]
+    public function addNurseActive( EntityManagerInterface $entityManagerInterface):RedirectResponse
+    {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+
+        if ($_POST['nurseActive'] = 'nurseActive') {
+            $user->setInstantAvailability('Active');
+            $entityManagerInterface->flush();
+        }
+        return $this->redirectToRoute('account');;
+        
+    }
+
+
+    #[Route('/profile/nusre/inactive', name: "account_nurse_inactive")]
+    public function addNurseInactive( EntityManagerInterface $entityManagerInterface):RedirectResponse
+    {
+        /** @var \App\Entity\User $user */
+        $user = $this->getUser();
+
+        if ($_POST['nurseInactive'] = 'nurseInactive') {
+            $user->setInstantAvailability('Inactive');
+            $entityManagerInterface->flush();
+        }
+        return $this->redirectToRoute('account');;
+    }
 
 }
