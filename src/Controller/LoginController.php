@@ -16,7 +16,7 @@ class LoginController extends AbstractController
   {
       $this->requestStack = $requestStack;
   }
-    #[Route('/login', name: 'login')]
+    #[Route('/login', name: 'loginRegistered')]
     public function index(AuthenticationUtils $authenticationUtils, ): Response
     {
           //getting the errors during connexion
