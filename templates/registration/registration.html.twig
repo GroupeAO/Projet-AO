@@ -30,11 +30,11 @@
                         {{ form_start(form, {attr: {novalidate: 'novalidate'}} ) }}
     <!-- Pre-filled -->
                         {{ form_row(form.cpsnumber, {'attr': {'value' : numeroCarte, 'class' : 'formDisabled'} }) }} 
-                        <label for="role" class="form-label">Profession</label>
+                        <label for="role" class="form-label m-0">Profession</label>
                         {% if app.session.get('codeProfession')==10 %}
-                        <input type="text" value="Chirurgien" id="role" class="form-control formDisabled">
+                        <input type="text" value="Chirurgien" id="role" class="form-control formDisabled m-0">
                         {% elseif app.session.get('codeProfession')==60 %}
-                        <input type="text" value="Infirmier(ère)" id="role" class="form-control formDisabled">   
+                        <input type="text" value="Infirmier(ère)" id="role" class="form-control formDisabled m-0">   
                         {% endif %}
                     </div>
                     <div class="col-md-5">

@@ -31,12 +31,16 @@ class RegistrationController extends AbstractController
         UserRepository $userRepository,
     ): Response 
     {
- // User from creation
+ // User form creation
         $session = $this->requestStack->getSession();
         
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
+// Check if CPS check is filled out (and role is set), if not redirect to CPS check        
+        if ($session->get('codeProfession')==!10 || $session->get('codeProfession')==!60){
+            return $this->redirectToRoute('cps_check');
+        }
 
         if($form->isSubmitted() && $form->isValid()){
 
