@@ -1,14 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
-
-            
                 <div class="row justify-content-center">
                     <div class="pageTitle">
                         Enregistrement (2/2)
                     </div>
                     <div class="col-md-5">
+<!-- Alerts (if any : CPS check success / registration fail) -->
                         {% for message in app.flashes('cpsSuccess') %}
                             <div class="alert alert-success">
                                 {{ message }}
@@ -25,26 +23,28 @@
                     <div class="col-md-auto text-center">
                         <h5 class="my-3">Données fournis par votre CPS/CPF (non modifiables) :</h5>
                     </div>
-                </div>
+                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-5">
-                        {{form_start(form, {attr: {novalidate: 'novalidate'}})}}
-                        
-                        {{form_row(form.cpsnumber, {'attr': {'value' : numeroCarte, 'class' : 'formDisabled'} })}} 
-                        {{ app.session.get('codeProfession') }}
+<!-- Form/Registration -->
+                        {{ form_start(form, {attr: {novalidate: 'novalidate'}} ) }}
+    <!-- Pre-filled -->
+                        {{ form_row(form.cpsnumber, {'attr': {'value' : numeroCarte, 'class' : 'formDisabled'} }) }} 
                         <label for="role" class="form-label">Profession</label>
-                        <select name="role" id="role" class="form-select formDisabled mb-3">
-                            <option value ="ROLE_SURGEON" >Chirugien</option>
-                            <option value ="ROLE_NURSE" >Aide opératoire</option>  
-                        </select>
+                        {% if app.session.get('codeProfession')==10 %}
+                        <input type="text" value="Chirurgien" id="role" class="form-control formDisabled">
+                        {% elseif app.session.get('codeProfession')==60 %}
+                        <input type="text" value="Infirmier(ère)" id="role" class="form-control formDisabled">   
+                        {% endif %}
                     </div>
                     <div class="col-md-5">
-                        {{form_row(form.name, {'attr': {'value' : nomDexercice, 'class' : 'formDisabled'} }) }}
-                        {{form_row(form.firstname, {'attr': {'value' : prenomDexercice, 'class' : 'formDisabled'}} ) }}
+                        {{ form_row(form.name, {'attr': {'value' : nomDexercice, 'class' : 'formDisabled'} }) }}
+                        {{ form_row(form.firstname, {'attr': {'value' : prenomDexercice, 'class' : 'formDisabled'}} ) }}
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-auto text-center">
+    <!-- login/password -->
                         <h5 class="my-3">Identifiants :</h5>
                     </div>
                 </div>
@@ -59,6 +59,7 @@
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-md-5 text-center">
+    <!-- Contact info -->
                         <h5 class="my-3">Coordonnées :</h5>
                     </div>
                 </div>
@@ -71,19 +72,14 @@
                         {{form_row(form.zipCode) }} 
                         {{form_row(form.city)}}
                     </div>   
-                        
-                        
-                        {# {{form_row(form.surgicalSpeciality)}} #}
-                        
+                        {# {{form_row(form.surgicalSpeciality)}} #} 
                     </div>
                 </div>
                 <div class="row justify-content-center">
                     <div class="col-auto">
-                        <button type="submit" class="btn btn-secondary">S'inscrire</button>
+                        <button type="submit" class="btn btn-secondary my-3">S'inscrire</button>
                     </div>
                 </div>
                     {{form_end(form)}}
-            
-        {# {% endif %} #}
 
 {% endblock %}
