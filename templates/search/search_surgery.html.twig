@@ -18,4 +18,11 @@
         {{result.zip_code}} <br>
     {% endfor %}
 </div>
+<div class="container">
+    <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
+        <input class="mb-2 form-control" type="date" name="date" id="date">
+        <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
+        <button class="btn btn-primary" type="submit">rechercher une Aide operatoire disponible</button>
+    </form>
+</div>
 {% endblock %}

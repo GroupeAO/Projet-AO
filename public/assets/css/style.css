@@ -117,11 +117,13 @@ border: 1px solid black;
 }
 .h2CardSearch{
     color: white;
+    font-size: 1.2rem;
+    margin-top: 10%;
 }
 
 .flip-card-front {
     color: white;
-    background-color: rgba(108, 99, 255);
+    background-color: rgba(108, 99, 255,0.8);
     border-radius: 7px;
 }
 .flip-card-front img {
@@ -225,4 +227,18 @@ ul li span{font-weight: bold;}
     margin-top: 2rem;
     text-align: center;
     font-size: 1.25rem;
+}
+
+
+/*** Pages display***/
+
+
+.cardMyAvailability{
+    border: 1px solid #4fc19e;
+    background: linear-gradient(#4fc19e,white );
+    color: white;
+    text-align: center;
+    border-radius: 7px;
+    margin-top: 2rem;
+    text-shadow: 1px 0 0 #4fc19e, -1px 0 0 #4fc19e, 0 1px 0 #4fc19e, 0 -1px 0 #4fc19e, 1px 1px #4fc19e, -0.5px -0.5px 0 #4fc19e, 0.5px -0.5px 0 #4fc19e, -0.5px 0.5px 0 #4fc19e;
 }

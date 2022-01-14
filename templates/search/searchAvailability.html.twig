@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<main class="container">
+<div class="container">
     <form class="row justify-content-center mb-5 form-group" action="{{path('search_availability')}}" method="post">
         <input class="mb-2 form-control" type="date" name="date" id="date">
         <input class="mb-2 form-control" type="integer" name="zipCode" id="zipCode" placeholder="Votre Numéro de département ici" >
@@ -14,7 +14,7 @@
     {% for result in results %}
         <div class="flip-card">
             <div class="flip-card-inner">
-                <div class="flip-card-front">
+                <div class="flip-card-front d-flex">
                 <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
                 <h2 class="h2CardSearch">{{result.name}} {{result.name}} </h2>
                     <p>Disponible du : <br> {{result.start_date | date('d-m-Y')}} Au {{result.end_date | date('d-m-Y')}} </p>
@@ -33,5 +33,5 @@
         </div> 
     {% endfor %}
     </section>
-</main>
+</div>
 {% endblock %}

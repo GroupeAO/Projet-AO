@@ -48,7 +48,7 @@ class AvailabilityController extends AbstractController
 
             $entityManagerInterface->persist($availability);
             $entityManagerInterface->flush();
-            $this->addFlash('addAvailabiltyError', "Vous êtes déja enrgistré comme disponible sur cette période ou une partie de cette période.");
+            $this->addFlash('addAvailabiltySuccess', "La periode de disponibilité a bien été ajoutée.");
             return $this->redirectToRoute('availability');
     }
         return $this->render('availability/index.html.twig', [
@@ -75,7 +75,7 @@ class AvailabilityController extends AbstractController
     }
 
     #[Route('/profile/user_edit_availability/{id}', name: 'user_edit_availability')]
-    public function editAvailability(Availability $availability,
+    public function editAvailability(
     Request $request,
     EntityManagerInterface $entityManagerInterface,
     AvailabilityRepository $availabilityRepository,
@@ -86,24 +86,25 @@ class AvailabilityController extends AbstractController
         $user = $this->getUser();
         $idUser=$user->getId();
         
-        $availability=$availabilityRepository->find($id);
-
         $availability= new Availability;
+
+        $availability=$availabilityRepository->find($id);
 
         $form = $this->createForm(InsertAvailabilityType::class, $availability);
         $form->handleRequest($request);
         
         if($form->isSubmitted() && $form->isValid()){
-            // testing if the nusre has already a registered availability for this timeframe
             $date=$availability->getStartDate();
-
+            $date= $date->format('Y-m-d H:i:s');
             $availabilities=$availabilityRepository->checkAvailabilityQuery($date,$id, $entityManagerInterface);
 
             if ($availabilities) {
                 $this->addFlash('addAvailabiltyError', "Vous êtes déja enrgistré comme disponible sur cette période ou une partie de cette période.");
-            return $this->redirectToRoute('user_edit_availability');
-
+                return $this->redirectToRoute('availability');
             }
+            $this->addFlash('addAvailabiltySuccess', "La periode de disponibilité a bien été modifié.");
+            return $this->redirectToRoute('availability');
+
             $entityManagerInterface->flush();
         }
     
