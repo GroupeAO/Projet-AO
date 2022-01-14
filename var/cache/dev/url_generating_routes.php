@@ -18,6 +18,7 @@ return [
     'account' => [[], ['_controller' => 'App\\Controller\\AccountController::index'], [], [['text', '/profile']], [], [], []],
     'account_nurse' => [[], ['_controller' => 'App\\Controller\\AccountController::renderAccountNurse'], [], [['text', '/profile/nurse']], [], [], []],
     'account_surgeon' => [[], ['_controller' => 'App\\Controller\\AccountController::renderAccountSurgeon'], [], [['text', '/profile/surgeon']], [], [], []],
+    'account_nurse_active' => [[], ['_controller' => 'App\\Controller\\AccountController::FunctionName'], [], [['text', '/profile/nusre/active']], [], [], []],
     'admin' => [[], ['_controller' => 'App\\Controller\\AdminController::index'], [], [['text', '/admin']], [], [], []],
     'admin_edit_user' => [['id'], ['_controller' => 'App\\Controller\\AdminController::editUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/user']], [], [], []],
     'admin_delete_user' => [['id'], ['_controller' => 'App\\Controller\\AdminController::deleteUser'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/admin/deleteUser']], [], [], []],
