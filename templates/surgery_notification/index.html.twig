@@ -1,8 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SurgeryNotificationController!{% endblock %}
+
 
 {% block body %}
+<!-- {% if not is_granted("ROLE_SURGEON") %}
+T'es pas chirurgien
+{% endif %} -->
 
 <div class="container">
     {{form_start(form)}}
