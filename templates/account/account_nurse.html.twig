@@ -1,22 +1,21 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AccountController!{% endblock %}
 
 {% block body %}
 <section class="container">
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="pageTitle">
-                Votre Espace Personel
+                Votre Espace Personnel
             </div>
         </div>
     </div>
-        <h2 class="h2_account mb-4">Bonjour {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
+        <h2 class="h2_account mb-4">Bonjour, {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
         <div class="row d-flex justify-content-center">
 
             <div class="col-xs-12 col_account bg-primary m-1">
                 <p><i class="fas fa-user-edit"></i></p>
-                <a href="{{path('update_user',  { 'id': app.user.id })}}">mettre à jour mes informations personnelles</a>
+                <a href="{{path('update_user',  { 'id': app.user.id })}}">Mettre à jour mes informations personnelles</a>
             </div>
 
             <div class="col-xs-12 col_account bg-secondary m-1">
@@ -30,7 +29,7 @@
             </div>
             <div class="col-xs-12 col_account bg-secondary m-1">
                 <ul class="list_account">
-                    <h3 class="h3_account">Informations Personelles</h3>
+                    <h3 class="h3_account">Informations Personnelles</h3>
                     <li><span> Adresse:</span> {{app.user.adress}}</li>
                     <li><span> Numéro:</span> {{app.user.phoneNumber}}</li>
                     <li><span>Code Postal:</span> {{app.user.zipCode}} </li>
@@ -39,7 +38,7 @@
                 </ul>
             </div>
 </section>
-<a href="{{path('update_user',  { 'id': app.user.id })}}">mettre a jour mes infos</a>
+<a href="{{path('update_user',  { 'id': app.user.id })}}">Mettre à jour mes infos</a>
 <a href="{{path('availability')}}">Déclarer mes disponibilités</a>
 <a href="{{path('display_availability',  { 'id': app.user.id })}}">Afficher mes disponibilités</a>
 {% endblock %}
