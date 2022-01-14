@@ -20,6 +20,7 @@
     {% endif %}
         <div class="row row-flex justify-content-center align-self-end">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="col-md-5">
             {% if is_granted("ROLE_SURGEON") %}
                 {% include "form/searchAO.html.twig" %}
             </div>
@@ -27,19 +28,17 @@
                 {% include "form/searchUser.php" %}
             </div>  
                 {% elseif is_granted("ROLE_NURSE") %}
-            <div class="col-md-5"> 
                     {% include "form/searchSurgery.html.twig" %} 
             </div>
-            <div class="col-md-5">{% include "form/searchUser.php" %}</div>  
+            <div class="col-md-5">
+                    {% include "form/searchUser.php" %}
+                </div>  
             {% endif %}
         {% else %}
-
                 {% include "form/login.php" %} 
-            
                 {% include "home/homeCards.php" %}
                 </div>
         {% endif %}
-        
             </div>
         </div>
     </div>
