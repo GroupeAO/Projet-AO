@@ -32,8 +32,8 @@
 }
 
 .bannerImage {
-    background: fixed center no-repeat;
-    background-size: cover;
+    background:  center no-repeat;
+    background-size: contain;
     background-clip: content-box;
     /* padding-top: 40px; */
 
