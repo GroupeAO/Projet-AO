@@ -14,6 +14,10 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
+use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
+
 
 class RegistrationController extends AbstractController
 {
@@ -30,6 +34,8 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         UserRepository $userRepository,
+        UserAuthenticatorInterface $userAuthenticatorInterface,
+        AuthenticatorInterface $authenticatorInterface
     ): Response 
     {
  // User form creation
@@ -49,7 +55,11 @@ class RegistrationController extends AbstractController
 
                 $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-                return $this->redirectToRoute('home');
+
+                return $userAuthenticatorInterface->authenticateUser(
+                    $user,
+                    $authenticatorInterface,
+                    $request); 
                 
                     //  $userEmail=$user->getEmail();
                     //    echo "L'email $userEmail existe déja en base de données";
