@@ -7,6 +7,7 @@ use App\Form\UserType;
 use App\Repository\CpsCardOwnerRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use PharIo\Manifest\Email;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,7 +18,6 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
-
 
 class RegistrationController extends AbstractController
 {
@@ -34,8 +34,8 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         UserRepository $userRepository,
-        UserAuthenticatorInterface $userAuthenticatorInterface,
-        AuthenticatorInterface $authenticatorInterface
+        // UserAuthenticatorInterface $userAuthenticatorInterface,
+        // AuthenticatorInterface $authenticatorInterface
     ): Response 
     {
  // User form creation
@@ -56,11 +56,10 @@ class RegistrationController extends AbstractController
                 $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
 
-                return $userAuthenticatorInterface->authenticateUser(
-                    $user,
-                    $authenticatorInterface,
-                    $request); 
-                
+                $session->set('email', $user->getEmail());
+                $session->set('password', $user->getPassword());
+
+                return $this->redirectToRoute('login_registration');
                     //  $userEmail=$user->getEmail();
                     //    echo "L'email $userEmail existe déja en base de données";
             } else {

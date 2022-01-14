@@ -34,4 +34,10 @@ $(".flip-card").on('click', function rotate() {
     $($this).toggleClass('.active');
     
 })
+
+
+/****** autologin*/
+window.onload = function(){
+    document.forms['login_registration'].submit();
+  }
 })( jQuery );
