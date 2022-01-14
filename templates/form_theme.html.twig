@@ -1,6 +1,7 @@
 {% extends 'bootstrap_4_layout.html.twig' %}
 
 {% block show_hide_password_row %}
+<!-- Theme for showHidePassword -->
     <style>
         .showHiddenPassword-wrapper {
             position: relative;
@@ -38,12 +39,12 @@
     {%- endif -%}
     {%- set widget_attr = {} -%}
     {%- if help is not empty -%}
-        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help", 'class': 'showHiddenPassword-widget'}} -%} {#  class 追加  #}
+        {%- set widget_attr = {attr: {'aria-describedby': id ~"_help", 'class': 'showHiddenPassword-widget'}} -%}
     {%- endif -%}
     <{{ element|default('div') }}{% with {attr: row_attr|merge({class: (row_attr.class|default('') ~ ' form-group')|trim})} %}{{ block('attributes') }}{% endwith %}>
     {{- form_label(form) -}}
 
-    {#  ウィジェット拡張  #}
+
     <div class='showHiddenPassword-wrapper'>
         {{- form_widget(form, widget_attr) -}}
         <span class='showHiddenPassword-toggle'
