@@ -7,10 +7,10 @@
     </div>
     {% endfor %}
     <div class="d-flex">
-        <div class="row bannerImage" style="background-image: url(' {{ asset("../assets/img/undraw_doctors_hwty.png") }} ');
+        <div class="row justify-content-center bannerImage" style="background-image: url(' {{ asset("../assets/img/undraw_doctors.png") }} ');
         height: 100vh">
         <div class="row justify-content-center">
-            <div class="homeIntro col-md-6">
+            <div class="homeIntro col-md-6 mt-4">
                 <h2 class="display-2 logo"><span class="text-primary">aide</span><span class="text-secondary">op</span>.com</h2> 
                 <p>Mise en relation des Chirurgiens et Aides Opératoires (IBODE et IDE)</p>
             </div>
@@ -20,6 +20,7 @@
     {% endif %}
         <div class="row row-flex justify-content-center align-self-end">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <div class="col-md-5">
             {% if is_granted("ROLE_SURGEON") %}
                 {% include "form/searchAO.html.twig" %}
             </div>
@@ -27,19 +28,17 @@
                 {% include "form/searchUser.php" %}
             </div>  
                 {% elseif is_granted("ROLE_NURSE") %}
-            <div class="col-md-5"> 
                     {% include "form/searchSurgery.html.twig" %} 
             </div>
-            <div class="col-md-5">{% include "form/searchUser.php" %}</div>  
+            <div class="col-md-5">
+                    {% include "form/searchUser.php" %}
+                </div>  
             {% endif %}
         {% else %}
-
                 {% include "form/login.php" %} 
-            
                 {% include "home/homeCards.php" %}
                 </div>
         {% endif %}
-        
             </div>
         </div>
     </div>

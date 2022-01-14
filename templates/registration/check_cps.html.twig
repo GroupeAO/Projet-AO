@@ -1,10 +1,8 @@
 {% extends 'base.html.twig' %}
 
-
-
 {% block body %}
+<!-- Alerts (if any : CPS check fail) -->
     {% for message in app.flashes('cpsError') %}
-                
         <div class="alert alert-warning">
         {{ message }}
         </div>
@@ -21,12 +19,12 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-5 text-center">
-            
+        <div class="col-md-6 text-center">
+<!-- Form/CPS check -->
                 {{form_start(form)}}
                 {{form_row(form.numeroCarte, {'label' : "Votre n° de carte CPS/CPF (10 chiffres)" }) }}
                 {{form_row(form.nomDexercice, {'label' : "Votre nom de famille (tel qu'il apparaît sur votre carte)" })}}
-                <button type="submit" class="btn btn-primary">Vérifier votre carte CPS/CPF</button>
+                <button type="submit" class="btn btn-primary my-3">Vérifier votre carte CPS/CPF</button>
                 {{form_end(form)}}
         </div>
     </div>
