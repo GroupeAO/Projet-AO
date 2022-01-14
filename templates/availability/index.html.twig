@@ -4,15 +4,11 @@
 
 {% block body %}
 {% for message in app.flashes('addAvailabiltyError') %}
-        <div class="alert alert-danger appFlashError">
+        <div class="alert alert-danger appFlashError mt-3">
             {{ message }}
         </div>
 {% endfor %}
-{% for message in app.flashes('addAvailabiltySuccess') %}
-        <div class="alert alert-success appFlashError">
-            {{ message }}
-        </div>
-{% endfor %}
+
 
 {{form_start(form, {attr: {novalidate: 'novalidate'}})}}
     <div class="row justify-content-center">
