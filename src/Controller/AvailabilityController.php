@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AvailabilityController extends AbstractController
 {
-    #[Route('/availability', name: 'availability')]
+    #[Route('/profile/availability', name: 'availability')]
     public function index(Request $request,
     EntityManagerInterface $entityManagerInterface,
     AvailabilityRepository $availabilityRepository,

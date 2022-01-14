@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class SurgeryNotificationController extends AbstractController
 {
-    #[Route('/surgery/notification', name: 'surgery_notification')]
+    #[Route('/profile/surgery_notification', name: 'surgery_notification')]
     public function index(Request $request, EntityManagerInterface $entityManagerInterface,
     ): Response
     {
@@ -36,7 +36,7 @@ class SurgeryNotificationController extends AbstractController
         ]);
     }
 
-    #[Route('/surgery/edit_user_notification/{id}', name: 'edit_surgery_notification')]
+    #[Route('/profile/edit_user_notification/{id}', name: 'edit_surgery_notification')]
     public function editSurgeryNotification(Request $request, EntityManagerInterface $entityManagerInterface,
     SurgeryNotificationRepository $surgeryNotificationRepository,
     int $id
@@ -57,7 +57,7 @@ class SurgeryNotificationController extends AbstractController
     }
 
 
-    #[Route('/surgery/notification_display/{id}', name: 'display_user_surgery')]
+    #[Route('/profile/surgery_notification_display/{id}', name: 'display_user_surgery')]
     public function displaySurgeryNotification(
     EntityManagerInterface $entityManagerInterface,
     SurgeryNotificationRepository $surgeryNotificationRepository,
@@ -73,7 +73,7 @@ class SurgeryNotificationController extends AbstractController
             'surgeries' => $surgeries
         ]);
     }
-    #[Route('/Surgery/delete_user_surgery/{id}', name: 'delete_surgery_notification')]
+    #[Route('/profile/surgery_delete_user_surgery/{id}', name: 'delete_surgery_notification')]
     public function deleteUserAvailability(
     EntityManagerInterface $entityManagerInterface,
     SurgeryNotificationRepository $surgeryNotificationRepository,

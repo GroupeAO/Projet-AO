@@ -45,6 +45,16 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         return $query->execute();
     }
 
+    public function searchActiveNurse($nurseStatus)
+    {
+        $qb = $this->createQueryBuilder('u')
+        ->where('instant_availability = :nurseStatus')
+        ->setParameter('nurseStatus', $nurseStatus)
+        ->orderBy('u.name', 'ASC');
+        $query = $qb->getQuery();
+        return $query->execute();
+    }
+
     // /**
     //  * @return User[] Returns an array of User objects
     //  */

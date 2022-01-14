@@ -9,9 +9,9 @@
     </div>
 </div>
 
-<section class="row d-flew justify-content-center mt-5">
+<section class="row d-flex justify-content-center mt-5">
     {% for result in results %}
-        <div class="flip-card">
+        <div class="flip-card mt-3">
             <div class="flip-card-inner">
                 <div class="flip-card-front">
                 <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
@@ -27,7 +27,6 @@
                     <li><span> Numéro: </span> {{result.phone_number}}</li>
                     <li><span> code postale:</span> {{result.clinic_zip_code}}</li>
                     <li><span> code postal:</span> {{result.clinic_zip_code}}</li>
-
                 </ul>
                 </div>
             </div>
