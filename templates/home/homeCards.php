@@ -6,7 +6,7 @@
                 <p class="card-text">Indiquez vos coordonnées, vos disponibilités et un chirurgien entrera directement en contact avec vous.</p>
             </div>
             <div class="formSubmit">
-                <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
+            <a href="{{ path('cps_check') }}"><button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button></a>
             </div>
         </div>
     </div>
@@ -17,7 +17,7 @@
                 <p class="card-text">Créez votre compte et recherchez un(e) IBODE ou IDE en quelques clics.</p>
             </div>
             <div class="formSubmit align-self-end">
-                <button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button>
+            <a href="{{ path('cps_check') }}"><button type="button" class="btn btn-light bt-lg mb-3">Inscrivez-vous</button></a>
             </div>
         </div>
     </div>
