@@ -1,10 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SearchController!{% endblock %}
-
 {% block body %}
 
-<div class="container">
     <div class="row row-flex justify-content-center mt-3">
         <div class="col-lg-6 col-md-10">
             {% include "form/searchAO.html.twig" %}
@@ -23,16 +20,18 @@
                 <div class="flip-card-back">
                 <h2 class="h2CardSearch mt-2">Mes coordonées</h2>
                 <ul class="list_search">
-                    <li> <span> Adresse email: </span>{{result.email}}</li>
-                    <li><span> Numéro: </span> {{result.phone_number}}</li>
-                    <li><span> Numéro Cps:</span> {{result.cpsnumber}}</li>
-                    <li><span> kilomètrage maximum:</span> {{result.commute_distance}}</li>
-
+                    <li><span>Adresse email: </span>{{result.email}}</li>
+                    <li><span>Numéro: </span> {{result.phone_number}}</li>
+                    <li><span>Numéro CPS/CPF:</span> {{result.cpsnumber}}</li>
+                    <li><span>Kilomètrage Maximum:</span> {{result.commute_distance}}</li>
                 </ul>
                 </div>
             </div>
         </div> 
     {% endfor %}
+    {% if results is empty %}
+    <div class="noResult">Aucun résultat à afficher.</div>
+    {% endif %}
     </section>
 </div>
 {% endblock %}

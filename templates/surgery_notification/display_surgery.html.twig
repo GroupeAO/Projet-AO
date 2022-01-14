@@ -1,20 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vos disponibilités{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-{# bloqué les dates passé peu-être fait en js/jQuery #}
+<div class="row justify-content-center">
+    <div class="col-md-8 pageTitle">
+            Mes demandes d'AO
+    </div>
+</div>
     <section class="row d-flex flex-wrap justify-content-center">
     {% for surgery in surgeries %}
     <div class="col col-md-3 p-3 m-3 cardMyAvailability">
     
             <ul class="listDisplaySurgery">
                 <li><span>Chirugie le:</span> {{surgery.start_date | date('d-m-Y') }}</li>
-                <li> <span>Spécialité :</span> {{surgery.speciality}}</li>
+                <li><span>Spécialité :</span> {{surgery.speciality}}</li>
                 <li><span>Nom de la clinique :</span> {{surgery.clinic_name}}</li>
                 <li><span>Code Postal de la clinique :</span> {{surgery.clinic_zip_code}}</li>
                 <li><span>Description :</span> {{surgery.description}}</li>
@@ -25,5 +23,8 @@
 
     </div>
     {% endfor %}
+    {% if surgeries is empty %}
+    <div class="text-center">Aucun résultat à afficher.</div>
+    {% endif %}
 </section>
 {% endblock %}
