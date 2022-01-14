@@ -16,6 +16,7 @@ return [
         '/profile' => [[['_route' => 'account', '_controller' => 'App\\Controller\\AccountController::index'], null, null, null, false, false, null]],
         '/profile/nurse' => [[['_route' => 'account_nurse', '_controller' => 'App\\Controller\\AccountController::renderAccountNurse'], null, null, null, false, false, null]],
         '/profile/surgeon' => [[['_route' => 'account_surgeon', '_controller' => 'App\\Controller\\AccountController::renderAccountSurgeon'], null, null, null, false, false, null]],
+        '/profile/nusre/active' => [[['_route' => 'account_nurse_active', '_controller' => 'App\\Controller\\AccountController::FunctionName'], null, null, null, false, false, null]],
         '/admin' => [[['_route' => 'admin', '_controller' => 'App\\Controller\\AdminController::index'], null, null, null, false, false, null]],
         '/availability' => [[['_route' => 'availability', '_controller' => 'App\\Controller\\AvailabilityController::index'], null, null, null, false, false, null]],
         '/contact' => [[['_route' => 'contact', '_controller' => 'App\\Controller\\ContactController::index'], null, null, null, false, false, null]],

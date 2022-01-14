@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -42,4 +43,14 @@ class AccountController extends AbstractController
         return $this->render('account/account_surgeon.html.twig', ['controller_name' => 'AccountController',
     ]);
     }
+
+    #[Route('/profile/nusre/active', name: "account_nurse_active")]
+    public function FunctionName(UserRepository $userRepository):void
+    {
+        if ($_POST['nurseActive'] = 'nurseActive') {
+            $userRepository->setInstantAvailability();
+        }
+        
+    }
+
 }

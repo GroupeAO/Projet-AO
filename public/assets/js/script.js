@@ -27,6 +27,11 @@ $(".appFlashError").fadeTo(8000, 500).slideUp(500, function(){
 /***app flash success ****/
 $(".appFlashSuccess").fadeTo(3000, 500).slideUp(500, function(){
     $(".appFlashSuccess").slideUp(500);
-});
+})
 
+/**** ******/
+$(".flip-card").on('click', function rotate() { 
+    $($this).toggleClass('.active');
+    
+})
 })( jQuery );
