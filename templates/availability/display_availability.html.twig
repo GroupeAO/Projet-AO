@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Vos disponibilités{% endblock %}
-
 {% block body %}
 {% for message in app.flashes('removeAvailabiltySuccess') %}
         <div class="alert alert-success appFlashError mt-3">
@@ -10,11 +8,16 @@
 {% endfor %}
 
 <section class="row d-flex flex-wrap justify-content-center" >
+   
+        <div class="pageTitle">
+            Mes disponibilités :
+        </div>
     {% for availability in availabilities %}
+    
             <div class="col-md-3 p-3 m-3 cardMyAvailability">
                 <div class="row">
                 <div class="col">
-                <p> <span> Disponible du : </span> {{availability.start_date | date('d-m-Y') }} Au {{availability.end_date | date('d-m-Y') }}</p>
+                <p> <span>Disponible du : </span> {{availability.start_date | date('d-m-Y') }} Au {{availability.end_date | date('d-m-Y') }}</p>
                 <p> <span>Kilomètrage maximum : </span>{{availability.commute_distance}}</p>
             </div>
                 <div class="col insideCardCol2">
@@ -24,5 +27,8 @@
                 </div>
             </div>
     {% endfor %}
+    {% if availabilities is empty %}
+    <div class="text-center">Aucun résultat à afficher.</div>
+    {% endif %}
 </section>
 {% endblock %}

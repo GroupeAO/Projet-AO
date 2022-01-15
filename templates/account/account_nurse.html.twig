@@ -35,14 +35,13 @@
             <div class="col-xs-12 col_account bg-secondary m-1">
                 <ul class="list_account">
                     <h3 class="h3_account">Informations Personnelles</h3>
-                    <li><span> Adresse:</span> {{app.user.adress}}</li>
-                    <li><span> Numéro:</span> {{app.user.phoneNumber}}</li>
+                    <li><span>Adresse:</span> {{app.user.adress}}</li>
+                    <li><span>Numéro:</span> {{app.user.phoneNumber}}</li>
                     <li><span>Code Postal:</span> {{app.user.zipCode}} </li>
                     <li><span>Ville:</span> {{app.user.city}}</li>
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
                 </ul>
-            </div>
-            
+            </div>     
             {% if (app.user.InstantAvailability =='Inactive') or (app.user.InstantAvailability == null)  %}
                 <form action="{{path('account_nurse_active')}}">
                     <input type="hidden" name="nurseActive" id="nurseActive" value="nurseActive">
