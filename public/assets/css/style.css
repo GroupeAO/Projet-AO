@@ -63,6 +63,7 @@
 }
 .card-socialLogos img{
     max-width: 50px;
+    padding: 5px;
 }
 
 .formSubmit{
@@ -78,6 +79,11 @@ footer{
 .formDisabled{
         pointer-events:none;
         background-color:#dadada;
+}
+
+#imgEG{
+    max-width: 150px;
+    border-radius: 7px 0px 0px 7px;
 }
 /***** Page Admin*****/
 
