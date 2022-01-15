@@ -8,7 +8,7 @@
         {% block stylesheets %}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/css/selectize.bootstrap4.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-        <link rel="stylesheet" href="{{ asset('assets/bootstrap/css/benoitswatch.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/benoitswatch.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,7 +31,7 @@
             {% include "footer.html.twig" %}
         {% endblock %}
         {% block script %}
-            <script src="{{ asset('assets/bootstrap/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
+            <script type="text/javascript" src="{{ asset('assets/js/bootstrap.bundle.min.js') }}" crossorigin="anonymous"></script>
             <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.3/js/standalone/selectize.min.js"></script>
             <script type="text/javascript" src="{{ asset('assets/js/jquery-3.6.0.min.js') }}"></script>
             <script type="text/javascript" src="{{ asset('assets/js/script.js') }}"></script>
