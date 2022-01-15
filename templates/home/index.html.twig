@@ -6,7 +6,7 @@
         {{ message }}
     </div>
     {% endfor %}
-    <div class="d-flex">
+    <div class="d-flex justify-content-center" style="height:fit-content;">
         <div class="row justify-content-center bannerImage" style="background-image: url(' {{ asset("../assets/img/undraw_doctors.png") }} ');
         height: 100vh">
         <div class="row justify-content-center">
@@ -20,22 +20,23 @@
     {% endif %}
         <div class="row row-flex justify-content-center align-self-end">
         {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-        <div class="col-md-5">
+        <div class="col-md-5 mb-3">
             {% if is_granted("ROLE_SURGEON") %}
                 {% include "form/searchAO.html.twig" %}
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 mb-3">
                 {% include "form/searchUser.html.twig" %}
             </div>  
                 {% elseif is_granted("ROLE_NURSE") %}
                     {% include "form/searchSurgery.html.twig" %} 
-            </div>
-            <div class="col-md-5">
+                    </div>
+                    <div class="col-md-5 mb-3">
                     {% include "form/searchUser.html.twig" %}
-                </div>  
+                    </div>  
             {% endif %}
         {% else %}
                 {% include "form/login.html.twig" %} 
+
                 {% include "home/homeCards.php" %}
                 </div>
         {% endif %}
