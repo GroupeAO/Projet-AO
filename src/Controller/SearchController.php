@@ -18,9 +18,9 @@ class SearchController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
         if (isset($_POST['search'])) {
-           
+        
             $searchFieldContent=str_replace(" ","", $_POST['search'] );
-           
+        
             if (empty($searchFieldContent) || strlen($searchFieldContent)<= 2) {
                 $this->addFlash('searchUserError', 'Votre recherche doit contenir plus de 2 caractère');
                 return $this->redirectToRoute('search');

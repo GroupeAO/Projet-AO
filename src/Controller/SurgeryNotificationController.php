@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\SurgeryNotification;
-use App\Entity\User;
 use App\Form\SurgeryNotificationType;
 use App\Repository\SurgeryNotificationRepository;
 use Doctrine\ORM\EntityManagerInterface;

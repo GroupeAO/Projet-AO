@@ -24,7 +24,36 @@
                 <div class="d-flex"></div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
                     <div class="text-white mx-3"> Bonjour, {{app.user.firstname|capitalize}} ! </div>
-                    <a href="{{ path('account') }}"><button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
+                        {% if is_granted('ROLE_SURGEON') %}
+                        <div class="btn-group">
+                            <a href="{{path('account')}}" class="mr-2"><button type="button" class="btn btn-secondary accountButton">Mon compte</button></a>
+                            <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split p-r-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                <span class="visually-hidden">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="{{path('search_availability')}}">Rechercher une AO</a></li>
+                                <li><a class="dropdown-item" href="{{path('search')}}">Rechercher un utilisateur </a></li>
+                                <li><a class="dropdown-item" href="{{path('surgery_notification')}}">Ajouter une Annonce</a></li>
+                                <li><a class="dropdown-item" href="{{ path('display_user_surgery', { 'id': app.user.id } ) }}">Mes annonces</a></li>
+                            </ul>
+                        </div>
+                        {% else %}
+                            <div class="btn-group">
+                                <a href="{{path('account')}}" class="mr-2"><button type="button" class="btn btn-secondary accountButton">Mon compte</button></a>
+                                <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split p-r-2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <span class="visually-hidden">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="{{path('search_surgery')}}">Rechercher une Annonce</a></li>
+                                    <li><a class="dropdown-item" href="{{path('search')}}">Rechercher un utilisateur </a></li>
+                                    <li><a class="dropdown-item" href="{{path('availability')}}">Ajouter une disponibilité</a></li>
+                                    <li><a class="dropdown-item" href="{{path('display_availability',  { 'id': app.user.id })}}">Mes disponibilités</a></li>
+                                </ul>
+                            </div>
+
+
+
+                        {% endif %}
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}
                     <a href="{{ path('app_login') }}"><button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
