@@ -11,40 +11,49 @@
             {{ message }}
         </div>
 {% endfor %}
-<section class="container">
+
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="pageTitle">
-                Votre Espace Personel
+                Espace Personnel - Chirurgien(ne)
             </div>
         </div>
     </div>
-        <h2 class="h2_account mb-4">Bonjour Dr. {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
+        <h4 class="mb-4 text-secondary">Bonjour, Dr. {{app.user.name | capitalize}}! </h4>
         <div class="row d-flex justify-content-center">
-
-            <div class="col-xs-12 col_account bg-primary m-1">
-                <p><i class="fas fa-user-edit"></i></p>
-                <a href="{{path('update_user',  { 'id': app.user.id })}}">Mettre à jour mes informations personnelles</a>
-            </div>
-
-            <div class="col-xs-12 col_account bg-secondary m-1">
-                <p><img src="{{ asset('assets/img/scalpel-line-dashed.svg') }}" alt=""></p>
-                <a href="{{path('surgery_notification')}}">Ajouter une annonce de chirurgie</a>
-            </div>
-
-            <div class="col-xs-12 col_account bg-primary m-1">
-                <p><i class="far fa-calendar-alt" id="calendar"></i></p>
-                <a href="{{path('display_user_surgery',  { 'id': app.user.id })}}">Mes annonces</a>
-            </div>
-            <div class="col-xs-12 col_account bg-secondary m-1">
-                <ul class="list_account">
-                    <h3 class="h3_account">Informations Personelles</h3>
-                    <li><span> Adresse:</span> {{app.user.adress}}</li>
-                    <li><span> Numéro:</span> {{app.user.phoneNumber}}</li>
+            <div class="col-md-3 border border-secondary rounded d-flex justify-content-center m-1">
+                <div class="align-self-center text-center m-3">
+                    <a href="{{ path('surgery_notification') }}" >
+                    <i class="fas fa-calendar-plus text-secondary img-thumbnail fa-7x mb-3"></i><br>
+                    Ajouter une annonce de chirurgie</a>
+                </div>
+            </div>  
+            <div class="col-md-3 border border-secondary rounded d-flex justify-content-center m-1">
+                <div class="align-self-center text-center m-3">
+                    <a href="{{ path('display_user_surgery', { 'id': app.user.id } ) }}" class="text-dark">
+                    <i class="fas fa-calendar-alt text-primary img-thumbnail fa-7x mb-3"></i><br>
+                    Voir mes annonces</a>
+                </div>
+            </div>  
+            <div class="col-md-4 border border-primary rounded d-flex justify-content-center m-1">
+                <div class="col-auto d-flex">
+                    <p class="align-self-center text-center"><a href="{{ path('update_user', { 'id': app.user.id } ) }}" class="text-dark">
+                        <i class="fas fa-user-edit text-secondary img-thumbnail fa-7x"></i><br>
+                    Modifier</a></p>
+                </div> 
+                <div class="col">
+                <ul class="align-self-center m-3">
+                    <h5>Mes Infos</h5>
+                    <li><span>Adresse:</span> {{app.user.adress}}</li>
+                    <li><span>Numéro:</span> {{app.user.phoneNumber}}</li>
                     <li><span>Code Postal:</span> {{app.user.zipCode}} </li>
                     <li><span>Ville:</span> {{app.user.city}}</li>
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
+                    
                 </ul>
+                </div> 
             </div>
-</section>
+        </div>
+    </div>         
+
 {% endblock %}
