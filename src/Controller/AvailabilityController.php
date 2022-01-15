@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\Availability;
-use App\Entity\User;
 use App\Form\InsertAvailabilityType;
 use App\Repository\AvailabilityRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -22,8 +21,8 @@ class AvailabilityController extends AbstractController
     AvailabilityRepository $availabilityRepository,
     ): Response
     {
+        //getting user id
         /** @var \App\Entity\User $user */
-        
         $user = $this->getUser();
         $id=$user->getId();
         
@@ -35,6 +34,7 @@ class AvailabilityController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
             // testing if the nusre has already a registered availability for this timeframe
             $date=$availability->getStartDate();
+                
             $date= $date->format('Y-m-d H:i:s');
             $availabilities=$availabilityRepository->checkAvailabilityQuery($date,$id, $entityManagerInterface);
 
@@ -43,9 +43,10 @@ class AvailabilityController extends AbstractController
                 return $this->redirectToRoute('availability');
 
             }
+            //add keys in relation table ManyToMany
             $availability->getUsers()->add($user);
             $user->getFkavailability()->add($availability);
-
+            //add in db
             $entityManagerInterface->persist($availability);
             $entityManagerInterface->flush();
             $this->addFlash('addAvailabiltySuccess', "La periode de disponibilité a bien été ajoutée.");
@@ -124,7 +125,6 @@ class AvailabilityController extends AbstractController
             /** @var \App\Entity\User $user */
             $user = $this->getUser();
             $idUser=$user->getId();
-
             $availabitlity=$availabilityRepository->find($id);
             $entityManagerInterface->remove($availabitlity);
             $entityManagerInterface->flush();

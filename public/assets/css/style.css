@@ -147,3 +147,24 @@ border: 1px solid black;
     border-radius: 7px;
 
 }
+
+/*** Pages display***/
+
+.listDisplaySurgery
+{
+    list-style: none;
+    text-align: left;
+}
+.listDisplaySurgery span{
+    font-weight: unset;
+    color: #4fc19e;
+}
+
+/* *************** */
+
+.accountButton{
+    border-radius: 7px 0px 0px 7px;
+}
+.p-r-2{
+    margin-right: 1rem;
+}

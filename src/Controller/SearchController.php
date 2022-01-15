@@ -18,14 +18,14 @@ class SearchController extends AbstractController
     public function index(UserRepository $userRepository): Response
     {
         if (isset($_POST['search'])) {
-        
+            //We check i f the field is not empty or has only spaces
             $searchFieldContent=str_replace(" ","", $_POST['search'] );
-        
+            
             if (empty($searchFieldContent) || strlen($searchFieldContent)<= 2) {
                 $this->addFlash('searchUserError', 'Votre recherche doit contenir plus de 2 caractère');
                 return $this->redirectToRoute('search');
             }
-        
+        // we add the % and sting to upper for the LIKE SQL query
         $name ='%' . strtoupper($searchFieldContent) . '%';
         
         $results=$userRepository->searchUsers($name);
@@ -47,7 +47,7 @@ class SearchController extends AbstractController
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$availabilityRepository->searchAvailabilityQuery($date, $zipCode,  $entityManagerInterface);
         
-        /* cheking if the search result is empty */ 
+        /* cheking if the search result is empty and creating a flag used in twig */ 
         $empty=false;
         if (!$results) {
             $empty = true;
@@ -65,6 +65,7 @@ class SearchController extends AbstractController
         $this->addFlash('searchSurgeryError', 'veuillez remplir les champs nécéssaire à la recherche');
             return $this->redirectToRoute('search_surgery');
     }
+        // we use a LIKE SQL to match departement with zip code 
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$surgeryNotificationRepository->searchSurgeryQuery($zipCode,$entityManagerInterface);
         $empty= false;
@@ -77,4 +78,5 @@ class SearchController extends AbstractController
             'empty' => $empty
         ]);
     }
+    
 }

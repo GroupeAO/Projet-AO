@@ -21,12 +21,14 @@ class SurgeryNotificationType extends AbstractType
             ->add('startDate', DateTimeType::class, [
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
-                'label'  => 'Date de début'
+                'label'  => 'Date de début',
+                'required'=> true,
             ])
             ->add('enDate', DateTimeType::class, [
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
-                'label'  => 'Date de fin'
+                'label'  => 'Date de fin',
+                'required'=> true
             ])
             ->add('speciality', ChoiceType::class,[
                 
