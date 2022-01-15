@@ -1,17 +1,21 @@
 <form class="loginForm" action="{{path('app_login')}}" method="POST">
-    <div class="row row-flex justify-content-center align-self-end">
-        <div class="col-md-auto mb-3">
-            <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
-        </div>    
-        <div class="col-md-auto mb-3">       
-            <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de Passe" required>
-            <a href="{{path('app_forgot_password_request')}}" class="text-decoration-none mb-3">Mot de passe oublié</a>
-        </div>
-        <div class="col-md-auto text-center mb-3">
-            <input type="hidden" name="_token" value="user" />
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">        
-            <button type="submit" class="btn btn-primary">Me connecter</button>
-        </div>            
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-auto">
+            <div class="row row-flex justify-content-center border border-secondary rounded bg-white p-3 align-content-center">
+                <div class="col-md-auto mb-1">
+                    <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
+                </div>    
+                <div class="col-md-auto">       
+                    <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de Passe" required>
+                    <a href="{{path('app_forgot_password_request')}}" class="text-decoration-none mb-3">Mot de passe oublié</a>
+                </div>
+                <div class="col-md-auto text-center">
+                    <input type="hidden" name="_token" value="user" />
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">        
+                    <button type="submit" class="btn btn-primary">Me connecter</button>
+                </div> 
+            </div> 
+         </div>             
     </div>
 </form>
 </div>
