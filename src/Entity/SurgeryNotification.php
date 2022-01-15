@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\SurgeryNotificationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: SurgeryNotificationRepository::class)]
 class SurgeryNotification
@@ -16,16 +17,16 @@ class SurgeryNotification
 
     #[ORM\Column(type: 'datetime_immutable')]
     /**
-     * @Assert\NotBlank(message="Veuillez remplir ce champ")
-     * @Assert\GreaterThan("today",
+     * @Assert\NotBlank(message="Veuillez remplir ce champ"),
+     * @Assert\GreaterThan("today"),
      * message="le {{ value }} est une date révolu."
      */
     private $startDate;
 
     #[ORM\Column(type: 'datetime_immutable')]
     /**
-     * @Assert\NotBlank(message="Veuillez remplir ce champ")
-     * @Assert\GreaterThan("today",
+     * @Assert\NotBlank(message="Veuillez remplir ce champ"),
+     * @Assert\GreaterThan("today"),
      * message="le {{ value }} est une date révolu."
      */
     private $enDate;

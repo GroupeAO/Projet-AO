@@ -21,11 +21,10 @@
                         <span class="visually-hidden">(current)</span>
                     </li>
                 </ul>
-                <div class="d-flex"></div>
+                <div class="d-flex">
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="text-white mx-3"> Bonjour, {{app.user.firstname|capitalize}} ! </div>
+                    <div class="btn-group">
                         {% if is_granted('ROLE_SURGEON') %}
-                        <div class="">
                             <a href="{{path('account')}}" class="mr-2"><button type="button" class="btn btn-secondary accountButton">Mon compte</button></a>
                             <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split p-r-2" data-bs-toggle="dropdown" aria-expanded="false">
                                 <span class="visually-hidden">Toggle Dropdown</span>
@@ -35,9 +34,7 @@
                                 <li><a class="dropdown-item" href="{{ path('display_user_surgery', { 'id': app.user.id } ) }}">Mes annonces</a></li>
                                 <li><a class="dropdown-item" href="{{path('update_user', { 'id': app.user.id })}}">Modifier mes données</a></li>
                             </ul>
-                        </div>
                         {% else %}
-                            <div class="btn-group">
                                 <a href="{{path('account')}}"><button type="button" class="btn btn-secondary  accountButton">Mon compte</button></a>
                                 <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split marginDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden">Toggle Dropdown</span>
@@ -47,13 +44,15 @@
                                     <li><a class="dropdown-item" href="{{path('display_availability',  { 'id': app.user.id })}}">Mes disponibilités</a></li>
                                     <li><a class="dropdown-item" href="{{path('update_user', { 'id': app.user.id })}}">Modifier mes données</a></li>
                                 </ul>
-                            </div>
                         {% endif %}
-                    <a href="{{ path('app_logout') }}"><button class="btn btn-light px-2" href="">Déconnexion</button></a>
-                    {% else %}
-                    <a href="{{ path('app_login') }}"><button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
-                    <a href="{{ path('cps_check') }}"><button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
-                    {% endif %}
+
+                            <a href="{{ path('app_logout') }}"><button class="btn btn-light px-2" href="">Déconnexion</button></a>
+                      
+                            {% else %}
+                            <a href="{{ path('app_login') }}"><button class="btn btn-secondary mx-1" href="">Me Connecter</button></a>    
+                            <a href="{{ path('cps_check') }}"><button class="btn btn-light mx-1" href="">M'enregistrer</button></a>    
+                        {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
