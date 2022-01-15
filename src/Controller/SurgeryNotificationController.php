@@ -30,6 +30,8 @@ class SurgeryNotificationController extends AbstractController
             $surgeryNotification->setFkIdUser($user);
             $entityManagerInterface->persist($surgeryNotification);
             $entityManagerInterface->flush();
+            $this->addFlash('addSurgerySuccess', 'Votre annonce de chirugie a bien été ajoutée');
+            return $this->redirectToRoute('account_surgeon');
         }
         return $this->render('surgery_notification/index.html.twig', [
             'form' => $form->createView(),
@@ -50,6 +52,8 @@ class SurgeryNotificationController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
             $entityManagerInterface->flush();
+            $this->addFlash('editSurgerySuccess', 'Votre profile a bien été modifié');
+                return $this->redirectToRoute('account_surgeon');
         }
         return $this->render('surgery_notification/edit_surgery.html.twig', [
             'form' => $form->createView(),
@@ -87,6 +91,8 @@ class SurgeryNotificationController extends AbstractController
             $surgery=$surgeryNotificationRepository->find($id);
             $entityManagerInterface->remove($surgery);
             $entityManagerInterface->flush();
+
+            $this->addFlash('removeSurgerySuccess', "La disponibilité a bien été supprimé");
             return $this->redirectToRoute('account', $user=['id' => $idUser ]);
         } 
 }
