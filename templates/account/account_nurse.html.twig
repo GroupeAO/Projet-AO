@@ -1,33 +1,33 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 {% for message in app.flashes('addAvailabiltySuccess') %}
         <div class="alert alert-success appFlashError mt-3">
             {{ message }}
         </div>
 {% endfor %}
-<section class="container">
+
     <div class="row justify-content-center">
         <div class="col-8">
             <div class="pageTitle">
-                Votre Espace Personnel - Infirmier(ère)
+                Mon Compte
             </div>
         </div>
     </div>
-        <h2 class="h2_account mb-4">Bonjour, {{app.user.firstname | capitalize}} {{app.user.name | capitalize}}. </h2>
+        <h4 class="mb-4 text-secondary">Bonjour, {{app.user.firstname | capitalize}} {{app.user.name}}! </h4>
         <div class="row d-flex justify-content-center">
-
-            <div class="col-xs-12 col_account bg-primary m-1">
-                <p><i class="fas fa-user-edit"></i></p>
-                <a href="{{path('update_user',  { 'id': app.user.id })}}">Mettre à jour mes informations personnelles</a>
+            <div class="border border-secondary rounded d-flex justify-content-center m-1">
+                <div class="align-self-center text-center m-3">
+                    <p><i class="fas fa-user-edit"></i></p>
+                    <a href="{{path('update_user',  { 'id': app.user.id })}}">Mettre à jour mes informations personnelles</a>
+                </div>
             </div>
-
-            <div class="col-xs-12 col_account bg-secondary m-1">
-                <p><img src="{{ asset('assets/img/scalpel-line-dashed.svg') }}" alt=""></p>
-                <a href="{{path('availability')}}">Ajouter une annonce de disponibilité</a>
+            <div class="col-md-3 border border-secondary rounded d-flex justify-content-center m-1">
+                <div class="align-self-center text-center m-3">
+                    <p><img src="{{ asset('assets/img/scalpel-line-dashed.svg') }}" alt=""></p>
+                    <a href="{{path('availability')}}">Ajouter une annonce de disponibilité</a>
+                </div>
             </div>
-
             <div class="col-xs-12 col_account bg-primary m-1">
                 <p><i class="far fa-calendar-alt" id="calendar"></i></p>
                 <a href="{{path('display_availability',  { 'id': app.user.id })}}">Mes disponibilités</a>
@@ -41,6 +41,7 @@
                     <li><span>Ville:</span> {{app.user.city}}</li>
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
                 </ul>
+            </div>
             </div>     
             {% if (app.user.InstantAvailability =='Inactive') or (app.user.InstantAvailability == null)  %}
                 <form action="{{path('account_nurse_active')}}">
@@ -54,5 +55,5 @@
                 </form>
             {% endif %}
 
-</section>
+
 {% endblock %}
