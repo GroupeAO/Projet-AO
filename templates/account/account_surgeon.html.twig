@@ -1,6 +1,16 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{% for message in app.flashes('addSurgerySuccess') %}
+        <div class="alert alert-success appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
+{% for message in app.flashes('editSurgerySuccess') %}
+        <div class="alert alert-success appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
 <section class="container">
     <div class="row justify-content-center">
         <div class="col-8">

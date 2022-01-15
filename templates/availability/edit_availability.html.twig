@@ -3,6 +3,11 @@
 {% block title %}Vos disponibilités{% endblock %}
 
 {% block body %}
+{% for message in app.flashes('editAvailabilityError') %}
+        <div class="alert alert-danger appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
 
 {{form_start(form, {attr: {novalidate: 'novalidate'}})}}
     <div class="row justify-content-center">

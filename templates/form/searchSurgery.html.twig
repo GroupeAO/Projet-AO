@@ -1,10 +1,16 @@
+{% for message in app.flashes('searchSurgeryError') %}
+        <div class="alert alert-danger appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
+
 <div class="text-white bg-primary mb-3 text-center h-100">
     <form action="{{path('search_surgery')}}" method="post">
         <div class="card-header">Parcourir les demandes d'AO</div>
         <div class="card-body row justify-content-center">
             <div class="col-md-8">
                 <label for="zipCode">Département :</label>
-                <select type="integer" name="zipCode" id="zipCode">
+                <select type="integer" name="zipCode" id="zipCode" required>
                     <option value="" selected>S&eacute;lectionnez...</option>
                     <option value="01">&#40;01&#41; Ain </option>
                     <option value="02">&#40;02&#41; Aisne </option>
