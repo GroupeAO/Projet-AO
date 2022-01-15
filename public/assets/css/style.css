@@ -124,39 +124,18 @@ border: 1px solid black;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
 }
-.h2CardSearch{
-    color: #6C63FF;
-    font-size: 1.2rem;
-    margin-top: 10%;
-}
-
-.flip-card-front {
-    border: 2px solid #6C63FF;
-    background-color: white;
-    border-radius: 7px;
-}
 .flip-card-front img {
     max-width: 30%;
     background-color: white;
     border-radius: 7px;
     margin-top: 10px;
-    
 }
-
 .flip-card-back {
-    border: 2px solid white;
-    background-color: #4fc19e;
-    color: white;
     transform: rotateY(180deg);
-    border-radius: 7px;
 } 
 .list_search{
     font-size: 1rem;
     text-align: left;
-}
-.h3CardSearch{
-    font-size: 1.1rem;
-    color: #6C63FF;
 }
 
 /* **********************PAGES ACCOUNT************************** */
