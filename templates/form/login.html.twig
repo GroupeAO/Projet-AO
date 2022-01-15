@@ -4,10 +4,11 @@
             <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
         </div>    
         <div class="col-md-auto mb-3">       
-            <input type="password" class="form-control mb-3" name="_password" id="password" placeholder="Mot de Passe" required>
+            <input type="password" class="form-control" name="_password" id="password" placeholder="Mot de Passe" required>
+            <a href="{{path('app_forgot_password_request')}}" class="text-decoration-none mb-3">Mot de passe oublié</a>
         </div>
         <div class="col-md-auto text-center mb-3">
-        <input type="hidden" name="_token" value="user" />
+            <input type="hidden" name="_token" value="user" />
             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">        
             <button type="submit" class="btn btn-primary">Me connecter</button>
         </div>            
