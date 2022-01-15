@@ -1,6 +1,9 @@
-.container{
-   min-height: 70vh;
-   margin: 0 auto;
+
+.container-fluid{
+    min-height: 100%;
+    overflow: auto;
+    padding: 0 2em;
+    width: 100vw;
 }
 .alert {
     z-index: 12;
@@ -40,8 +43,6 @@
     background:  center no-repeat;
     background-size: contain;
     background-clip: content-box;
-    /* padding-top: 40px; */
-
    }
 .homeIntro{
     text-shadow: 2px 0 0 #fff, -2px 0 0 #fff, 0 2px 0 #fff, 0 -2px 0 #fff, 1px 1px #fff, -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff;
@@ -65,13 +66,13 @@
     max-width: 50px;
     padding: 5px;
 }
-
-footer{
+.footer{
     background-color: rgb(255, 255, 255);
-    /* position: sticky; */
-    /* bottom: 0px; */
+    bottom:0;
+    position: static;
+    width: 100%;
+    left: 0;
 }
-
 .formDisabled{
         pointer-events:none;
         background-color:#dadada;

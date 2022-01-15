@@ -6,7 +6,7 @@
         {{ message }}
     </div>
     {% endfor %}
-    <div class="d-flex justify-content-center">
+    <div class="d-flex justify-content-center" style="height:fit-content;">
         <div class="row justify-content-center bannerImage" style="background-image: url(' {{ asset("../assets/img/undraw_doctors.png") }} ');
         height: 100vh">
         <div class="row justify-content-center">
@@ -24,7 +24,7 @@
             {% if is_granted("ROLE_SURGEON") %}
                 {% include "form/searchAO.html.twig" %}
             </div>
-            <div class="col-md-5">
+            <div class="col-md-5 mb-3">
                 {% include "form/searchUser.html.twig" %}
             </div>  
                 {% elseif is_granted("ROLE_NURSE") %}
@@ -36,6 +36,7 @@
             {% endif %}
         {% else %}
                 {% include "form/login.html.twig" %} 
+
                 {% include "home/homeCards.php" %}
                 </div>
         {% endif %}
