@@ -1,9 +1,9 @@
 (function( $ ) {
-var deleteLink = document.querySelector('.deleteLink')
+var deleteLink = $('.deleteButton')
 
     $(document).ready(function() {
         $(".alert-primary").hide();
-        deleteLink.addEventListener('click', function alertDelete() {
+        deleteLink.on('click', function alertDelete() {
             
             if (confirm('êtes-vous sur de vouloir supprimer ceci')) {
                 $(".alert-primary").fadeTo(2000, 500).slideUp(500, function(){
@@ -13,7 +13,7 @@ var deleteLink = document.querySelector('.deleteLink')
         });
     });
     /*****home after registration****/ 
-    $(".registrationSuccess").fadeTo(3000, 500).slideUp(500, function(){
+    $(".registrationSuccess").fadeTo(5000, 500).slideUp(500, function(){
         $(".registrationSuccess").slideUp(500);
     });
 /***form** */
@@ -21,7 +21,7 @@ var deleteLink = document.querySelector('.deleteLink')
         $('#zipCode').selectize({ sortField: 'text' }); 
     });
 /***app flash error ****/
-$(".appFlashError").fadeTo(8000, 500).slideUp(500, function(){
+$(".appFlashError").fadeTo(12000, 500).slideUp(500, function(){
     $(".appFlashError").slideUp(500);
 });
 /***app flash success ****/
@@ -39,5 +39,5 @@ $(".flip-card").on('click', function rotate() {
 /****** autologin*/
 window.onload = function(){
     document.forms['login_registration'].submit();
-  }
+}
 })( jQuery );

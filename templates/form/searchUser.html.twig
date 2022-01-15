@@ -1,3 +1,9 @@
+{% for message in app.flashes('searchUserError') %}
+        <div class="alert alert-danger appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
+
 <div class="text-white bg-secondary mb-3 text-center h-100">
     <form action="{{path('search')}}" method="post" class="loginForm">
 
@@ -5,12 +11,12 @@
         <div class="card-body row justify-content-center">
             <div class="col-md-8">
                 <label for="search">Nom et/ou Prénom :</label>
-                <input type="search" name="search" id="search" class="form-control mb-3">
+                <input type="search" name="search" id="search" class="form-control mb-3" required>
                 <button type="submit" class="btn btn-light mb-3">Rechercher</button>
             </div>   
         </div> 
 
-</form>
+    </form>
     
 </div>
         

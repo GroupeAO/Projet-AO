@@ -49,7 +49,7 @@ class AvailabilityController extends AbstractController
             $entityManagerInterface->persist($availability);
             $entityManagerInterface->flush();
             $this->addFlash('addAvailabiltySuccess', "La periode de disponibilité a bien été ajoutée.");
-            return $this->redirectToRoute('availability');
+            return $this->redirectToRoute('account');
     }
         return $this->render('availability/index.html.twig', [
             'form' => $form->createView(),
@@ -103,9 +103,9 @@ class AvailabilityController extends AbstractController
                 return $this->redirectToRoute('availability');
             }
             $this->addFlash('addAvailabiltySuccess', "La periode de disponibilité a bien été modifié.");
-            return $this->redirectToRoute('availability');
 
             $entityManagerInterface->flush();
+            return $this->redirectToRoute('account');
         }
     
         return $this->render('availability/edit_availability.html.twig', [
@@ -128,9 +128,8 @@ class AvailabilityController extends AbstractController
             $availabitlity=$availabilityRepository->find($id);
             $entityManagerInterface->remove($availabitlity);
             $entityManagerInterface->flush();
+            $this->addFlash('removeAvailabiltySuccess', "La disponibilité a bien été supprimé");
             
-            usleep(2000000);
-
             return $this->redirectToRoute('display_availability', $user=['id' => $idUser ]);
             
         }

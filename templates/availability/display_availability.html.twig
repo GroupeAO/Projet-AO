@@ -1,6 +1,11 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+{% for message in app.flashes('removeAvailabiltySuccess') %}
+        <div class="alert alert-success appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
 
 <section class="row d-flex flex-wrap justify-content-center" >
    
@@ -17,7 +22,7 @@
             </div>
                 <div class="col insideCardCol2">
                     <a href="{{path('user_edit_availability',  { 'id': availability.id })}}"><button class="btn btn-secondary mt-3">modifier</button></a>
-                    <a class="deleteLink" href="{{path('user_delete_availability',  { 'id': availability.id })}}"><button class="btn btn-danger colorBtnDelete mt-3 mb-3">Supprimer</button></a>
+                    <a class="deleteButton" href="{{path('user_delete_availability',  { 'id': availability.id })}}"><button class="btn btn-danger deleteButton mt-3 mb-3">Supprimer</button></a>
                 </div>
                 </div>
             </div>

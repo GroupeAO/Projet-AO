@@ -6,6 +6,11 @@
             Mes demandes d'AO
     </div>
 </div>
+{% for message in app.flashes('removeSurgerySuccess') %}
+        <div class="alert alert-success appFlashError mt-3">
+            {{ message }}
+        </div>
+{% endfor %}
     <section class="row d-flex flex-wrap justify-content-center">
     {% for surgery in surgeries %}
     <div class="col col-md-3 p-3 m-3 cardMyAvailability">
@@ -19,7 +24,7 @@
             </ul>
     
             <a href="{{path('edit_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-secondary">Modifier</button></a>
-            <a href="{{path('delete_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-danger">Supprimer</button></a>
+            <a  class="deleteButton" href="{{path('delete_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-danger">Supprimer</button></a>
 
     </div>
     {% endfor %}

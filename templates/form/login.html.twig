@@ -1,4 +1,4 @@
-<form class="loginForm" action="{{path('login')}}" method="POST">
+<form class="loginForm" action="{{path('app_login')}}" method="POST">
     <div class="row row-flex justify-content-center align-self-end">
         <div class="col-md-auto mb-3">
             <input type="text" class="form-control" name="_username" id="username" value="{{last_username}}" placeholder="Email" required>
@@ -6,7 +6,9 @@
         <div class="col-md-auto mb-3">       
             <input type="password" class="form-control mb-3" name="_password" id="password" placeholder="Mot de Passe" required>
         </div>
-        <div class="col-md-auto formSubmit mb-3">         
+        <div class="col-md-auto formSubmit mb-3">
+        <input type="hidden" name="_token" value="user" />
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">        
             <button type="submit" class="btn btn-primary">Me connecter</button>
         </div>            
     </div>

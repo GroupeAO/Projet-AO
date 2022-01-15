@@ -1,8 +1,6 @@
 {% extends "base.html.twig" %}
 {% block body %}
 {% if error %}
-    
-
     <p class="error"> {{error.messageKey | trans(error.messageData, 'security') }}</p>
     {% endif %}
     <div class="row justify-content-center">
@@ -12,12 +10,13 @@
     </div>
     <div class="row justify-content-center">
         <div class="col-md-4">
-            <form class="loginForm" action="{{path('login')}}" method="POST">
+            <form class="loginForm" action="{{path('app_login')}}" method="POST">
                 <label for="username">Email :</label>
                 <input type="text" name="_username" id="username" value="{{last_username}}" class="form-control" required>
                 <label for="password">Mot de passe</label>
                 <input type="password" name="_password" id="password" class="form-control" required>
                 <div class="formSubmit">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
                     <button type="submit" class="btn btn-secondary my-5">Me connecter</button>
                 </div>
             </form>

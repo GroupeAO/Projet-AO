@@ -25,17 +25,17 @@
                 {% include "form/searchAO.html.twig" %}
             </div>
             <div class="col-md-5">
-                {% include "form/searchUser.php" %}
+                {% include "form/searchUser.html.twig" %}
             </div>  
                 {% elseif is_granted("ROLE_NURSE") %}
                     {% include "form/searchSurgery.html.twig" %} 
             </div>
             <div class="col-md-5">
-                    {% include "form/searchUser.php" %}
+                    {% include "form/searchUser.html.twig" %}
                 </div>  
             {% endif %}
         {% else %}
-                {% include "form/login.php" %} 
+                {% include "form/login.html.twig" %} 
                 {% include "home/homeCards.php" %}
                 </div>
         {% endif %}
