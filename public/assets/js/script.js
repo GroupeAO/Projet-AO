@@ -31,7 +31,12 @@ $(".appFlashSuccess").fadeTo(3000, 500).slideUp(500, function(){
 
 /**** ******/
 $(".flip-card").on('click', function rotate() { 
-    $($this).toggleClass('.active');
+    $(".flip-card").toggleClass('.active');
+    
+})
+
+$(".flip-card-back").on('click', function rotateBack() { 
+    $(".flip-card-back").toggleClass('.flip_back_click');
     
 })
 

@@ -158,6 +158,10 @@ border: 1px solid black;
     color: #6C63FF;
 }
 
+.flip_back_click{
+    transform: rotateY(-180deg) !important;
+}
+
 /* **********************PAGES ACCOUNT************************** */
 
 .col_account{

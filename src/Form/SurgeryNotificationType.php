@@ -44,7 +44,7 @@ class SurgeryNotificationType extends AbstractType
                     'Neurochirurgie' => 'Neurochirurgie',
                     'Autre (Préciser dans commentaires)' => 'Autre (Précisé dans commentaires)'
                 ]
-             ])
+            ])
             ->add('description', TextareaType::class, [
                 'label' => 'Décrivez la procédure'
             ])
