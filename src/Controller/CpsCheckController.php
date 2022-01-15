@@ -27,6 +27,7 @@ class CpsCheckController extends AbstractController
     ): Response  
     {
         // cps stands for 'carte professionnelle de santé'
+        //we created a session to transfert the data of the first part of registration to the second part
         $session = $this->requestStack->getSession();
         $cpsOwner = new CpsCardOwner;
         $form = $this->createForm(CpsType::class, $cpsOwner);
@@ -36,7 +37,7 @@ class CpsCheckController extends AbstractController
 
             if($this->isCpsCardNumberExist($cpsOwner->getNumeroCarte(), $cpsCardOwnerRepository)===true 
             && ($this->isNameAndCardMatch($cpsOwner, $cpsCardOwnerRepository)===true)){
-
+            //we are getting getting infos in the national database of carte professionnelle de santé owner
                 $prenomDexercice = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $cpsOwner->getNumeroCarte()]);
                 $prenomDexercice = $prenomDexercice->getPrenomDexercice();
                 $codeProfession = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $cpsOwner->getNumeroCarte()]);
@@ -61,6 +62,7 @@ class CpsCheckController extends AbstractController
     }
 public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository )
 {
+    //checking if the card number entered by the user exist
     $cpsCardNumberInDB=$cpsCardOwnerRepository->findOneBy(['numeroCarte' => $numeroCarte]);
     if (!empty($cpsCardNumberInDB)) {
         return true;
@@ -70,6 +72,7 @@ public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository
 
 public function isNameAndCardMatch($cpsOwner, CpsCardOwnerRepository $cpsCardOwnerRepository)
 {
+    //checking if the Name entered is the same as the one in the db associated with the card number
     $numeroCarte=$cpsOwner->getNumeroCarte();
     $nomDexercice=$cpsOwner->getNomDexercice();
     $verifiedUser = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $numeroCarte]);
