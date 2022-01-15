@@ -1,11 +1,15 @@
 .container{
-    min-height: 70vh;
+   min-height: 70vh;
+   margin: 0 auto;
 }
 .alert {
     z-index: 12;
     max-width: 500px;
     margin: 0  auto;
     text-align: center;
+}
+.noResult{
+    margin-top: 30px auto;
 }
 .logo{
     font-family: 'Comfortaa', cursive;
@@ -26,6 +30,7 @@
     text-align: center;
     font-size:xx-large;
     margin-bottom: 30px;
+    margin-top: 30px;
 }
 .navbar{
     z-index: 11;
@@ -61,14 +66,10 @@
     padding: 5px;
 }
 
-.formSubmit{
-    text-align: center;
-}
-
 footer{
-    background-color: #FFF;
+    background-color: rgb(255, 255, 255);
     /* position: sticky; */
-    bottom: 0px;
+    /* bottom: 0px; */
 }
 
 .formDisabled{
@@ -123,39 +124,18 @@ border: 1px solid black;
     -webkit-backface-visibility: hidden; /* Safari */
     backface-visibility: hidden;
 }
-.h2CardSearch{
-    color: #6C63FF;
-    font-size: 1.2rem;
-    margin-top: 10%;
-}
-
-.flip-card-front {
-    border: 2px solid #6C63FF;
-    background-color: white;
-    border-radius: 7px;
-}
 .flip-card-front img {
     max-width: 30%;
     background-color: white;
     border-radius: 7px;
     margin-top: 10px;
-    
 }
-
 .flip-card-back {
-    border: 2px solid white;
-    background-color: #4fc19e;
-    color: white;
     transform: rotateY(180deg);
-    border-radius: 7px;
 } 
 .list_search{
     font-size: 1rem;
     text-align: left;
-}
-.h3CardSearch{
-    font-size: 1.1rem;
-    color: #6C63FF;
 }
 
 .flip_back_click{
@@ -164,86 +144,14 @@ border: 1px solid black;
 
 /* **********************PAGES ACCOUNT************************** */
 
-.col_account{
-    color: white;
-    text-align: center;
-    height: 200px;
-    width: 300px;
-    border: 2px solid white;
-    -webkit-box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.5); 
-    box-shadow: 2px 2px 10px 4px rgba(0,0,0,0.5);
-}
 
-.h2_account{
-    color: #6C63FF;
-    font-size: 1.30rem;
-}
 
-.col_account:hover{
-    transform: scale(1.20);
-}
-.col_account i{
-
-    padding-top: 10px;
-    font-size: 5rem;
-}
-
-#calendar{
-    font-size: 6rem;
-}
-
-.col_account img {
-    padding-top: 10px;
-    color: white;
-    height: 50%;
-    width: 50%;
-}
-.col_account a{
-    
-    color: white;
-    text-decoration: none;
-    z-index: 1;
-    padding: 100px 20px 20px 50px;
-    margin: -100px -20px -20px -50px ;
-} 
-
-.list_account{
-    font-size: 0.75rem;
-    list-style: none;
-    text-align: left;
-}
-ul li span{font-weight: bold;}
-.h3_account{
-    color: white;
-    font-size: 1.4rem;
-    margin-top: 10px;
-}
-
-@keyframes scalpel {
-    0%   {left:0px; top:0px;}
-    25%  {left:50px; top:0px;}
-    50%  {left:75px; top:100px;}
-    75%  {left:0px; top:100px;}
-    100% { border-bottom:2px solid red ; left:0px; top:0px;}
-}
-#anim_scalpel{
-    position: relative;
-    animation-name: scalpel;
-    animation-duration: 2s;
-    animation-iteration-count: infinite
-}
 /********page search*****/
 .selectize-input{
     border-radius: 7px;
 }
 .selectize-input.focus{
     border-color: #6C63FF;
-}
-
-.noResult{
-    margin-top: 2rem;
-    text-align: center;
-    font-size: 1.25rem;
 }
 
 

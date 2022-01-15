@@ -1,32 +1,39 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SearchController!{% endblock %}
 
 {% block body %}
 <div class="row row-flex justify-content-center mb-5">
+    <div class="pageTitle">
+        Rechercher un(e) utilisateur(rice)
+    </div>
+
     <div class="col-md-5"> 
             {% include "form/searchUser.html.twig" %}
     </div>
 </div>
-
     <section class="row d-flex justify-content-center">
         {% for result in results %}
             <div class="flip-card">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front">
-                    <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
-                    <h3 class="h3CardSearch mt-3">{{result.name}} {{result.firstname}} </h3>
+                    <div class="flip-card-front border border-primary bg-white">
+                        <h5 class="p-2 text-white bg-primary">{{result.firstname | capitalize}} {{result.name}}</h5>
+                        <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien" class="mb-3">
+                        <h5>{{result.city}} ({{result.zipcode}})</h5>
                     </div>
-                    <div class="flip-card-back">
-                    <h2 class="h2CardSearch mt-2">Mes coordonnées</h2>
-                    <ul class="list_search">
-                        <li> <span> Adresse email: </span>{{result.email}}</li>
-                        <li><span> Numéro: </span> {{result.phoneNumber}}</li>
-                        <li><span> Numéro Cps:</span> {{result.cpsnumber}}</li>
-                    </ul>
+                    <div class="flip-card-back border border-primary bg-white">
+                        <h5 class="p-2 text-white bg-secondary">{{result.firstname | capitalize}} {{result.name}}</h5>
+                        <ul class="list-unstyled">
+                            <li><span class ="text-secondary">Adresse email: </span>{{result.email}}</li>
+                            <li><span class ="text-secondary">Numéro: </span>{{result.phoneNumber}}</li>
+                            <li><span class ="text-secondary">Numéro CPS/CPF: </span>{{result.cpsnumber}}</li>
+                            <li><span class ="text-secondary">Ville: </span>{{result.city}} ({{result.zipCode}})</li>
+                        </ul>
                     </div>
                 </div>
             </div> 
         {% endfor %}
-        </section>
+        {% if results is empty %}
+        <div class="text-center">Aucun résultat à afficher.</div>
+        {% endif %}
+    </section>
 {% endblock %}
