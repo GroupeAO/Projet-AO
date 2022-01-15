@@ -70,9 +70,9 @@
 }
 
 footer{
-    background-color: #FFF;
+    background-color: rgb(255, 255, 255);
     /* position: sticky; */
-    bottom: 0px;
+    /* bottom: 0px; */
 }
 
 .formDisabled{
