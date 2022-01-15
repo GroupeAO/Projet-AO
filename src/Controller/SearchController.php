@@ -17,8 +17,16 @@ class SearchController extends AbstractController
     #[Route('/search', name: 'search')]
     public function index(UserRepository $userRepository): Response
     {
-        $name ='%' . strtoupper($_POST['search']) . '%';
-        $name = str_replace(" ","", $name );
+        if (isset($_POST['search'])) {
+            echo 'in isset';
+            $searchFieldContent=str_replace(" ","", $_POST['search'] );
+            var_dump($searchFieldContent);
+            if (empty($searchFieldContent) || strlen($searchFieldContent)<= 2) {
+                $this->addFlash('searchUserError', 'Votre recherche doit contenir plus de 2 caractère');
+                return $this->redirectToRoute('search');
+            }
+        
+        $name ='%' . strtoupper($searchFieldContent) . '%';
         
         $results=$userRepository->searchUsers($name);
 
@@ -27,9 +35,14 @@ class SearchController extends AbstractController
             'results'=> $results
         ]);
     }
+    }
     #[Route('/search/availability', name: 'search_availability')]
     public function searchAvailability(AvailabilityRepository $availabilityRepository, EntityManagerInterface $entityManagerInterface): Response
-    {
+    {   
+        if (empty($_POST['date']) || empty($_POST['zipCode'])) {
+            $this->addFlash('searchAOError', 'veuillez remplir les champs nécéssaire à la recherche');
+                return $this->redirectToRoute('search_availabity');
+        }
         $date = $_POST['date'];
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$availabilityRepository->searchAvailabilityQuery($date, $zipCode,  $entityManagerInterface);
@@ -48,7 +61,10 @@ class SearchController extends AbstractController
     }
     #[Route('/search/surgery', name: 'search_surgery')]
     public function searchSurgery(SurgeryNotificationRepository $surgeryNotificationRepository, EntityManagerInterface $entityManagerInterface): Response
-    {
+    { if (empty($_POST['zipCode'])) {
+        $this->addFlash('searchSurgeryError', 'veuillez remplir les champs nécéssaire à la recherche');
+            return $this->redirectToRoute('search_surgery');
+    }
         $zipCode=$_POST['zipCode'] . '%';   
         $results=$surgeryNotificationRepository->searchSurgeryQuery($zipCode,$entityManagerInterface);
         $empty= false;
