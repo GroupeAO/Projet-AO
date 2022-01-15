@@ -18,6 +18,7 @@ class Availability
 
     #[ORM\Column(type: 'datetime_immutable')]
     /**
+     * @Assert\NotBlank
      * @Assert\GreaterThan("today",
      * message="le {{ value }} est une date révolu."
      * )
@@ -26,6 +27,7 @@ class Availability
 
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     /**
+     * @Assert\NotBlank
      * @Assert\GreaterThan("today",
      * message="le {{ value }} est une date révolu."
      * )
@@ -34,7 +36,7 @@ class Availability
 
     #[ORM\Column(type: 'integer', nullable: true)]
     /**
-     * @Assert\NotBlank(message="Veuillez remplir le champ ci-dessus")
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
      */
     private $commuteDistance;
 

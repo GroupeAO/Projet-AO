@@ -148,10 +148,12 @@ border: 1px solid black;
 /********page search*****/
 .selectize-input{
     border-radius: 7px;
-
+}
 
 /*** Pages display***/
-.listDisplaySurgery{
+
+.listDisplaySurgery
+{
     list-style: none;
     text-align: left;
 }
