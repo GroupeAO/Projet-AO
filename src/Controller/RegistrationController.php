@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\CpsCardOwnerRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Security\Moulaga;
+use App\Security\SecurityAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class RegistrationController extends AbstractController
 {
@@ -30,11 +32,12 @@ class RegistrationController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         UserRepository $userRepository,
+        UserAuthenticatorInterface $userAuthenticatorInterface,
+        SecurityAuthenticator $securityAuthenticator,
     ): Response 
     {
  // User form creation
         $session = $this->requestStack->getSession();
-        
         $user = new User;
         $form = $this->createForm(UserType::class, $user);
         $form->handleRequest($request);
@@ -49,16 +52,15 @@ class RegistrationController extends AbstractController
 
                 $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-                return $this->redirectToRoute('home');
-                
+
+                return $userAuthenticatorInterface->authenticateUser($user,$securityAuthenticator,$request);
                     //  $userEmail=$user->getEmail();
                     //    echo "L'email $userEmail existe déja en base de données";
             } else {
                 $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
                 return $this->redirectToRoute('registration');
             }
-                
-                
+
                 // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
             }
             // return $this->redirectToRoute('home');

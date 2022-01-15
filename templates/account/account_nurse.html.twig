@@ -36,8 +36,7 @@
                     <li><span>Ville:</span> {{app.user.city}}</li>
                     <li><span>Numéro CPS:</span> {{app.user.CPSNumber}}</li>
                 </ul>
-            </div>
-            
+            </div>     
             {% if (app.user.InstantAvailability =='Inactive') or (app.user.InstantAvailability == null)  %}
                 <form action="{{path('account_nurse_active')}}">
                     <input type="hidden" name="nurseActive" id="nurseActive" value="nurseActive">
