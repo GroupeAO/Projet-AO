@@ -142,3 +142,10 @@ border: 1px solid black;
 
 }
 
+.accountButton{
+    border-radius: 7px 0px 0px 7px;
+}
+
+.marginDropdown{
+    margin-right: 1rem;
+}
