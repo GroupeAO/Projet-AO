@@ -29,7 +29,7 @@ class SurgeryNotificationType extends AbstractType
                 'required'=> true
             ])
             ->add('speciality', ChoiceType::class,[
-                
+                'label' => 'Spécialité',
                 'choices' => [
                     'Choisissez...' => 'Non spécifiée',
                     'Chirurgie en orthopédie et traumatologie' => 'Chirurgie en orthopédie et traumatologie',
