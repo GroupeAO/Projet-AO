@@ -6,7 +6,6 @@ use App\Form\UserType;
 use App\Repository\CpsCardOwnerRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use App\Security\Moulaga;
 use App\Security\SecurityAuthenticator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RedirectResponse;
@@ -49,12 +48,9 @@ class RegistrationController extends AbstractController
         if($form->isSubmitted() && $form->isValid()){
 
             if ($this->isEmailExist($user->getEmail(), $userRepository)===false)  {
-
                 $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-                //we automatically authaticate the user after the registartion
                 return $userAuthenticatorInterface->authenticateUser($user,$securityAuthenticator,$request);
-
             } else {
                 $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
                 return $this->redirectToRoute('registration');
@@ -66,9 +62,7 @@ class RegistrationController extends AbstractController
             'nomDexercice' => $session->get('nomDexercice'),
             'prenomDexercice' => $session->get('prenomDexercice'),
             'codeProfession' => $session->get('codeProfession')
-            // 'formCps' => $formCps->createView(),
-        ]);
-        
+        ]);    
     }
 
 public function addUser( EntityManagerInterface $entityManagerInterface,
@@ -76,13 +70,11 @@ User $user,
 UserPasswordHasherInterface $userPasswordHasherInterface)
 {
     $session=$this->requestStack->getSession();
-    //set role in db according to their 'code professionnel' in db 10 for doctor 60 for nusres 
     if ($session->get('codeProfession') == 10){
         $user->setRoles(['ROLE_SURGEON']);
         } else {
             $user->setRoles(['ROLE_NURSE']);
         }
-
         $unsecurePassword= $user->getPassword();
         $hashedPassword = $userPasswordHasherInterface->hashPassword(
             $user,
@@ -127,7 +119,6 @@ public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository
         return $this->redirectToRoute('account');;
         
     }
-
 
     #[Route('/profile/nusre/inactive', name: "account_nurse_inactive")]
     public function addNurseInactive( EntityManagerInterface $entityManagerInterface):RedirectResponse

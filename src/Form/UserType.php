@@ -2,15 +2,11 @@
 
 namespace App\Form;
 use App\Form\ShowHidePasswordType;
-use Twig\Extra\Intl\IntlExtension;
-use App\Entity\SurgicalSpecialty;
 use App\Entity\User;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
-use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
@@ -39,9 +35,6 @@ class UserType extends AbstractType
             ->add(  'zipCode', TextType::class,     ['label' => 'Code Postal'])
             ->add(  'city', TextType::class,        ['label' => 'Ville'])
             ->add(  'phoneNumber', TelType::class,  ['label' => 'Numéro de téléphone'])
-            //->add('surgicalSpeciality', EntityType::class, [ 
-            //    'class'=>SurgicalSpecialty::class,
-            //    'choice_label'=>'name'])
                 ;
     }
 

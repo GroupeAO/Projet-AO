@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Availability;
 use App\Entity\User;
 use App\Form\UserType;
 use App\Repository\AvailabilityRepository;
@@ -106,17 +105,13 @@ class AdminController extends AbstractController
 
         /** @var \App\Entity\User $user */
         $user = $this->getUser();
-        $currentEmail=$user->getEmail();
-    //check if email exist in bdd
-
-        
-            $unsecurePassword= $user->getPassword();
-            $hashedPassword = $userPasswordHasherInterface->hashPassword(
-                $user,
-                $unsecurePassword
-            );
-            $this->addUser($entityManagerInterface, $user, $hashedPassword);
-            return $this->redirectToRoute('home');
+        $unsecurePassword= $user->getPassword();
+        $hashedPassword = $userPasswordHasherInterface->hashPassword(
+            $user,
+            $unsecurePassword
+        );
+        $this->addUser($entityManagerInterface, $user, $hashedPassword);
+        return $this->redirectToRoute('home');
     }
 
     public function addUser( EntityManagerInterface $entityManagerInterface,
