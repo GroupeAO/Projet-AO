@@ -1,6 +1,6 @@
 .container{
-    min-height: 70vh;
-    margin : 0 auto;
+   min-height: 70vh;
+   margin: 0 auto;
 }
 .alert {
     z-index: 12;
