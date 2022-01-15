@@ -13,24 +13,17 @@
 {% endfor %}
     <section class="row d-flex flex-wrap justify-content-center">
     {% for surgery in surgeries %}
-    <div class="col col-md-3 p-3 m-3 border border-primary">
-    
-            <ul class="list-unstyled">
-                <li><span>Chirugie le:</span> {{surgery.start_date | date('d-m-Y') }}</li>
-                <li><span>Spécialité :</span> {{surgery.speciality}}</li>
-                <li><span>Nom de la clinique :</span> {{surgery.clinic_name}}</li>
-                <li><span>Code Postal de la clinique :</span> {{surgery.clinic_zip_code}}</li>
-                <li><span>Description :</span> {{surgery.description}}</li>
-            </ul>
-            
-            <div class="row">
-                <div class="col justify-content-center text-center">
-                    <a href="{{path('edit_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-secondary">Modifier</button></a>
-                    <a  class="deleteButton text-center" href="{{path('delete_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-danger">Supprimer</button></a>
-                </div>
-            </div>
+        <div class="col-md-3 p-3 m-3 border border-primary rounded">
+                <ul class="list-unstyled">
+                    <li><span class="text-secondary">Chirugie le :</span> {{surgery.start_date | date('d-m-Y') }}</li>
+                    <li><span class="text-secondary">Spécialité :</span> {{surgery.speciality}}</li>
+                    <li><span class="text-secondary">Description :</span> {{surgery.description}}</li>
+                    <li><span class="text-secondary">Nom de la clinique :</span> {{surgery.clinic_name}}</li>
+                    <li><span class="text-secondary">Code Postal :</span> {{surgery.clinic_zip_code}}</li>          
+                </ul>
+                <a href="{{path('edit_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-secondary">Modifier</button></a>
+                <a  class="deleteButton" href="{{path('delete_surgery_notification',  { 'id': surgery.id })}}"><button class="btn btn-danger">Supprimer</button></a>
         </div>
-    
     {% endfor %}
     {% if surgeries is empty %}
     <div class="text-center">Aucun résultat à afficher.</div>
