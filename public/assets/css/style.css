@@ -138,6 +138,10 @@ border: 1px solid black;
     text-align: left;
 }
 
+.flip_back_click{
+    transform: rotateY(-180deg) !important;
+}
+
 /* **********************PAGES ACCOUNT************************** */
 
 
