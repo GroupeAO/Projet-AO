@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\AvailabilityRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AvailabilityRepository::class)]
@@ -19,7 +19,7 @@ class Availability
     #[ORM\Column(type: 'datetime_immutable')]
     /**
      * @Assert\GreaterThan("today",
-     * message="le {{ value }} est une date révolu."
+     * message="Le {{ value }} est une date révolue."
      * )
      */
     private $startDate;
@@ -27,7 +27,7 @@ class Availability
     #[ORM\Column(type: 'datetime_immutable', nullable: true)]
     /**
      * @Assert\GreaterThan("today",
-     * message="le {{ value }} est une date révolu."
+     * message="Le {{ value }} est une date révolue."
      * )
      */
     private $endDate;

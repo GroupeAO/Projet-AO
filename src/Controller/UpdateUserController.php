@@ -7,7 +7,6 @@ use App\Form\UpdateUserType;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
@@ -32,7 +31,6 @@ class UpdateUserController extends AbstractController
         
         $form = $this->createForm(UpdateUserType::class, $user);
         $form->handleRequest($request);
-
 
         //check submit  and valid from
             

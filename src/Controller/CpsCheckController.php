@@ -4,7 +4,6 @@ namespace App\Controller;
 use App\Form\CpsType;
 use App\Entity\CpsCardOwner;
 use App\Repository\CpsCardOwnerRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -24,7 +23,6 @@ class CpsCheckController extends AbstractController
     #[Route('/cps_check', name: 'cps_check')]
     public function index(
         Request $request,
-        EntityManagerInterface $entityManagerInterface,
         CpsCardOwnerRepository $cpsCardOwnerRepository
     ): Response  
     {
@@ -43,21 +41,12 @@ class CpsCheckController extends AbstractController
                 $codeProfession = $cpsCardOwnerRepository->findOneBy(['numeroCarte' => $cpsOwner->getNumeroCarte()]);
                 $codeProfession = $codeProfession->getCodeProfession();
 
-
-
                 $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
-                
-                //return $this->render('registration/index.html.twig', [
-                //     'form' => $form->createView(),
-                //     'cpsCardNumber' => $cpsOwner->getNumeroCarte()
-                // ]);
-                
+
                 $session->set('numeroCarte', $cpsOwner->getNumeroCarte());
                 $session->set('nomDexercice',$cpsOwner->getNomDexercice());
                 $session->set('prenomDexercice', $prenomDexercice);
                 $session->set('codeProfession', $codeProfession);
-                
-               //$session->set('codeProfession',$cpsCardOwnerRepository->getCodeProfession());
             
                 return $this->redirectToRoute('registration');
                 
@@ -65,17 +54,10 @@ class CpsCheckController extends AbstractController
                 $this->addFlash('cpsError', 'Le nom et le numéro de carte CPS/CPF ne correspondent pas.');
                 
             } 
-            //$validationCPS    
-            //if ($_GET($validationCPS)!='OK'){  
         }  
-        
             return $this->render('registration/check_cps.html.twig', [
                 'form' => $form->createView(),
-                // 'formCps' => $formCps->createView(),
-        
             ]);
-            //}
-        
     }
 public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository $cpsCardOwnerRepository )
 {

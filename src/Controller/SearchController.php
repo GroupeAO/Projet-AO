@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\SurgeryNotification;
 use App\Repository\AvailabilityRepository;
 use App\Repository\SurgeryNotificationRepository;
 use App\Repository\UserRepository;
