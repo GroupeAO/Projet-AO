@@ -126,7 +126,6 @@ border: 1px solid black;
 }
 .flip-card-front img {
     max-width: 30%;
-    background-color: white;
     border-radius: 7px;
     margin-top: 10px;
 }
@@ -149,33 +148,9 @@ border: 1px solid black;
 /********page search*****/
 .selectize-input{
     border-radius: 7px;
-}
-.selectize-input.focus{
-    border-color: #6C63FF;
-}
 
 
 /*** Pages display***/
-
-
-.cardMyAvailability{
-    border: 2px solid #4fc19e;
-    background: white ;
-    text-align: center;
-    border-radius: 7px;
-    margin-top: 2rem;
-}
-.insideCardCol2{
-    background: white;
-    border-radius: 7px;
-}
-.cardMyAvailability p{
-    margin-bottom: 7px;
-}
-.cardMyAvailability span{
-    color: #4fc19e ;
-}
-
 .listDisplaySurgery{
     list-style: none;
     text-align: left;
