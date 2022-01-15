@@ -52,18 +52,14 @@ class RegistrationController extends AbstractController
 
                 $this->addUser($entityManagerInterface,$user, $userPasswordHasherInterface);
                 $this->addFlash('registrationSuccess', 'Votre inscription est bien terminée');
-
+                //we automatically authaticate the user after the registartion
                 return $userAuthenticatorInterface->authenticateUser($user,$securityAuthenticator,$request);
-                    //  $userEmail=$user->getEmail();
-                    //    echo "L'email $userEmail existe déja en base de données";
+
             } else {
                 $this->addFlash('registrationError', 'Un compte existe déjà pour cette adresse mail');
                 return $this->redirectToRoute('registration');
             }
-
-                // echo 'Numéro de carte CPS/CPF invalide. Veuillez re-essayer';
-            }
-            // return $this->redirectToRoute('home');
+        }
         return $this->render('registration/registration.html.twig', [
             'form' => $form->createView(),
             'numeroCarte' => $session->get('numeroCarte'),
@@ -80,6 +76,7 @@ User $user,
 UserPasswordHasherInterface $userPasswordHasherInterface)
 {
     $session=$this->requestStack->getSession();
+    //set role in db according to their 'code professionnel' in db 10 for doctor 60 for nusres 
     if ($session->get('codeProfession') == 10){
         $user->setRoles(['ROLE_SURGEON']);
         } else {

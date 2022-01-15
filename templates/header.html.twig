@@ -31,10 +31,9 @@
                                 <span class="visually-hidden">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="{{path('search_availability')}}">Rechercher une AO</a></li>
-                                <li><a class="dropdown-item" href="{{path('search')}}">Rechercher un utilisateur </a></li>
                                 <li><a class="dropdown-item" href="{{path('surgery_notification')}}">Ajouter une Annonce</a></li>
                                 <li><a class="dropdown-item" href="{{ path('display_user_surgery', { 'id': app.user.id } ) }}">Mes annonces</a></li>
+                                <li><a class="dropdown-item" href="{{path('update_user', { 'id': app.user.id })}}">Modifier mes données</a></li>
                             </ul>
                         </div>
                         {% else %}
@@ -44,10 +43,9 @@
                                     <span class="visually-hidden">Toggle Dropdown</span>
                                 </button>
                                 <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="{{path('search_surgery')}}">Rechercher une Annonce</a></li>
-                                    <li><a class="dropdown-item" href="{{path('search')}}">Rechercher un utilisateur </a></li>
                                     <li><a class="dropdown-item" href="{{path('availability')}}">Ajouter une disponibilité</a></li>
                                     <li><a class="dropdown-item" href="{{path('display_availability',  { 'id': app.user.id })}}">Mes disponibilités</a></li>
+                                    <li><a class="dropdown-item" href="{{path('update_user', { 'id': app.user.id })}}">Modifier mes données</a></li>
                                 </ul>
                             </div>
 

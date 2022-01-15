@@ -16,25 +16,55 @@ class SurgeryNotification
     private $id;
 
     #[ORM\Column(type: 'datetime_immutable')]
+    /**
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     * @Assert\GreaterThan("today",
+     * message="le {{ value }} est une date révolu."
+     */
     private $startDate;
 
     #[ORM\Column(type: 'datetime_immutable')]
+    /**
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     * @Assert\GreaterThan("today",
+     * message="le {{ value }} est une date révolu."
+     */
     private $enDate;
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     */
     private $speciality;
 
     #[ORM\Column(type: 'string', length: 2000)]
     private $description;
 
     #[ORM\Column(type: 'integer')]
+    /**
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     */
     private $numberAoNeeded;
     
 
     #[ORM\Column(type: 'string', length: 255)]
+    /**
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     * @Assert\Length(
+     *   min = 3,
+     *   minMessage = "Le nom de la clinic doit faire au moins 3 caractères")
+     */
     private $clinicName;
 
     #[ORM\Column(type: 'integer')]
+    /**
+     * @Assert\NotBlank(message="Veuillez remplir ce champ")
+     * @Assert\Length(
+     *  min = 5,
+     *  max = 5,
+     *  exactMessage = "Le Code Postal doit comporter 5 chiffres"
+     * )
+     */
     private $clinicZipCode;
 
     #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'surgeryNotifications')]
