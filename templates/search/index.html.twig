@@ -1,27 +1,36 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
 <div class="row row-flex justify-content-center mb-5">
     <div class="pageTitle">
         Rechercher un(e) utilisateur(rice)
     </div>
 
-    <div class="col-md-5"> 
-            {% include "form/searchUser.html.twig" %}
-    </div>
+    <form action="{{path('search')}}" method="post" class="loginForm">
+
+       
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center">
+                <label for="search">Nom et/ou Prénom :</label>
+                <input type="search" name="search" id="search" class="form-control mb-3" required minlength="2">
+                <button type="submit" class="btn btn-secondary mb-3">Rechercher</button>
+            </div>   
+        </div> 
+
+    </form>
+    
 </div>
     <section class="row d-flex justify-content-center">
         {% for result in results %}
             <div class="flip-card">
                 <div class="flip-card-inner">
-                    <div class="flip-card-front border border-primary bg-white">
-                        <h5 class="p-2 text-white bg-primary">{{result.firstname | capitalize}} {{result.name}}</h5>
+                    <div class="flip-card-front border border-primary rounded bg-white">
+                        <h5 class="p-2 text-white bg-primary rounded-top">{{result.firstname | capitalize}} {{result.name}}</h5>
                         <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien" class="mb-3">
                         <h5>{{result.city}} ({{result.zipcode}})</h5>
                     </div>
-                    <div class="flip-card-back border border-primary bg-white">
-                        <h5 class="p-2 text-white bg-secondary">{{result.firstname | capitalize}} {{result.name}}</h5>
+                    <div class="flip-card-back border border-secondary rounded bg-white">
+                        <h5 class="p-2 text-white bg-secondary rounded-top">{{result.firstname | capitalize}} {{result.name}}</h5>
                         <ul class="list-unstyled">
                             <li><span class ="text-secondary">Adresse email: </span>{{result.email}}</li>
                             <li><span class ="text-secondary">Numéro: </span>{{result.phoneNumber}}</li>
