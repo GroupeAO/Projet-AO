@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-primary">
         <div class="container-fluid">
-            <a  class="navbar-brand bannerLogo text-secondary" href="{{path('home')}}">aideop.com</a>
+            <a class="navbar-brand bannerLogo text-secondary" href="{{path('home')}}">aideop.com</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -23,7 +23,7 @@
                 </ul>
                 <div class="d-flex"></div>
                     {% if is_granted('IS_AUTHENTICATED_FULLY') %}
-                    <div class="text-white mr-3"> Bonjour, {{app.user.firstname|capitalize}} ! </div>
+                    <div class="text-white mx-3"> Bonjour, {{app.user.firstname|capitalize}} ! </div>
                     <a href="{{ path('account') }}"><button class="btn btn-secondary mx-1" href="">Mon Compte</button></a>
                     <a href="{{ path('app_logout') }}"><button class="btn btn-light" href="">Déconnexion</button></a>
                     {% else %}
