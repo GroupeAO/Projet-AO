@@ -1,7 +1,6 @@
-
 .container-fluid{
-    min-height: 100%;
-    /* overflow: auto; */
+    min-height: 80vh;
+    overflow:auto;
     padding: 0 2em;
     width: 100vw;
 }
