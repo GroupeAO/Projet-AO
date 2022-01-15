@@ -70,7 +70,6 @@ User $user,
 UserPasswordHasherInterface $userPasswordHasherInterface)
 {
     $session=$this->requestStack->getSession();
-
     if ($session->get('codeProfession') == 10){
         $user->setRoles(['ROLE_SURGEON']);
         } else {
@@ -120,7 +119,6 @@ public function isCpsCardNumberExist(string $numeroCarte, CpsCardOwnerRepository
         return $this->redirectToRoute('account');;
         
     }
-
 
     #[Route('/profile/nusre/inactive', name: "account_nurse_inactive")]
     public function addNurseInactive( EntityManagerInterface $entityManagerInterface):RedirectResponse

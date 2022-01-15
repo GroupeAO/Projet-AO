@@ -26,6 +26,7 @@ class CpsCheckController extends AbstractController
         CpsCardOwnerRepository $cpsCardOwnerRepository
     ): Response  
     {
+        // cps stands for 'carte professionnelle de santé'
         $session = $this->requestStack->getSession();
         $cpsOwner = new CpsCardOwner;
         $form = $this->createForm(CpsType::class, $cpsOwner);
@@ -42,7 +43,6 @@ class CpsCheckController extends AbstractController
                 $codeProfession = $codeProfession->getCodeProfession();
 
                 $this->addFlash('cpsSuccess', 'Carte CPS/CPF validée. Vous pouvez poursuivre votre inscription.');
-
                 $session->set('numeroCarte', $cpsOwner->getNumeroCarte());
                 $session->set('nomDexercice',$cpsOwner->getNomDexercice());
                 $session->set('prenomDexercice', $prenomDexercice);

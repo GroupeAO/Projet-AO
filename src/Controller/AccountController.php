@@ -12,6 +12,7 @@ class AccountController extends AbstractController
     #[Route('/profile', name: 'account')]
     public function index(): RedirectResponse
     {
+        //we check if the user is logged and redirect to the account that match is role
         if ($this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY')) {
             return $this->redirectToRoute('home');
             exit();

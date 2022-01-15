@@ -26,6 +26,7 @@ class SurgeryNotificationController extends AbstractController
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
 
+            //we set the foreign key user id and then add the data in db
             $surgeryNotification->setFkIdUser($user);
             $entityManagerInterface->persist($surgeryNotification);
             $entityManagerInterface->flush();

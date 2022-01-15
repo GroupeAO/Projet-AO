@@ -17,14 +17,14 @@ class InsertAvailabilityType extends AbstractType
             ->add('startDate', DateTimeType::class, [
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
-                'label'  => 'Date de début'
-                
-
+                'label'  => 'Date de début',
+                'required'=> true,
             ])
             ->add('endDate',DateTimeType::class, [
                 'widget' => 'single_text',
                 'input'  => 'datetime_immutable',
-                'label'  => 'Date de fin'
+                'label'  => 'Date de fin',
+                'required'=> true
                 ])
             ->add('commuteDistance', IntegerType::class,[
                 'label'  => 'Distance que vous êtes prêt(e) à parcourir en Kilomètre'

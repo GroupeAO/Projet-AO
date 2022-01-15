@@ -5,12 +5,14 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\UpdateUserType;
 use App\Repository\UserRepository;
+use App\Security\SecurityAuthenticator;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 
 class UpdateUserController extends AbstractController
 {
@@ -20,6 +22,8 @@ class UpdateUserController extends AbstractController
         EntityManagerInterface $entityManagerInterface,
         UserPasswordHasherInterface $userPasswordHasherInterface,
         UserRepository $userRepository,
+        UserAuthenticatorInterface $userAuthenticatorInterface,
+        SecurityAuthenticator $securityAuthenticator,
     ): Response    
     {
     // User from creation
@@ -44,7 +48,8 @@ class UpdateUserController extends AbstractController
                 $unsecurePassword);
 
             $this->updateUser($entityManagerInterface, $user, $hashedPassword);
-            return $this->redirectToRoute('home');
+            //we automatically authaticate the user after the edit
+            return $userAuthenticatorInterface->authenticateUser($user,$securityAuthenticator,$request);
             }else{
                 return $this->redirectToRoute('account');
             }
