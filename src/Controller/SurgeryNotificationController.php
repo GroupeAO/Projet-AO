@@ -93,8 +93,7 @@ class SurgeryNotificationController extends AbstractController
             $surgery=$surgeryNotificationRepository->find($id);
             $entityManagerInterface->remove($surgery);
             $entityManagerInterface->flush();
-
-            $this->addFlash('removeSurgerySuccess', "La disponibilité a bien été supprimé");
-            return $this->redirectToRoute('account', $user=['id' => $idUser ]);
+            $this->addFlash('deleteSurgerySuccess', 'Votre annonce de chirurgie a bien été supprimé');
+            return $this->redirectToRoute('display_user_surgery', $user=['id' => $idUser ]);
         } 
 }
