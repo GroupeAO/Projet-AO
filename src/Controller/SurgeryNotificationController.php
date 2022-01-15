@@ -47,9 +47,11 @@ class SurgeryNotificationController extends AbstractController
          /** @var \App\Entity\User $user */
         $user = $this->getUser();
         $surgeryNotification= new SurgeryNotification;
+        //we get the id link to the surgery notification to prefill the form
         $surgeryNotification=$surgeryNotificationRepository->find($id);
         $form = $this->createForm(SurgeryNotificationType::class, $surgeryNotification);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid()){
             $entityManagerInterface->flush();
             $this->addFlash('editSurgerySuccess', 'Votre profile a bien été modifié');

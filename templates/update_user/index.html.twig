@@ -31,11 +31,12 @@
             
             {{form_row(form.cpsnumber, {'attr': {'value' : app.user.cpsnumber, 'class' : 'formDisabled'} })}} 
             {{ app.user.cpsnumber}}
-            <label for="role" class="form-label">Profession</label>
-            <select name="role" id="role" class="form-select formDisabled mb-3">
-                <option value ="ROLE_SURGEON" >Chirugien</option>
-                <option value ="ROLE_NURSE" >Aide opératoire</option>  
-            </select>
+             <label for="role" class="form-label m-0">Profession</label>
+                        {% if app.user.roles == ['ROLE_SURGEON'] %}
+                        <input type="text" value="Chirurgien" id="role" class="form-control formDisabled m-0">
+                        {% else %}
+                        <input type="text" value="Infirmier(ère)" id="role" class="form-control formDisabled m-0">   
+                        {% endif %}
         </div>
         <div class="col-md-5">
             {{form_row(form.name, {'attr': {'value' : app.user.name, 'class' : 'formDisabled'} }) }}

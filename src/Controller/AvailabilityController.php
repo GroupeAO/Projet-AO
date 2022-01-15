@@ -30,7 +30,6 @@ class AvailabilityController extends AbstractController
 
         $form = $this->createForm(InsertAvailabilityType::class, $availability);
         $form->handleRequest($request);
-        
         if($form->isSubmitted() && $form->isValid()){
             // testing if the nusre has already a registered availability for this timeframe
             $date=$availability->getStartDate();

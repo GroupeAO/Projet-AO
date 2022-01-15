@@ -46,7 +46,7 @@ class SurgeryNotificationType extends AbstractType
                 ]
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'Décrivez la procédure'
+                'label' => 'Décrivez la procédure (facultatif)'
             ])
             ->add('numberAoNeeded', ChoiceType::class,[
                 'label'  => 'Nombre d\'aide opératoire nécéssaire',
