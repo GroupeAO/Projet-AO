@@ -11,20 +11,16 @@
         </div>
     </div>
     <div class="row justify-content-center">
-        <div class="col-auto ">
-            <h5 class="my-3 text-center">Ce site a été développé par : </h5>
-                <div class="card my-3 border-primary" style="max-width: 520px;">
-                    <h5 class="card-header">
-                        Benoit Baudrin
-                    </h5>
-                    <div class="row g-0">
-                        <div class="col-4">
-                            <img src="{{ asset('../assets/img/pfp/pfp_benoit.jpg') }}" class="img-fluid rounded-start" alt="Profile Pic Benoit">
+            <h5 class="m-3 text-center">Ce site a été développé par : </h5>
+                <div class="card border-primary m-3 p-0 creditsCards">
+                    <div class="row g-0 m-0">
+                        <div class="col-auto m-0">
+                            <img src="{{ asset('../assets/img/pfp/pfp_benoit.jpg') }}" class="imgPfp" alt="Profile Pic Benoit">
                         </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                
-                                <p class="card-text">Développeur Web en formation <br> WebForce3 Marseille</p>
+                        <div class="col m-0 d-flex align-items-center">
+                            <div class="card-body m-0">
+                                <h5 class="text-secondary">Benoit Baudrin</h5>
+                                <p>Développeur Web en formation <br> WebForce3 Marseille</p>
                                 <div class="card-socialLogos">
                                     <a href="https://github.com/benoitBvg">
                                         <img src="{{ asset('../assets/img/gitLogo.png') }}" alt="Logo Github">
@@ -37,24 +33,20 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="card my-3 border-primary" style="max-width: 520px;">
-                    <h5 class="card-header">
-                        Etienne Guignard
-                    </h5>
-                    <div class="row g-0">
-                        <div class="col-4">
-                            <img src="{{ asset('../assets/img/EG.jpg') }}" id="imgEG" alt="photo profile Etienne">
+                <div class="card border-primary m-3 p-0 creditsCards">
+                    <div class="row g-0 m-0">
+                        <div class="col-auto m-0">
+                            <img src="{{ asset('../assets/img/pfp/pfp_etienne.jpg') }}" class="imgPfp" alt="Profile Pic Benoit">
                         </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                
-                                <p class="card-text">Développeur Web en formation<br>WebForce3 Marseille</p>
+                        <div class="col m-0 d-flex align-items-center">
+                            <div class="card-body m-0">
+                                <h5 class="text-secondary">Etienne Guignard</h5>
+                                <p>Développeur Web en formation <br> WebForce3 Marseille</p>
                                 <div class="card-socialLogos">
                                     <a href="https://github.com/EtienneGuignard">
-                                        <img src="{{ asset('../assets/img/gitLogo.png')}}" alt="Logo Github">
+                                        <img src="{{ asset('../assets/img/gitLogo.png') }}" alt="Logo Github">
                                     </a>
-                                    <a href="https://www.linkedin.com/in/etienne-guignard-dev/">
+                                    <a href="https://www.linkedin.com/in/etienne-guignard-dev">
                                         <img src="{{ asset('../assets/img/linkedin_logo_small.png') }}" alt="logo LinkedIn">
                                     </a>
                                 </div>
@@ -63,21 +55,18 @@
                     </div>
                 </div>
                 <h5 class="mt-5 text-center">Selon une idée de : </h5> 
-                <div class="card my-3 border-primary" style="max-width: 520px;">
-                    <h5 class="card-header">
-                        Benjamin Coquet
-                    </h5>
-                    <div class="row g-0">
-                        <div class="col-4">
-                            <img src="{{ asset('../assets/img/pfp/pfp_benjamin.jpg') }}" class="img-fluid rounded-start" alt="Profile Pic Benjamin">
+                <div class="card border-primary m-3 p-0 creditsCards">
+                    <div class="row g-0 m-0">
+                        <div class="col-auto m-0">
+                            <img src="{{ asset('../assets/img/pfp/pfp_benjamin.jpg') }}" class="imgPfp" alt="Profile Pic Benoit">
                         </div>
-                        <div class="col-8">
-                            <div class="card-body">
-                                
+                        <div class="col m-0 d-flex align-items-center">
+                            <div class="card-body m-0">
+                                <h5 class="text-secondary">Benjamin Coquet</h5>
                                 <p class="card-text">Chirurgien Viscéral <br> CH de Salon-de-Provence</p>
                                 <div class="card-socialLogos">
-                                    <a href="https://www.linkedin.com/in/benjamin-coquet-32498994/">
-                                        <img src="{{ asset('../assets/img/linkedin_logo_small.png') }}" alt="">
+                                    <a href="https://www.linkedin.com/in/benjamin-coquet-32498994">
+                                        <img src="{{ asset('../assets/img/linkedin_logo_small.png') }}" alt="logo LinkedIn">
                                     </a>
                                 </div>
                             </div>
@@ -93,8 +82,17 @@
                         <p>Carole Bonnet (Infirmière Anesthésiste, CH de Salon-de-Provence)<br>
                         Joëlle Devaux (Directrice, WebForce3 Marseille)</p>
                 </div>
+                <div class="mt-5 text-center">
+                    <h5> Illustrations : </h5> 
+                        <p>Icônes : <a href="https://fontawesome.com">Font Awesome</a><br>
+                        Favicon : <a href="https://fontawesome.com">Font Awesome</a>, modifié par nos soins.<br>
+                        Accueil : <a href="https://undraw.co">unDraw</a>, modifié par nos soins.</p>
+                </div>
+                <div class="mt-5 text-center">
+                    <p>Site créé avec <a href="https://symfony.com/">Symfony 6</a></p>
+                </div>
             </div>
-        </div>
+        
     </div>
 
 {% endblock %}

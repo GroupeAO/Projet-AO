@@ -1,5 +1,5 @@
 .container-fluid{
-    min-height: 80vh;
+    min-height: 75vh;
     overflow: auto;
     padding: 0 2em;
     width: 100vw;
@@ -69,6 +69,10 @@
 
 
 /* Credits */
+.creditsCards{
+    height: fit-content;
+    max-width: 520px;
+}
 .card-header{
     font-weight: bold;
     text-align: center;
@@ -80,8 +84,8 @@
     max-width: 50px;
     padding: 5px;
 }
-#imgEG{
-    max-width: 150px;
+.imgPfp{
+    max-width: 200px;
     border-radius: 7px 0px 0px 7px;
 }
 /***** Page Admin*****/
