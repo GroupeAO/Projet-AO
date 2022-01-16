@@ -31,9 +31,6 @@ class AccountController extends AbstractController
     #[Route('/profile/nurse', name: "account_nurse")]
     public function renderAccountNurse(): Response
     {
-        $hasAccess = $this->isGranted('ROLE_NURSE');
-        $this->denyAccessUnlessGranted('ROLE_NURSE');
-
         return $this->render('account/account_nurse.html.twig', ['controller_name' => 'AccountController',
     ]);
     }
