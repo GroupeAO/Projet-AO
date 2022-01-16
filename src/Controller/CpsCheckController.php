@@ -18,8 +18,6 @@ class CpsCheckController extends AbstractController
     {
         $this->requestStack =$requestStack;
     }
-
-
     #[Route('/cps_check', name: 'cps_check')]
     public function index(
         Request $request,

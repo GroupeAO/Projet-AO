@@ -114,31 +114,32 @@
                 <option value="974">&#40;974&#41; Réunion </option>
                 <option value="975">&#40;975&#41; Saint Pierre et Miquelon </option>
             </select>
-            <button type="submit" class="btn btn-secondary bt-lg mb-3">Rechercher</button>
+            <button type="submit" class="btn btn-secondary bt-lg my-3">Rechercher</button>
         </form>
     </div>        
 </div>
 <section class="row d-flex justify-content-center mt-5">
     {% for result in results %}
-        <div class="flip-card mt-3">
-            <div class="flip-card-inner">
-                <div class="flip-card-front">
-                <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
-                <h3 class="h3CardSearch">{{result.name}} {{result.firstname}} </h3>
-                    <p>Chirugie prévue le: {{result.start_date | date('d-m-Y')}}<br>
-                        Spécialité: {{result.speciality}}
-                    </p>
-                </div>
-                <div class="flip-card-back">
-                    <h2 class="h2CardSearch mt-2">Coordonées.</h2>
-                    <ul class="list_search">
-                        <li><span> Adresse email: </span>{{result.email}}</li>
-                        <li><span> Téléphone: </span> {{result.phone_number}}</li>
-                        <li><span> Code Postal: </span> {{result.clinic_zip_code}}</li>
-                    </ul>
-                </div>
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front border border-primary rounded bg-white">
+                <h5 class="p-2 text-white bg-primary rounded-top">{{result.firstname | capitalize}} {{result.name}}</h5>
+            <img src="{{asset('assets/img/surgeon_icon.png')}}" alt="Icon chirurgien">
+            <p><span class="text-primary">Chirurgie prévue le : </span> {{result.start_date | date('d-m-Y')}} </p>
+            <p><span class="text-primary">Spécialité : </span> {{result.speciality}} </p>
             </div>
-        </div> 
+            <div class="flip-card-back border border-secondary rounded bg-white">
+                <h5 class="p-2 text-white bg-secondary rounded-top">{{result.firstname | capitalize}} {{result.name}}</h5>
+                <ul class="list-unstyled align-self-center">
+                    <li><span class="text-secondary">Adresse email: </span><a class="text-decoration-none" href="mailto:{{result.email}}">{{result.email}}</a></li>
+                    <li><span class="text-secondary">Numéro: </span> <a class="text-decoration-none" href="tel:{{result.phone_number}}">{{result.phone_number}}</a></li>
+                    <li><span class="text-secondary">Nom de la clinique:</span> {{result.clinic_name}}</li>
+                    <li><span class="text-secondary">Nombre d'AO rechercher: </span> {{result.number_ao_needed}}</li>
+                    <li><span class="text-secondary">description: </span>{{result.description}}</li>
+                </ul>
+            </div>
+        </div>
+    </div> 
     {% endfor %}
     {% if results is empty %}
     <div class="text-center">Aucun résultat à afficher.</div>
