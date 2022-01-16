@@ -27,8 +27,8 @@
                     <div class="flip-card-back border border-secondary rounded bg-white">
                         <h5 class="p-2 text-white bg-secondary rounded-top">{{result.firstname | capitalize}} {{result.name}}</h5>
                         <ul class="list-unstyled">
-                            <li><span class ="text-secondary">Adresse email: </span>{{result.email}}</li>
-                            <li><span class ="text-secondary">Numéro: </span>{{result.phoneNumber}}</li>
+                            <li><span class ="text-secondary">Adresse email: </span><a class="text-decoration-none" href="mailto:{{result.email}}">{{result.email}}</a></li>
+                            <li><span class ="text-secondary">Numéro: </span><a class="text-decoration-none" href="tel:{{result.phoneNumber}}">{{result.phoneNumber}}</a></li>
                             <li><span class ="text-secondary">Numéro CPS/CPF: </span>{{result.cpsnumber}}</li>
                             <li><span class ="text-secondary">Ville: </span>{{result.city}} ({{result.zipCode}})</li>
                         </ul>

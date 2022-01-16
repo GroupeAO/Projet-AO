@@ -7,7 +7,7 @@
             <div class="collapse navbar-collapse" id="navbarColor01">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle active" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
+                    <a class="nav-link dropdown-toggle active ms-3" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">A propos</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item" href="{{path('about_us')}}">Qui sommes-nous?</a>
                             <a class="dropdown-item" href="{{path('informations')}}">Infos Pratiques</a>
@@ -16,7 +16,7 @@
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="{{path('contact')}}">Contactez-nous</a>
+                        <a class="nav-link active ms-3" href="{{path('contact')}}">Contactez-nous</a>
                         <span class="visually-hidden">(current)</span>
                     </li>
                 </ul>
@@ -34,7 +34,7 @@
                                 <li><a class="dropdown-item" href="{{path('update_user', { 'id': app.user.id })}}">Modifier mes données</a></li>
                             </ul>
                         {% else %}
-                                <a href="{{path('account')}}"><button type="button" class="btn btn-secondary  accountButton">Mon compte</button></a>
+                                <a href="{{path('account')}}"><button type="button" class="btn btn-secondary accountButton">Mon compte</button></a>
                                 <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split marginDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden">Toggle Dropdown</span>
                                 </button>
@@ -52,6 +52,5 @@
                     </div>
                 </div>
             </div>
-
     </nav>
 </header>

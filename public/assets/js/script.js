@@ -16,6 +16,7 @@ var deleteLink = $('.deleteButton')
     $(".registrationSuccess").fadeTo(5000, 500).slideUp(500, function(){
         $(".registrationSuccess").slideUp(500);
     });
+
 /***form** */
     $(document).ready(function () { 
         $('#zipCode').selectize({ sortField: 'text' }); 
@@ -30,15 +31,6 @@ $(".appFlashSuccess").fadeTo(3000, 500).slideUp(500, function(){
 })
 
 /**** ******/
-$(".flip-card").on('click', function rotate() { 
-    $(".flip-card").toggleClass('.active');
-    
-})
-
-$(".flip-card-back").on('click', function rotateBack() { 
-    $(".flip-card-back").toggleClass('.flip_back_click');
-    
-})
 
 
 /****** autologin*/
