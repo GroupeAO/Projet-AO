@@ -18,7 +18,8 @@
     bottom:0;
     position: static;
     width: 100%;
-    left: 0;
+    margin : 0 auto;
+
 }
 .formDisabled{
         pointer-events:none;
