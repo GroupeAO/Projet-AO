@@ -54,7 +54,7 @@ class AdminController extends AbstractController
                 $this->checkUser($entityManagerInterface, $userPasswordHasherInterface, $user, $userRepository);
             // return $this->redirectToRoute('home');
         }
-        return $this->render('registration/index.html.twig', [
+        return $this->render('update_user/index.html.twig', [
             'form' => $form->createView(),
             // 'formCps' => $formCps->createView(),
         ]);
