@@ -95,6 +95,10 @@ border: 1px solid black;
     display: none;
 }
 /* Page Search */
+.displayOffers{
+    width: 300px;
+    min-height: 230px;
+}
 .flip-card {
     background-color: transparent;
     width: 300px;

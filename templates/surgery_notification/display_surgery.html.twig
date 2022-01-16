@@ -13,7 +13,7 @@
 {% endfor %}
     <section class="row d-flex flex-wrap justify-content-center">
     {% for surgery in surgeries %}
-        <div class="col-md-3 p-3 m-3 border border-primary rounded">
+        <div class="displayOffers p-3 m-3 border border-primary rounded text-center">
                 <ul class="list-unstyled">
                     <li><span class="text-secondary">Chirugie le :</span> {{surgery.start_date | date('d-m-Y') }}</li>
                     <li><span class="text-secondary">Spécialité :</span> {{surgery.speciality}}</li>
