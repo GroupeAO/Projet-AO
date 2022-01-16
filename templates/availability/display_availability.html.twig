@@ -7,27 +7,32 @@
         </div>
 {% endfor %}
 
-    <div class="row d-flex flex-wrap justify-content-center" >
+    <div class="row d-flex justify-content-center flex-wrap" >
         <div class="pageTitle">
             Mes disponibilités :
         </div>
     {% for availability in availabilities %}
-        <div class="col-md-3 p-3 m-3 border border-primary rounded">
-            <div class="row d-flex">
-                <div class="col align-self-center">
-                    <p><span>Du : </span>{{availability.start_date | date('d-m-Y') }}<br>Au : {{availability.end_date | date('d-m-Y') }}</p>
-                    <p>{{availability.commute_distance}} <span>km maximum</span></p>
+        <div class="displayOffers p-3 m-3 border border-primary rounded d-flex flex-column justify-content-center">
+        
+                <div class="row">
+                    <div class="col text-center">
+                    <p><span class="text-secondary">Du : </span>{{availability.start_date | date('d-m-Y H:i') }}<br><span class="text-secondary">Au : </span>{{availability.end_date | date('d-m-Y H:i') }}</p>
+                    <p>{{availability.commute_distance}} <span class="text-secondary">km maximum à partir de </span>{{app.user.city}}</p>   
+                </div>
                 </div>
             
-                <div class="col text-center">
-                    <a href="{{path('user_edit_availability',  { 'id': availability.id })}}"><button class="btn btn-secondary my-1">modifier</button></a>
+           
+                <div class="row">
+                    <div class="col text-center">
+                    <a href="{{path('user_edit_availability',  { 'id': availability.id })}}"><button class="btn btn-secondary my-1">Modifier</button></a>
                     <a href="{{path('user_delete_availability',  { 'id': availability.id })}}"><button class="btn btn-danger my-1">Supprimer</button></a>
-                </div>
+                </div>    
             </div>
         </div>
     {% endfor %}
+    </div>
     {% if availabilities is empty %}
     <div class="text-center">Aucun résultat à afficher.</div>
     {% endif %}
-</div>
+
 {% endblock %}

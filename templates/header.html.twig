@@ -44,7 +44,7 @@
                                     <li><a class="dropdown-item" href="{{path('update_user', { 'id': app.user.id })}}">Modifier mes données</a></li>
                                 </ul>
                         {% endif %}
-                            <a href="{{ path('app_logout') }}"><button class="btn btn-light mx-2" href="">Déconnexion</button></a>
+                            <a href="{{ path('app_logout') }}"><button class="btn btn-danger mx-2" href="">Déconnexion</button></a>
                             {% else %}
                             <a href="{{ path('app_login') }}"><button class="btn btn-secondary mx-2" href="">Me Connecter</button></a>    
                             <a href="{{ path('cps_check') }}"><button class="btn btn-light mx-2" href="">M'enregistrer</button></a>    

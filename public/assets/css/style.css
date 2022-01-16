@@ -1,5 +1,5 @@
 .container-fluid{
-    min-height: 80vh;
+    min-height: 75vh;
     overflow: auto;
     padding: 0 2em;
     width: 100vw;
@@ -18,7 +18,8 @@
     bottom:0;
     position: static;
     width: 100%;
-    left: 0;
+    margin : 0 auto;
+
 }
 .formDisabled{
         pointer-events:none;
@@ -68,6 +69,10 @@
 
 
 /* Credits */
+.creditsCards{
+    height: fit-content;
+    max-width: 520px;
+}
 .card-header{
     font-weight: bold;
     text-align: center;
@@ -79,8 +84,8 @@
     max-width: 50px;
     padding: 5px;
 }
-#imgEG{
-    max-width: 150px;
+.imgPfp{
+    max-width: 200px;
     border-radius: 7px 0px 0px 7px;
 }
 /***** Page Admin*****/
@@ -94,6 +99,10 @@ border: 1px solid black;
     display: none;
 }
 /* Page Search */
+.displayOffers{
+    width: 300px;
+    min-height: 230px;
+}
 .flip-card {
     background-color: transparent;
     width: 300px;

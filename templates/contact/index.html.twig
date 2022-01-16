@@ -15,38 +15,31 @@
             {{ message }}
             </div>
     {% endfor %}
-
-
     {% if formAlert == false %}
-
         <div class="row justify-content-center">
-            <div class="col-8">
+            <div class="col-md-6">
                 <div class="pageTitle">
                     Contactez-nous
                 </div>
-            
-                <div class="p-5">
-                    <div class="form-group">
-                    {{ form_start(form) }}
-                    {{ form_row(form.name) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(form.email) }}
-                        {{ form_errors(form.email) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(form.subject) }}
-                    </div>
-                    <div class="form-group">
-                        {{ form_row(form.message) }}
-                    </div>
-                    <div class="form-group text-center">
-                        <input type="submit" value="Envoyer" class="btn btn-secondary my-3 px-5">
-                    </div>
-                    {{ form_end(form) }}
+                <div class="form-group">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
                 </div>
+                <div class="form-group">
+                    {{ form_row(form.email) }}
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.subject) }}
+                </div>
+                <div class="form-group">
+                    {{ form_row(form.message) }}
+                </div>
+                <div class="form-group text-center">
+                    <input type="submit" value="Envoyer" class="btn btn-secondary my-3 px-5">
+                </div>
+                {{ form_end(form) }}
             </div>
         </div>
-
     {% endif %}
 {% endblock %}
